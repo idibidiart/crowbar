@@ -43,7 +43,8 @@ var currEl;
       return styleObject; 
   }
   
-  window.onmouseover = function(e) { 
+  window.onmouseover = function(e) {
+     console.log(1)
     if (currEl) { 
       $(currEl).css({outline: 'none'}) 
     } 
