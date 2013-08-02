@@ -1,5 +1,5 @@
 (function() {
-  var myScript;
+  alert(1);
   
   if(typeof _ === undefined){
     myScript=document.createElement('SCRIPT');
