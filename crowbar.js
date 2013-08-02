@@ -1,5 +1,5 @@
 (function() {
-  
+
 var currEl;
   
   function diff(template, override) {
@@ -44,7 +44,6 @@ var currEl;
   }
   
   window.onmouseover = function(e) {
-     console.log(1)
     if (currEl) { 
       $(currEl).css({outline: 'none'}) 
     } 
@@ -67,4 +66,4 @@ var currEl;
     } 
   }
   
-})(window)
+})()
