@@ -2,8 +2,6 @@
 
   ____cr0wB6r____ = {};
 
-  ____cr0wB6r____.getStyle = getStyle;
-
   var currEl;
   
   function difference(template, override) {
@@ -34,7 +32,6 @@
       console.log(el)
 
       if (iframe) {
-          debugger;
           styleDeclaration =  iframe.contentWindow.getComputedStyle(el, null)
       } else {
           styleDeclaration =  window.getComputedStyle(el, null);
@@ -52,7 +49,7 @@
 
   function getSandboxedStyle(el) {
 
-      var ifrm = $('<iframe seamless style="height: 100%; width: 100%"></iframe>').appendTo('body')
+      var ifrm = $('<iframe seamless style="position: absolute; left: -1000px; height: 100%; width: 100%"></iframe>').appendTo('body')
 
       ifrm
           .contents()
