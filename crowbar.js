@@ -86,7 +86,7 @@
 
       console.log(getStyle(currEl))
 
-      console.log(getSanboxedStyle(currEl))
+      console.log(getSandboxedStyle(currEl))
 
 //      $(currEl).css(JSON.parse(style(currEl)))
 //
