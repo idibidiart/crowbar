@@ -31,7 +31,12 @@
       var styleDeclaration;
       var styleObject = {};
 
-      styleDeclaration = iframe ? iframe.contentWindow.getComputedStyle(el, null) : window.getComputedStyle(el, null);
+      debugger;
+      if (iframe) {
+          styleDeclaration =  iframe.contentDocument.defaultView.getComputedStyle(el, null)
+      } else {
+          window.getComputedStyle(el, null);
+      }
 
       for (var j = 0; j < styleDeclaration.length; j++){
           var prop = styleDeclaration[j];
@@ -54,7 +59,6 @@
 
       console.log($(el.tagName, $(ifrm).contents()))
 
-      debugger;
       return getStyle($(el.tagName, $(ifrm).contents()), ifrm[0])
   }
   
