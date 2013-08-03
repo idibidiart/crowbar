@@ -98,7 +98,7 @@
 
             rightArrowParents.reverse();
 
-            return rightArrowParents.join(" > ");
+            return rightArrowParents.join(" \u27a5 ");
         }
     });
 })(jQuery);
