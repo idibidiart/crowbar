@@ -46,22 +46,32 @@ var currEl;
   }
   
   window.onmouseover = function(e) {
+
     if (currEl) { 
       $(currEl).css({outline: 'none'}) 
-    } 
+    }
+
     currEl = e.target;
-      $(currEl).css({outline: 'red 2px solid'})             
+    $(currEl).css({outline: 'red 2px solid'})
   }
   
   window.onkeyup = function(e) {
-    
-    var key = e.keyCode || window.event.keyCode
+
+   var key = e.keyCode || window.event.keyCode
     
     if (key == 83) {
-      
+
       console.log(currEl, style(currEl))
       
       $(currEl).find('*').each(function(){
+
+          if (this.tagName.toLowerCase() == "head" ||
+              this.tagName.toLowerCase() == "meta" ||
+              this.tagName.toLowerCase() == "title" ||
+              this.tagName.toLowerCase() == "link" ||
+              this.tagName.toLowerCase() == "script")
+                return true;
+
         console.log(this, style(this));
       }); 
       
