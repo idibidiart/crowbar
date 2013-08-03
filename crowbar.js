@@ -35,7 +35,7 @@
       if (iframe) {
           styleDeclaration =  iframe.contentDocument.defaultView.getComputedStyle(el, null)
       } else {
-          window.getComputedStyle(el, null);
+          styleDeclaration =  window.getComputedStyle(el, null);
       }
 
       for (var j = 0; j < styleDeclaration.length; j++){
