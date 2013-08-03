@@ -11,9 +11,9 @@
             for (var i = 0; i < cssRuleList.length; i++) {
                 cssText += " " + cssRuleList[i].cssText;
             }
-            return cssText;
+            return cssText + '\n\n';
         }
-        return "None.";
+        return "None.\n\n";
     }
   
   window.onmouseover = function(e) {
@@ -51,7 +51,7 @@
         .andSelf()
         .map(function() {
             return this.nodeName + ':eq(' + $(this).index() + ')';
-        }).get().join('>') + '\n\n'
+        }).get().join('>') + '\n'
       )
 
       console.log(getMatchedRules(currEl))
@@ -63,7 +63,7 @@
                .andSelf()
                .map(function() {
                    return this.nodeName + ':eq(' + $(this).index() + ')';
-               }).get().join('>') + '\n\n'
+               }).get().join('>') + '\n'
            )
 
           console.log(getMatchedRules(this))
