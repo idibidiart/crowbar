@@ -11,16 +11,14 @@
             for (var i = 0; i < cssRuleList.length; i++) {
                 cssText += " " + cssRuleList[i].cssText;
             }
-            return "Matched CSS Rules:\n\n" + cssText;
+            return "Matched CSS Rules:\n\n" + cssText + "\n\n";
         }
         return "No Matched CSS Rules\n\n";
     }
   
   window.onmouseover = function(e) {
 
-    if (!e.target.parentNode || !e.target.parentNode.tagName ||
-        (e.target.parentNode.tagName.toLowerCase() != "div" &&
-        e.target.parentNode.tagName.toLowerCase() != "body"))
+    if (!e.target.parentNode || !e.target.parentNode.tagName)
             return;
 
     if (currEl) { 
@@ -43,23 +41,28 @@
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
+      console.log($(currEl)
+          .parentsUntil('body')
+          .andSelf()
+          .map(function() {
+              return this.nodeName + ':eq(' + $(this).index() + ')';
+          }).get().join('>') + '\n\n'
+      )
+
       console.log(getMatchedRules(currEl))
 
-//      $(currEl).css(JSON.parse(style(currEl)))
-//
-//      $(currEl).find('*').each(function(){
-//
-//
-//          $(this).css(JSON.parse(style(this)))
-//      });
+      console.log("HTML:\n\n" + currEl.outerHTML)
+
+      //$(currEl).find('*').each(function(){
+
+
+      //});
     }
 
     // p for parent
     if (key == 80) {
 
-        if (!currEl.parentNode || !currEl.parentNode.tagName ||
-            (currEl.parentNode.tagName.toLowerCase() != "div" &&
-            currEl.parentNode.tagName.toLowerCase() != "body"))
+        if (currEl.tagName.toLowerCase() == "body")
             return;
         
         $(currEl).css({outline: 'none'})
