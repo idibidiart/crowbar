@@ -46,13 +46,13 @@
 
       console.log("Matched CSS Rules:\n\n")
 
-      console.log($(currEl).getFullPath())
+      console.log($(currEl).getClassPath())
 
       console.log(getMatchedRules(currEl))
 
       $(currEl).find('*').each(function(){
 
-          console.log($(this).getFullPath())
+          console.log($(this).getClassPath())
 
           console.log(getMatchedRules(this))
 
@@ -78,11 +78,11 @@
 
 (function($){
     $.fn.extend({
-        getFullPath: function(){
+        getClassPath: function(){
 
             var rightArrowParents = [];
 
-            $(this).parents().not('html').each(function() {
+            $(this).parents().not('html').addBack().each(function() {
                 var entry = this.tagName.toUpperCase();
                 if (this.className) {
                     entry += "." + this.className.toLowerCase().replace(/ /g, '.');
@@ -92,7 +92,7 @@
 
             rightArrowParents.reverse();
 
-            return rightArrowParents.join(" ");
+            return rightArrowParents.join(" > ");
         }
     });
 })(jQuery);
