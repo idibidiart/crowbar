@@ -46,13 +46,13 @@
 
       console.log("Matched CSS Rules:\n\n")
 
-      console.log($(currEl).getFullPath(true))
+      console.log($(currEl).getFullPath())
 
       console.log(getMatchedRules(currEl))
 
       $(currEl).find('*').each(function(){
 
-          console.log($(this).getFullPath(true))
+          console.log($(this).getFullPath())
 
           console.log(getMatchedRules(this))
 
@@ -78,17 +78,21 @@
 
 (function($){
     $.fn.extend({
-        getFullPath: function(stopAtBody){
-            stopAtBody = stopAtBody || false;
-            function traverseUp(el){
-                var result = el.tagName + ':eq(' + $(el).index() + ')',
-                    pare = $(el).parent()[0];
-                if (pare.tagName !== undefined && (!stopAtBody || pare.tagName !== 'BODY')){
-                    result = [traverseUp(pare), result].join(' ');
+        getFullPath: function(){
+
+            var rightArrowParents = [];
+
+            $(this).parents().not('html').each(function() {
+                var entry = this.tagName.toUpperCase();
+                if (this.className) {
+                    entry += "." + this.className.toLowerCase().replace(/ /g, '.');
                 }
-                return result;
-            };
-            return this.length > 0 ? traverseUp(this[0]) : '';
+                rightArrowParents.push(entry);
+            });
+
+            rightArrowParents.reverse();
+
+            return rightArrowParents.join(" ");
         }
     });
 })(jQuery);
