@@ -2,7 +2,7 @@
 
   ____cr0wB6r____ = {};
 
-  var currEl;
+  var currEl, ifrm;
   
   function difference(template, override) {
     var ret = {};
@@ -50,13 +50,18 @@
 
   function getSandboxedStyle(el) {
 
-      var ifrm = $('<iframe seamless style="height: 0px !important; width: 0px !important; overflow: visible !important"></iframe>').appendTo('body')
-
+     ifrm = ifrm ||
+            $('<iframe seamless style="height: '
+                + window.screen.availHeight
+                + 'px !important; width: '
+                + window.screen.availWidth
+                + 'px !important; overflow: visible !important"></iframe>')
+                .appendTo('body')
       ifrm
           .contents()
           .find('body')
           .attr('style', window.getComputedStyle($('body')[0], null).cssText)
-          .html(el.outerHTML.replace(/\<iframe(.*)\<\/iframe\>/i, ""))
+          .html(el.outerHTML)
 
       return getStyle($(el.tagName, $(ifrm).contents())[0], ifrm[0])
   }
