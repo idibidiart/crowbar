@@ -45,9 +45,12 @@
 
   function getSandboxedStyle(el) {
 
-      var ifrm = document.createElement("IFRAME")
+      var ifrm = $('<iframe height="0" width="0" frameborder="0"></iframe>').appendTo('body')
 
-      $('body').append($(ifrm))
+      console.log(ifrm)
+
+      return
+
 
       ifrm.contentWindow.contents = '<!DOCTYPE html>'
           + '<body>'
@@ -56,7 +59,7 @@
       
       ifrm.src = 'javascript:window["contents"]';
 
-      return getStyle($('el.tagName', $(ifrm).contents()))
+      return getStyle($(el.tagName, $(ifrm).contents()))
   }
   
   window.onmouseover = function(e) {
