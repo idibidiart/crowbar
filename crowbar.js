@@ -87,7 +87,6 @@
 
             arr.pop();
             arr.unshift(jqParents.context)
-            console.log(arr)
 
             $(arr).each(function() {
                 var entry = this.tagName.toUpperCase();
