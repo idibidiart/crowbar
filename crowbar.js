@@ -46,25 +46,13 @@
 
       console.log("Matched CSS Rules:\n\n")
 
-      console.log($(currEl)
-        .parentsUntil('body')
-        .addBack()
-        .map(function() {
-            return this.nodeName + ':eq(' + $(this).index() + ')';
-        }).get().join('>') + '\n'
-      )
+      console.log($(currEl).getFullPath(true))
 
       console.log(getMatchedRules(currEl))
 
       $(currEl).find('*').each(function(){
 
-           console.log($(this)
-               .parentsUntil('body')
-               .addBack()
-               .map(function() {
-                   return this.nodeName + ':eq(' + $(this).index() + ')';
-               }).get().join('>') + '\n'
-           )
+          console.log($(this).getFullPath(true))
 
           console.log(getMatchedRules(this))
 
@@ -87,3 +75,20 @@
   }
   
 })()
+
+(function($){
+    $.fn.extend({
+        getFullPath: function(stopAtBody){
+            stopAtBody = stopAtBody || false;
+            function traverseUp(el){
+                var result = el.tagName + ':eq(' + $(el).index() + ')',
+                    pare = $(el).parent()[0];
+                if (pare.tagName !== undefined && (!stopAtBody || pare.tagName !== 'BODY')){
+                    result = [traverseUp(pare), result].join(' ');
+                }
+                return result;
+            };
+            return this.length > 0 ? traverseUp(this[0]) : '';
+        }
+    });
+})(jQuery);
