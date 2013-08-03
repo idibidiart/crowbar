@@ -59,7 +59,7 @@ var currEl;
     
     if (key == 83) {
       
-      console.log(currEL, style(currEl))
+      console.log(currEl, style(currEl))
       
       $(currEl).find('*').each(function(){
         console.log(this, style(this));
