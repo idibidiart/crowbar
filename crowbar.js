@@ -47,7 +47,7 @@
 
       var ifrm = $('<iframe height="0" width="0" frameborder="0" src="about:blank"></iframe>').appendTo('body')
 
-      ifrm.contents().find('html').html(el.ouuterHTML.replace(/\<iframe(.*)\<\/iframe\>/i, ""))
+      ifrm.contents().find('html').html(el.outerHTML.replace(/\<iframe(.*)\<\/iframe\>/i, ""))
 
       return
 
