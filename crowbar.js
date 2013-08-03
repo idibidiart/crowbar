@@ -48,7 +48,7 @@
 
       console.log($(currEl)
         .parentsUntil('body')
-        .andSelf()
+        .addBack()
         .map(function() {
             return this.nodeName + ':eq(' + $(this).index() + ')';
         }).get().join('>') + '\n'
@@ -60,7 +60,7 @@
 
            console.log($(this)
                .parentsUntil('body')
-               .andSelf()
+               .addBack()
                .map(function() {
                    return this.nodeName + ':eq(' + $(this).index() + ')';
                }).get().join('>') + '\n'
