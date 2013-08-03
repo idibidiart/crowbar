@@ -1,5 +1,7 @@
 (function() {
 
+____cr0wB6r____ = {}
+
 var currEl;
   
   function diff(template, override) {
