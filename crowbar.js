@@ -42,7 +42,7 @@ var currEl;
       //var ifrm = document.createElement("IFRAME")
       //
       
-      return JSON.stringify(JSON.parse(styleObject));
+      return JSON.stringify(styleObject);
   }
   
   window.onmouseover = function(e) {
