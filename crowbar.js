@@ -54,7 +54,8 @@
 
       ifrm
           .contents()
-          .find(el.tagName == 'body' ? 'html' : 'body')
+          .find('body')
+          .attr('style', window.getComputedStyle($('body')[0], null).cssText)
           .html(el.outerHTML.replace(/\<iframe(.*)\<\/iframe\>/i, ""))
 
       return getStyle($(el.tagName, $(ifrm).contents())[0], ifrm[0])
@@ -64,8 +65,7 @@
 
     if (!e.target.parentNode || !e.target.parentNode.tagName ||
         (e.target.parentNode.tagName.toLowerCase() != "div" &&
-        e.target.parentNode.tagName.toLowerCase() != "body" &&
-        e.target.parentNode.tagName.toLowerCase() != "html"))
+        e.target.parentNode.tagName.toLowerCase() != "body"))
             return;
 
     if (currEl) { 
@@ -119,8 +119,7 @@
 
         if (!currEl.parentNode || !currEl.parentNode.tagName ||
             (currEl.parentNode.tagName.toLowerCase() != "div" &&
-            currEl.parentNode.tagName.toLowerCase() != "body" &&
-            currEl.parentNode.tagName.toLowerCase() != "html"))
+            currEl.parentNode.tagName.toLowerCase() != "body"))
             return;
         
         $(currEl).css({outline: 'none'})
