@@ -58,8 +58,7 @@
   
   window.onmouseover = function(e) {
 
-    console.log(e.target.parentNode)
-    if (!e.target.parentNode ||
+    if (!e.target.parentNode || !e.target.parentNode.tagName ||
         (e.target.parentNode.tagName.toLowerCase() != "div" &&
         e.target.parentNode.tagName.toLowerCase() != "body" &&
         e.target.parentNode.tagName.toLowerCase() != "html"))
@@ -107,7 +106,7 @@
     // p for parent
     if (key == 80) {
 
-        if (!currEl.parentNode ||
+        if (!currEl.parentNode || !currEl.parentNode.tagName ||
             (currEl.parentNode.tagName.toLowerCase() != "div" &&
             currEl.parentNode.tagName.toLowerCase() != "body" &&
             currEl.parentNode.tagName.toLowerCase() != "html"))
