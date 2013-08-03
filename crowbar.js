@@ -85,9 +85,11 @@
             var jqParents = $(this).parents()
             var arr = Array.prototype.slice.call(jqParents, 0)
 
-            console.log(arr.pop().unshift(jqParents.context))
+            arr.pop();
+            arr.unshift(jqParents.context)
+            console.log(arr)
 
-            $(this).parents().not('html').each(function() {
+            $(arr).each(function() {
                 var entry = this.tagName.toUpperCase();
                 if (this.className) {
                     entry += "." + this.className.toLowerCase().replace(/ /g, '.');
