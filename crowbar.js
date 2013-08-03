@@ -27,11 +27,11 @@
     return b.toUpperCase();
   }
 
-  function getStyle(el) {
+  function getStyle(el, iframe) {
       var styleDeclaration;
       var styleObject = {};
 
-      styleDeclaration = window.getComputedStyle(el, null);
+      styleDeclaration = iframe ? iframe.contentWindow.getComputedStyle(el, null) : window.getComputedStyle(el, null);
 
       for (var j = 0; j < styleDeclaration.length; j++){
           var prop = styleDeclaration[j];
@@ -55,7 +55,7 @@
       console.log($(el.tagName, $(ifrm).contents()))
 
       debugger;
-      return getStyle($(el.tagName, $(ifrm).contents()))
+      return getStyle($(el.tagName, $(ifrm).contents()), ifrm[0])
   }
   
   window.onmouseover = function(e) {
