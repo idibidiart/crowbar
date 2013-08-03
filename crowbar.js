@@ -82,7 +82,9 @@
 
             var rightArrowParents = [];
 
-            $(this).parents().not('html').addBack().each(function() {
+            console.log($(this).parents())
+
+            $(this).parents().not('html').each(function() {
                 var entry = this.tagName.toUpperCase();
                 if (this.className) {
                     entry += "." + this.className.toLowerCase().replace(/ /g, '.');
