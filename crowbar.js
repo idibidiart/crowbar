@@ -35,9 +35,9 @@
 
       if (iframe) {
           debugger;
-          styleDeclaration =  iframe.contentWindow.getComputedStyle(el[0], null)
+          styleDeclaration =  iframe.contentWindow.getComputedStyle(el, null)
       } else {
-          styleDeclaration =  window.getComputedStyle(el[0], null);
+          styleDeclaration =  window.getComputedStyle(el, null);
       }
 
       for (var j = 0; j < styleDeclaration.length; j++){
@@ -61,7 +61,7 @@
 
       console.log($(el.tagName, $(ifrm).contents()))
 
-      return getStyle($(el.tagName, $(ifrm).contents()), ifrm[0])
+      return getStyle($(el.tagName, $(ifrm).contents())[0], ifrm[0])
   }
   
   window.onmouseover = function(e) {
