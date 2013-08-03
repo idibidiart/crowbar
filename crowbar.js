@@ -82,9 +82,10 @@
 
             var rightArrowParents = [];
 
-            var arr = Array.prototype.slice.call($(this).parents(), 0)
+            var jqParents = $(this).parents()
+            var arr = Array.prototype.slice.call(jqParents, 0)
 
-            console.log(arr)
+            console.log(arr.pop().unshift(jqParents.context))
 
             $(this).parents().not('html').each(function() {
                 var entry = this.tagName.toUpperCase();
