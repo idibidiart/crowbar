@@ -47,12 +47,7 @@
 
       var ifrm = $('<iframe height="0" width="0" frameborder="0"></iframe>').appendTo('body')
 
-      ifrm[0].contentWindow.contents = '<!DOCTYPE html>'
-          + '<body>'
-          + el.outerHTML
-          + '</body></html>';
-      
-      ifrm.src = 'javascript:window["contents"]';
+      $(el.outerHTML).appendTo(ifm.contents())
 
       return
 
