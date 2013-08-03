@@ -56,8 +56,6 @@
           .find(el.tagName == 'body' ? 'html' : 'body')
           .html(el.outerHTML.replace(/\<iframe(.*)\<\/iframe\>/i, ""))
 
-      console.log($(el.tagName, $(ifrm).contents()))
-
       return getStyle($(el.tagName, $(ifrm).contents())[0], ifrm[0])
   }
   
