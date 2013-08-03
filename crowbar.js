@@ -31,11 +31,13 @@
       var styleDeclaration;
       var styleObject = {};
 
+      console.log(el)
+
       if (iframe) {
           debugger;
-          styleDeclaration =  iframe.contentWindow.parent.window.getComputedStyle(el[0], null)
+          styleDeclaration =  iframe.contentWindow.getComputedStyle(el[0], null)
       } else {
-          styleDeclaration =  window.getComputedStyle(el, null);
+          styleDeclaration =  window.getComputedStyle(el[0], null);
       }
 
       for (var j = 0; j < styleDeclaration.length; j++){
