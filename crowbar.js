@@ -90,7 +90,12 @@
 
       var diff;
 
-      diff = difference(JSON.parse(getSandboxedStyle(currEl)), JSON.parse(getStyle(currEl)))
+      var a = JSON.parse(getSandboxedStyle(currEl)), b = JSON.parse(getStyle(currEl))
+
+      console.log(a)
+      console.log(b)
+
+      diff = difference(a, b)
 
       console.log(JSON.stringify(diff))
 
