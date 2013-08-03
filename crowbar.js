@@ -50,7 +50,7 @@
 
   function getSandboxedStyle(el) {
 
-      var ifrm = $('<iframe seamless style="height: 100%; width: 100%"></iframe>').appendTo('body')
+      var ifrm = $('<iframe seamless style="margin-left: -1000px; overflow: visible !important"></iframe>').appendTo('body')
 
       ifrm
           .contents()
