@@ -18,7 +18,7 @@
   
   window.onmouseover = function(e) {
 
-    if (!e.target.tagName.toLowerCase() == "html"
+    if (e.target.tagName.toLowerCase() == "html"
             || e.target.tagName.toLowerCase() == "body")
                 return;
 
