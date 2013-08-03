@@ -11,15 +11,16 @@
             for (var i = 0; i < cssRuleList.length; i++) {
                 cssText += " " + cssRuleList[i].cssText;
             }
-            return "Matched CSS Rules:\n\n" + cssText + "\n\n";
+            return cssText;
         }
-        return "No Matched CSS Rules\n\n";
+        return "None.";
     }
   
   window.onmouseover = function(e) {
 
-    if (!e.target.parentNode || !e.target.parentNode.tagName)
-            return;
+    if (!e.target.tagName.toLowerCase() == "html"
+            || e.target.tagName.toLowerCase() == "body")
+                return;
 
     if (currEl) { 
       $(currEl).css({outline: 'none'})
@@ -41,30 +42,41 @@
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
+      console.log("HTML:\n\n" + currEl.outerHTML + "\n\n")
+
+      console.log("Matched CSS Rules:\n\n")
+
       console.log($(currEl)
-          .parentsUntil('body')
-          .andSelf()
-          .map(function() {
-              return this.nodeName + ':eq(' + $(this).index() + ')';
-          }).get().join('>') + '\n\n'
+        .parentsUntil('body')
+        .andSelf()
+        .map(function() {
+            return this.nodeName + ':eq(' + $(this).index() + ')';
+        }).get().join('>') + '\n\n'
       )
 
       console.log(getMatchedRules(currEl))
 
-      console.log("HTML:\n\n" + currEl.outerHTML)
+      $(currEl).find('*').each(function(){
 
-      //$(currEl).find('*').each(function(){
+           console.log($(this)
+               .parentsUntil('body')
+               .andSelf()
+               .map(function() {
+                   return this.nodeName + ':eq(' + $(this).index() + ')';
+               }).get().join('>') + '\n\n'
+           )
 
+          console.log(getMatchedRules(this))
 
-      //});
+      });
     }
 
     // p for parent
     if (key == 80) {
 
-        if (currEl.tagName.toLowerCase() == "body")
+        if (currEl.parentNode.toLowerCase() == "body")
             return;
-        
+
         $(currEl).css({outline: 'none'})
 
         currEl = currEl.parentNode;
