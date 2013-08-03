@@ -60,12 +60,7 @@
       ifrm
           .contents()
           .find('body')
-          .html(_.indexOf(["area",
-              "base", "br", "col", "command", "embed", "hr", "img", "input", "keygen",
-              "param", "source", "track", "wbr"], el.tagName.toLocaleLowerCase()) != -1
-              ?
-              '<' + el.tagName + '/>'
-              : '<' + el.tagName + '></' + el.tagName + '>')
+          .html(el.outerHTML.replace("/style\=(.*)[\"]/ig",""))
 
       return getStyle($(el.tagName, $(ifrm).contents())[0], ifrm[0])
   }
@@ -111,6 +106,13 @@
 //      $(currEl).css(JSON.parse(style(currEl)))
 //
 //      $(currEl).find('*').each(function(){
+//
+//          if (this.tagName.toLowerCase() == "head" ||
+//              this.tagName.toLowerCase() == "meta" ||
+//              this.tagName.toLowerCase() == "title" ||
+//              this.tagName.toLowerCase() == "link" ||
+//              this.tagName.toLowerCase() == "script")
+//                return true; //continue
 //
 //          $(this).css(JSON.parse(style(this)))
 //      });
