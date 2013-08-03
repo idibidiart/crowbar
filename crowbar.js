@@ -52,10 +52,6 @@
           .find(el.tagName == 'body' ? 'html' : 'body')
           .html(el.outerHTML.replace(/\<iframe(.*)\<\/iframe\>/i, ""))
 
-      console.log($(el.tagName, $(ifrm).contents()))
-
-      return
-
       return getStyle($(el.tagName, $(ifrm).contents()))
   }
   
@@ -87,23 +83,27 @@
 
       $(currEl).css({outline: 'none'})
 
-      console.log(getStyle(currEl))
+      var diff;
 
-      console.log(getSandboxedStyle(currEl))
+      diff = difference(JSON.parse(getSandboxedStyle(currEl)), JSON.parse(getStyle(currEl)))
 
-//      $(currEl).css(JSON.parse(style(currEl)))
-//
-//      $(currEl).find('*').each(function(){
-//
-//          if (this.tagName.toLowerCase() == "head" ||
-//              this.tagName.toLowerCase() == "meta" ||
-//              this.tagName.toLowerCase() == "title" ||
-//              this.tagName.toLowerCase() == "link" ||
-//              this.tagName.toLowerCase() == "script")
-//                return true; //continue
-//
-//          $(this).css(JSON.parse(style(this)))
-//      });
+      console.log(diff)
+
+      return
+
+      $(currEl).css()
+
+      $(currEl).find('*').each(function(){
+
+          if (this.tagName.toLowerCase() == "head" ||
+              this.tagName.toLowerCase() == "meta" ||
+              this.tagName.toLowerCase() == "title" ||
+              this.tagName.toLowerCase() == "link" ||
+              this.tagName.toLowerCase() == "script")
+                return true; //continue
+
+          $(this).css()
+      });
     }
 
     // p for parent
