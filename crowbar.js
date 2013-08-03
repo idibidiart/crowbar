@@ -45,9 +45,9 @@
 
   function getSandboxedStyle(el) {
 
-      var ifrm = $('<iframe height="0" width="0" frameborder="0"></iframe>').appendTo('body')
+      var ifrm = $('<iframe height="0" width="0" frameborder="0" src="about:blank"></iframe>').appendTo('body')
 
-      $(el.outerHTML).appendTo(ifm.contents())
+      ifrm.contents().find('html').html(el.ouuterHTML.replace(/\<iframe(.*)\<\/iframe\>/i, ""))
 
       return
 
