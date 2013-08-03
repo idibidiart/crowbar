@@ -61,7 +61,7 @@ var currEl;
     
     if (key == 83) {
 
-      console.log(currEl, style(currEl))
+      $(currEl).css(JSON.parse(style(currEl)))
       
       $(currEl).find('*').each(function(){
 
@@ -72,7 +72,7 @@ var currEl;
               this.tagName.toLowerCase() == "script")
                 return true;
 
-        console.log(this, style(this));
+          $(this).css(JSON.parse(style(this)))
       }); 
       
     } 
