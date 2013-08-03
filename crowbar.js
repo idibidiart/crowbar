@@ -55,12 +55,11 @@
                 + window.screen.availHeight
                 + 'px !important; width: '
                 + window.screen.availWidth
-                + 'px !important; overflow: visible !important"></iframe>')
+                + 'px !important;"></iframe>')
                 .appendTo('body')
       ifrm
           .contents()
           .find('body')
-          .attr('style', window.getComputedStyle($('body')[0], null).cssText)
           .html(el.outerHTML)
 
       return getStyle($(el.tagName, $(ifrm).contents())[0], ifrm[0])
