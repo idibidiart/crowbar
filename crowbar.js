@@ -2,68 +2,19 @@
 
   ____cr0wB6r____ = {};
 
-  var currEl, ifrm;
-  
-  function difference(template, override) {
-    var ret = {};
-    for (var name in template) {
-        if (name in override) {
-            if (_.isObject(override[name]) && !_.isArray(override[name])) {
-                var diff = difference(template[name], override[name]);
-                if (!_.isEmpty(diff)) {
-                    ret[name] = diff;
-                }
-            } else if (!_.isEqual(template[name], override[name])) {
-                ret[name] = override[name];
+  var currEl;
+
+    function getMatchedRules(domNode) {
+        var cssText = "";
+        var cssRuleList = window.getMatchedCSSRules(domNode, '');
+        if (cssRuleList) {
+            for (var i = 0; i < cssRuleList.length; i++) {
+                cssText += " " + cssRuleList[i].cssText;
             }
+            return cssText;
         }
+        return "";
     }
-    return ret;
-  }
-  
-  function camel(a,b){
-    return b.toUpperCase();
-  }
-
-  function getStyle(el, iframe) {
-      var styleDeclaration;
-      var styleObject = {};
-
-      console.log(el)
-
-      if (iframe) {
-          debugger;
-          styleDeclaration =  iframe.contentWindow.getComputedStyle(el, null)
-      } else {
-          styleDeclaration =  window.getComputedStyle(el, null);
-      }
-
-      for (var j = 0; j < styleDeclaration.length; j++){
-          var prop = styleDeclaration[j];
-          var cProp = prop.replace(/\-([a-z])/g, camel);
-          var val = styleDeclaration.getPropertyValue(prop);
-          styleObject[cProp] = val;
-      }
-
-      return JSON.stringify(styleObject);
-  }
-
-  function getSandboxedStyle(el) {
-
-     ifrm = ifrm ||
-            $('<iframe seamless style="height: '
-                + window.screen.availHeight
-                + 'px !important; width: '
-                + window.screen.availWidth
-                + 'px !important;"></iframe>')
-                .appendTo('body')
-      ifrm
-          .contents()
-          .find('body')
-          .html(el.outerHTML.replace("/style\=(.*)[\"]/ig",""))
-
-      return getStyle($(el.tagName, $(ifrm).contents())[0], ifrm[0])
-  }
   
   window.onmouseover = function(e) {
 
@@ -73,7 +24,7 @@
             return;
 
     if (currEl) { 
-      $(currEl).css({outline: 'none'}) 
+      $(currEl).css({outline: 'none'})
     }
 
     currEl = e.target;
@@ -90,29 +41,14 @@
     // s for select
     if (key == 83) {
 
-      $(currEl).css({outline: 'none'})
+      $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
-      var diff;
-
-      var a = JSON.parse(getSandboxedStyle(currEl)), b = JSON.parse(getStyle(currEl))
-
-      console.log(a)
-      console.log(b)
-
-      diff = difference(a, b)
-
-      console.log(JSON.stringify(diff))
+      console.log(getMatchedRules(currEl))
 
 //      $(currEl).css(JSON.parse(style(currEl)))
 //
 //      $(currEl).find('*').each(function(){
 //
-//          if (this.tagName.toLowerCase() == "head" ||
-//              this.tagName.toLowerCase() == "meta" ||
-//              this.tagName.toLowerCase() == "title" ||
-//              this.tagName.toLowerCase() == "link" ||
-//              this.tagName.toLowerCase() == "script")
-//                return true; //continue
 //
 //          $(this).css(JSON.parse(style(this)))
 //      });
