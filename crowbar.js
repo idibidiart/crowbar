@@ -32,6 +32,7 @@
       console.log(el)
 
       if (iframe) {
+          debugger;
           styleDeclaration =  iframe.contentWindow.getComputedStyle(el, null)
       } else {
           styleDeclaration =  window.getComputedStyle(el, null);
