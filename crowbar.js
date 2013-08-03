@@ -11,9 +11,9 @@
             for (var i = 0; i < cssRuleList.length; i++) {
                 cssText += " " + cssRuleList[i].cssText;
             }
-            return cssText;
+            return "Matched CSS Rules:\n\n" + cssText;
         }
-        return "";
+        return "No Matched CSS Rules\n\n";
     }
   
   window.onmouseover = function(e) {
