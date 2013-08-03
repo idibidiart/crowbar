@@ -31,9 +31,9 @@
       var styleDeclaration;
       var styleObject = {};
 
-      debugger;
       if (iframe) {
-          styleDeclaration =  iframe.contentDocument.defaultView.getComputedStyle(el, null)
+          debugger;
+          styleDeclaration =  iframe.contentWindow.getComputedStyle($(el.tagName, $(ifrm).contents()), null)
       } else {
           styleDeclaration =  window.getComputedStyle(el, null);
       }
