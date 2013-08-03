@@ -46,6 +46,9 @@
   function getSandboxedStyle(el) {
 
       var ifrm = document.createElement("IFRAME")
+
+      $('body').append($(ifrm))
+
       ifrm.contentWindow.contents = '<!DOCTYPE html>'
           + '<body>'
           + el.outerHTML
