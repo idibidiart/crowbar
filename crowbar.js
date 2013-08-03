@@ -87,9 +87,11 @@
 
       $(currEl).css({outline: 'none'})
 
-      console.log(getStyle(currEl))
+      var diff;
 
-      console.log(getSandboxedStyle(currEl))
+      diff = difference(JSON.parse(getSandboxedStyle(currEl)), JSON.parse(getStyle(currEl)))
+
+      console.log(JSON.stringify(diff))
 
 //      $(currEl).css(JSON.parse(style(currEl)))
 //
