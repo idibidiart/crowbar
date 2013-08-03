@@ -83,27 +83,23 @@
 
       $(currEl).css({outline: 'none'})
 
-      var diff;
+      console.log(getStyle(currEl))
 
-      diff = difference(JSON.parse(getSandboxedStyle(currEl)), JSON.parse(getStyle(currEl)))
+      console.log(getSandboxedStyle(currEl))
 
-      console.log(diff)
-
-      return
-
-      $(currEl).css()
-
-      $(currEl).find('*').each(function(){
-
-          if (this.tagName.toLowerCase() == "head" ||
-              this.tagName.toLowerCase() == "meta" ||
-              this.tagName.toLowerCase() == "title" ||
-              this.tagName.toLowerCase() == "link" ||
-              this.tagName.toLowerCase() == "script")
-                return true; //continue
-
-          $(this).css()
-      });
+//      $(currEl).css(JSON.parse(style(currEl)))
+//
+//      $(currEl).find('*').each(function(){
+//
+//          if (this.tagName.toLowerCase() == "head" ||
+//              this.tagName.toLowerCase() == "meta" ||
+//              this.tagName.toLowerCase() == "title" ||
+//              this.tagName.toLowerCase() == "link" ||
+//              this.tagName.toLowerCase() == "script")
+//                return true; //continue
+//
+//          $(this).css(JSON.parse(style(this)))
+//      });
     }
 
     // p for parent
