@@ -58,6 +58,7 @@
   
   window.onmouseover = function(e) {
 
+    console.log(e.target.parentNode)
     if (!e.target.parentNode ||
         (e.target.parentNode.tagName.toLowerCase() != "div" &&
         e.target.parentNode.tagName.toLowerCase() != "body" &&
