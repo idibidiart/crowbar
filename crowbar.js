@@ -33,7 +33,7 @@
 
       if (iframe) {
           debugger;
-          styleDeclaration =  iframe.contentWindow.parent.window.getComputedStyle(el, null)
+          styleDeclaration =  iframe.contentWindow.parent.window.getComputedStyle(el[0], null)
       } else {
           styleDeclaration =  window.getComputedStyle(el, null);
       }
