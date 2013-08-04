@@ -10,7 +10,7 @@
 
     if (cssRuleList) {
         for (var i = 0; i < cssRuleList.length; i++) {
-            rules += cssRuleList[i].cssText + "\n\n";
+            rules += "\n\n" + cssRuleList[i].cssText;
         }
         return rules;
     }
