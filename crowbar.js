@@ -7,6 +7,7 @@
   function getMatchedRules(domNode) {
     var rules = "";
     var cssRuleList = window.getMatchedCSSRules(domNode, '');
+
     if (cssRuleList) {
         for (var i = 0; i < cssRuleList.length; i++) {
             rules += "\n\n" + cssRuleList[i].cssText;
@@ -52,14 +53,14 @@
 
        rule = getMatchedRules(currEl)
 
-       log += rule ? rule + "\n\n" : ""
+       log += rule ? rule + "\n" : ""
 
        $(currEl).find('*').each(function(){
 
            rule = getMatchedRules(this)
 
            rule = rule.replace(/\*\s\{(.*)\}/g, "")
-           rule = rule.replace(new RegExp("^[\\s]+$", "gm"), "")
+           rule = rule.replace(new RegExp("^[ ]+$", "gm"), "")
 
            if (rule) {
                log += rule;
