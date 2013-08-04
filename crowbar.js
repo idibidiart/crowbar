@@ -52,9 +52,7 @@
 
            rule = getMatchedRules(this)
 
-           rule = rule.replace(/[*]\s[{](.*)[}]/g, "")
-
-           console.log('rule > ', rule)
+           rule = rule.replace(/([*]\s[{](.*)[}])/g, "")
 
            log += rule ? rule + "\n" : ""
 
