@@ -24,8 +24,27 @@
 
   window.onmouseover = function(e) {
 
-    if (e.target.parentNode.tagName.toLowerCase() != "div" &&
-        e.target.parentNode.tagName.toLowerCase() != "body" )
+    // return if element or parent are not semantically independent
+    if (
+            (e.target.tagName.toLowerCase() != "div" &&
+            e.target.tagName.toLowerCase() != "span" &&
+            e.target.tagName.toLowerCase() != "header" &&
+            e.target.tagName.toLowerCase() != "footer" &&
+            e.target.tagName.toLowerCase() != "nav" &&
+            e.target.tagName.toLowerCase() != "article" &&
+            e.target.tagName.toLowerCase() != "section" &&
+            e.target.tagName.toLowerCase() != "aside")
+        ||
+            (e.target.parentNode.tagName.toLowerCase() != "div" &&
+            e.target.parentNode.tagName.toLowerCase() != "span" &&
+            e.target.parentNode.tagName.toLowerCase() != "header" &&
+            e.target.parentNode.tagName.toLowerCase() != "footer" &&
+            e.target.parentNode.tagName.toLowerCase() != "nav" &&
+            e.target.parentNode.tagName.toLowerCase() != "article" &&
+            e.target.parentNode.tagName.toLowerCase() != "section" &&
+            e.target.parentNode.tagName.toLowerCase() != "aside" &&
+            e.target.parentNode.tagName.toLowerCase() != "body")
+        )
                 return;
 
     if (currEl) { 
