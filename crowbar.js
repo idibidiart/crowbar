@@ -10,7 +10,7 @@
 
     if (cssRuleList) {
         for (var i = 0; i < cssRuleList.length; i++) {
-            rules += "\n\n" + cssRuleList[i].cssText;
+            rules += cssRuleList[i].cssText + "\n\n";
         }
         return rules;
     }
@@ -47,23 +47,23 @@
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
-       var log, rule = "";
+       var log, rules = "";
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n"
 
-       rule = getMatchedRules(currEl)
+       rules = getMatchedRules(currEl)
 
-       log += rule ? rule + "\n" : ""
+       log += rules ? rules + "\n" : ""
 
        $(currEl).find('*').each(function(){
 
-           rule = getMatchedRules(this)
+           rules = getMatchedRules(this)
 
-           rule = rule.replace(/\*\s\{(.*)\}/g, "")
-           rule = rule.replace(new RegExp("^[\\s]+$", "gm"), log.match(/\n$/) ? "" : "\n" )
+           rules = rules.replace(/\*\s\{(.*)\}/g, "")
+           rules = rules.replace(new RegExp("^[\\s]+$", "gm"), log.match(/\n$/) ? "" : "\n" )
 
-           if (rule) {
-               log += rule;
+           if (rules) {
+               log += rules;
            }
 
        });
