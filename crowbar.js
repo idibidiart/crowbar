@@ -61,10 +61,7 @@
            rule = rule.replace(/\*\s\{(.*)\}/g, "")
            rule = rule.replace(new RegExp("^[\\s]+$", "gm"), "")
 
-           if (rule) {
-               log += rule;
-           }
-
+           log += rule ? rule : "\n"
        });
 
       log += "</style>\n<body>\n"
