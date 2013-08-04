@@ -52,9 +52,9 @@
 
            rule = getMatchedRules(this)
 
-           rule = rule.replace(/([*]\s[{](.*)[}])/g, "")
+           rule = rule.replace(/[\*]\s[\{](.*)[\}]/g, "")
 
-           log += rule ? rule + "\n" : ""
+           log += rule.replace(/\s/g, "") ? rule + "\n" : ""
 
        });
 
