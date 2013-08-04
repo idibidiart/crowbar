@@ -37,8 +37,31 @@
 
    var key = e.keyCode || window.event.keyCode
 
-    // s for select
-    if (key == 83) {
+   // s for select
+   if (key == 83) {
+
+      $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
+
+       console.log("<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>")
+
+       console.log(getMatchedRules(currEl))
+
+       $(currEl).find('*').each(function(){
+
+           console.log(getMatchedRules(this))
+
+       });
+
+      console.log("</style>\n<body>\n")
+
+      console.log(currEl.outerHTML + "\n")
+
+      console.log("</body></html>")
+
+   }
+
+   // x for extra details
+   if (key == 88) {
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
