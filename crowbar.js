@@ -9,7 +9,7 @@
     var cssRuleList = window.getMatchedCSSRules(domNode, '');
     if (cssRuleList) {
         for (var i = 0; i < cssRuleList.length; i++) {
-            rules += " " + cssRuleList[i].cssText;
+            rules += "\n\n" + cssRuleList[i].cssText;
         }
         return rules;
     }
@@ -56,7 +56,7 @@
 
            rule = getMatchedRules(this)
 
-           rule = rule.replace(new RegExp("[*][ ][{](.*)[}]", "g"), "")
+           rule = rule.replace(/\\u002a[\s][{](.*)[}]/, "")
 
            log += rule.replace(/\s/g, "") ? rule + "\n\n" : ""
 
