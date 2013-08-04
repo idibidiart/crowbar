@@ -56,7 +56,7 @@
 
            rule = getMatchedRules(this)
 
-           rule = rule.replace(/\\u002a/, "")
+           rule = rule.replace(/\*/, "")
 
            log += rule.replace(/\s/g, "") ? rule + "\n" : ""
 
