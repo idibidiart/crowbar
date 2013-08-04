@@ -4,17 +4,21 @@
 
   var currEl;
 
-    function getMatchedRules(domNode) {
-        var cssText = "";
-        var cssRuleList = window.getMatchedCSSRules(domNode, '');
-        if (cssRuleList) {
-            for (var i = 0; i < cssRuleList.length; i++) {
-                cssText += " " + cssRuleList[i].cssText;
-            }
-            return cssText;
+  function getMatchedRules(domNode) {
+    var rules = "";
+    var cssRuleList = window.getMatchedCSSRules(domNode, '');
+    if (cssRuleList) {
+        for (var i = 0; i < cssRuleList.length; i++) {
+            rules += " " + cssRuleList[i].cssText;
         }
-        return "";
+        return rules;
     }
+    return "";
+  }
+
+  function quote(regex) {
+     return regex.replace(/([()[{*+.$^\\|?])/g, '\\$1');
+  }
   
   window.onmouseover = function(e) {
 
@@ -52,7 +56,7 @@
 
            rule = getMatchedRules(this)
 
-           rule = rule.replace(/[\*]\s[\{](.*)[\}]/g, "")
+           rule = rule.replace(new RegExp("[*]\s[\{](.*)[\}]", "g"), "")
 
            log += rule.replace(/\s/g, "") ? rule + "\n" : ""
 
