@@ -13,7 +13,7 @@
         }
         return rules;
     }
-    return "";
+    return "\n";
   }
 
   function quote(regex) {
@@ -61,7 +61,10 @@
            rule = rule.replace(/\*\s\{(.*)\}/g, "")
            rule = rule.replace(new RegExp("^[\\s]+$", "gm"), "")
 
-           log += rule ? rule : "\n"
+           if (rule) {
+               log += rule;
+           }
+
        });
 
       log += "</style>\n<body>\n"
