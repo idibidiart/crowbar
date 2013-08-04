@@ -13,7 +13,7 @@
         }
         return rules;
     }
-    return "\n";
+    return "";
   }
 
   function quote(regex) {
@@ -52,7 +52,7 @@
 
        rule = getMatchedRules(currEl)
 
-       log += rule ? rule + "\n" : ""
+       log += rule ? rule + "\n\n" : ""
 
        $(currEl).find('*').each(function(){
 
