@@ -24,18 +24,9 @@
 
   window.onmouseover = function(e) {
 
-    // return if element or parent are not semantically independent
+    // return if parent is not semantically decoupled from element
     if (
-            (e.target.tagName.toLowerCase() != "div" &&
-            e.target.tagName.toLowerCase() != "span" &&
-            e.target.tagName.toLowerCase() != "header" &&
-            e.target.tagName.toLowerCase() != "footer" &&
-            e.target.tagName.toLowerCase() != "nav" &&
-            e.target.tagName.toLowerCase() != "article" &&
-            e.target.tagName.toLowerCase() != "section" &&
-            e.target.tagName.toLowerCase() != "aside")
-        ||
-            (e.target.parentNode.tagName.toLowerCase() != "div" &&
+            e.target.parentNode.tagName.toLowerCase() != "div" &&
             e.target.parentNode.tagName.toLowerCase() != "span" &&
             e.target.parentNode.tagName.toLowerCase() != "header" &&
             e.target.parentNode.tagName.toLowerCase() != "footer" &&
@@ -43,7 +34,7 @@
             e.target.parentNode.tagName.toLowerCase() != "article" &&
             e.target.parentNode.tagName.toLowerCase() != "section" &&
             e.target.parentNode.tagName.toLowerCase() != "aside" &&
-            e.target.parentNode.tagName.toLowerCase() != "body")
+            e.target.parentNode.tagName.toLowerCase() != "body"
         )
                 return;
 
