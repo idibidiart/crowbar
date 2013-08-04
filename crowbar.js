@@ -47,6 +47,7 @@
        )
                 return;
 
+        console.log(e.target.tagName.toLowerCase())
         console.log((["p", "h1", "h2", "h3", "h4", "h5", "h6",
             "ol", "ul", "pre", "address", "blockquote",
             "dl", "div", "fieldset", "form", "output",
