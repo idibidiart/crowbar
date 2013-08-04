@@ -26,15 +26,24 @@
 
     // return if not block-level element
     if (
-        ["p", "h1", "h2", "h3", "h4", "h5", "h6",
+        (["p", "h1", "h2", "h3", "h4", "h5", "h6",
         "ol", "ul", "pre", "address", "blockquote",
         "dl", "div", "fieldset", "form", "output",
         "blockquote", "table", "tfoot",
         "article", "section", "aside", "nav",
         "header", "footer", "hr", "figcaption",
         "figure", "address", "dd"]
-            .indexOf(e.target.tagName.toLowerCase()) == -1
-        )
+            .indexOf(e.target.tagName.toLowerCase()) == -1)
+        ||
+        (["p", "h1", "h2", "h3", "h4", "h5", "h6",
+        "ol", "ul", "pre", "address", "blockquote",
+        "dl", "div", "fieldset", "form", "output",
+        "blockquote", "table", "tfoot",
+        "article", "section", "aside", "nav",
+        "header", "footer", "hr", "figcaption",
+        "figure", "address", "dd", "body"]
+        .indexOf(e.target.parentNode.tagName.toLowerCase()) == -1)
+       )
                 return;
 
     if (currEl) { 
