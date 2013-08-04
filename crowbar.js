@@ -42,21 +42,22 @@
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
-       console.log("<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>")
+       var log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n"
 
-       console.log(getMatchedRules(currEl))
+       log += getMatchedRules(currEl) + "\n"
 
        $(currEl).find('*').each(function(){
 
-           console.log(getMatchedRules(this))
+           log += getMatchedRules(this) + "\n"
 
        });
 
-      console.log("</style>\n<body>\n")
+      log += "</style>\n<body>\n"
+            + currEl.outerHTML + "\n"
 
-      console.log(currEl.outerHTML + "\n")
+      log += "</body></html>"
 
-      console.log("</body></html>")
+      console.log(log)
 
    }
 
@@ -65,7 +66,7 @@
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
-      console.log("HTML:\n\n" + currEl.outerHTML + "\n\n")
+      var log =  "HTML:\n\n" + currEl.outerHTML + "\n\n";
 
       console.log("Matched CSS Rules:\n\n")
 

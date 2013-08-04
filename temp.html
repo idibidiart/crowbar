@@ -1,0 +1,345 @@
+<!doctype html>
+<html>
+<meta charset='UTF-8'/>
+<style> crowbar.js:45
+* { margin: 0px; padding: 0px; outline: 0px; } .css_round2 { border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; } .art_prompt_wrap { padding: 6px; margin-top: 8px; clear: both; }
+
+crowbar.js:47
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .margintb5 { margin: 5px 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .icon { font-family: px-icons; font-weight: normal !important; text-transform: none !important; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } h3, h4, h5, h6 { font-family: helvetica, arial, sans-serif; } h3 { font-size: 28px; } .font17 { font-size: 17px !important; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } ul, ol { list-style: none; } ul.voteflow_button { box-sizing: content-box; padding-left: 5px; border: 1px solid rgb(204, 204, 204); font-weight: bold; color: rgb(34, 34, 34); background-image: linear-gradient(rgb(255, 255, 255), rgb(241, 241, 241)); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; -webkit-box-shadow: rgba(0, 0, 0, 0.498039) 1px 1px 5px; box-shadow: rgba(0, 0, 0, 0.498039) 1px 1px 5px; background-position: initial initial; background-repeat: initial initial; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } ul.voteflow_button li { overflow: hidden; } .voteflow_button.minipoll li { position: relative; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } a { color: rgb(96, 173, 203); text-decoration: none; } a { color: rgb(22, 141, 217); text-decoration: none; } .colored_tab { position: relative; display: block; } .mp-vote-link { overflow: hidden; } ul.voteflow_button li a { color: rgb(0, 0, 0); }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .grad_gold { background-color: rgb(255, 217, 47); background-position: initial initial; background-repeat: initial initial; } .icon { font-family: px-icons; font-weight: normal !important; text-transform: none !important; } .voteflow_button.minipoll li .mini_tab { width: 34px; text-align: center; font-size: 27px; border-top-left-radius: 0px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 0px; padding-top: 3px; position: absolute; display: block; float: right; right: 0px; top: 0px; } body .voteflow_button.minipoll li .mini_tab { border-top-left-radius: 0px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 0px; font-size: 27px; } .voteflow_button.minipoll li .mini_tab.icon { padding: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .opa_65 { opacity: 0.65; } .voteflow_button.minipoll li .mini_tab span { display: block; padding-top: 0px; color: rgb(255, 255, 255); }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .font15 { font-size: 15px !important; } .bold { font-weight: bold; } .voteflow_button .q { margin: 8px 0px 6px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } ul, ol { list-style: none; } ul.voteflow_button { box-sizing: content-box; padding-left: 5px; border: 1px solid rgb(204, 204, 204); font-weight: bold; color: rgb(34, 34, 34); background-image: linear-gradient(rgb(255, 255, 255), rgb(241, 241, 241)); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; -webkit-box-shadow: rgba(0, 0, 0, 0.498039) 1px 1px 5px; box-shadow: rgba(0, 0, 0, 0.498039) 1px 1px 5px; background-position: initial initial; background-repeat: initial initial; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } ul.voteflow_button li { overflow: hidden; } .voteflow_button.minipoll li { position: relative; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } a { color: rgb(96, 173, 203); text-decoration: none; } a { color: rgb(22, 141, 217); text-decoration: none; } .colored_tab { position: relative; display: block; } .mp-vote-link { overflow: hidden; } ul.voteflow_button li a { color: rgb(0, 0, 0); }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .grad_red { background-color: rgb(227, 36, 28); background-position: initial initial; background-repeat: initial initial; } .icon { font-family: px-icons; font-weight: normal !important; text-transform: none !important; } .voteflow_button.minipoll li .mini_tab { width: 34px; text-align: center; font-size: 27px; border-top-left-radius: 0px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 0px; padding-top: 3px; position: absolute; display: block; float: right; right: 0px; top: 0px; } body .voteflow_button.minipoll li .mini_tab { border-top-left-radius: 0px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 0px; font-size: 27px; } .voteflow_button.minipoll li .mini_tab.icon { padding: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .opa_65 { opacity: 0.65; } .voteflow_button.minipoll li .mini_tab span { display: block; padding-top: 0px; color: rgb(255, 255, 255); }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .font15 { font-size: 15px !important; } .bold { font-weight: bold; } .voteflow_button .q { margin: 8px 0px 6px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } ul, ol { list-style: none; } ul.voteflow_button { box-sizing: content-box; padding-left: 5px; border: 1px solid rgb(204, 204, 204); font-weight: bold; color: rgb(34, 34, 34); background-image: linear-gradient(rgb(255, 255, 255), rgb(241, 241, 241)); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; -webkit-box-shadow: rgba(0, 0, 0, 0.498039) 1px 1px 5px; box-shadow: rgba(0, 0, 0, 0.498039) 1px 1px 5px; background-position: initial initial; background-repeat: initial initial; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } ul.voteflow_button li { overflow: hidden; } .voteflow_button.minipoll li { position: relative; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } a { color: rgb(96, 173, 203); text-decoration: none; } a { color: rgb(22, 141, 217); text-decoration: none; } .colored_tab { position: relative; display: block; } .mp-vote-link { overflow: hidden; } ul.voteflow_button li a { color: rgb(0, 0, 0); }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .grad_navy { background-color: rgb(50, 136, 189); background-position: initial initial; background-repeat: initial initial; } .icon { font-family: px-icons; font-weight: normal !important; text-transform: none !important; } .voteflow_button.minipoll li .mini_tab { width: 34px; text-align: center; font-size: 27px; border-top-left-radius: 0px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 0px; padding-top: 3px; position: absolute; display: block; float: right; right: 0px; top: 0px; } body .voteflow_button.minipoll li .mini_tab { border-top-left-radius: 0px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 0px; font-size: 27px; } .voteflow_button.minipoll li .mini_tab.icon { padding: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .opa_65 { opacity: 0.65; } .voteflow_button.minipoll li .mini_tab span { display: block; padding-top: 0px; color: rgb(255, 255, 255); }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .font15 { font-size: 15px !important; } .bold { font-weight: bold; } .voteflow_button .q { margin: 8px 0px 6px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .font11 { font-size: 11px !important; } .upper { text-transform: uppercase; } .center { text-align: center; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } a { color: rgb(96, 173, 203); text-decoration: none; } a { color: rgb(22, 141, 217); text-decoration: none; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .margintb5 { margin: 5px 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .icon { font-family: px-icons; font-weight: normal !important; text-transform: none !important; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } h3, h4, h5, h6 { font-family: helvetica, arial, sans-serif; } h3 { font-size: 28px; } .font17 { font-size: 17px !important; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .results_row_wrap { border-top-width: 2px; border-top-style: dotted; border-top-color: rgb(204, 204, 204); padding-top: 8px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .media, .bd, .fclear { overflow: hidden; } .results_row { border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: rgb(153, 153, 153); padding: 4px 0px; } .media { margin: 5px 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .media .img { float: left; margin-right: 5px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .grad_gold { background-color: rgb(255, 217, 47); background-position: initial initial; background-repeat: initial initial; } .sig { display: block; float: left; min-width: 9px; min-height: 9px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; margin: 0px 4px 0px 0px; position: relative; top: 1px; } .icon { font-family: px-icons; font-weight: normal !important; text-transform: none !important; } .sig { border-top-left-radius: 0px !important; border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important; border-bottom-left-radius: 0px !important; } .sig.icon { color: rgb(255, 255, 255); text-shadow: rgba(51, 51, 51, 0.701961) 0px -1px 0px; font-size: 10px; padding: 1px 1px 1px 2px; } .sig20.icon { min-width: 18px; min-height: 18px; font-size: 13px; padding: 2px 0px 0px 4px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .media, .bd, .fclear { overflow: hidden; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .f_right { float: right !important; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .f_left { float: left; } .font15 { font-size: 15px !important; } .bold { font-weight: bold; } .gray { color: rgb(102, 102, 102) !important; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .font10 { font-size: 10px !important; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .f_left { float: left; } .up2 { position: relative; top: -2px; } .grad_gold { background-color: rgb(255, 217, 47); background-position: initial initial; background-repeat: initial initial; } .results_bar { padding: 3px 0px; margin-left: 6px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .font15 { font-size: 15px !important; } .bold { font-weight: bold; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .font11 { font-size: 11px !important; } .gray { color: rgb(102, 102, 102) !important; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .media, .bd, .fclear { overflow: hidden; } .results_row { border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: rgb(153, 153, 153); padding: 4px 0px; } .media { margin: 5px 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .media .img { float: left; margin-right: 5px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .grad_red { background-color: rgb(227, 36, 28); background-position: initial initial; background-repeat: initial initial; } .sig { display: block; float: left; min-width: 9px; min-height: 9px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; margin: 0px 4px 0px 0px; position: relative; top: 1px; } .icon { font-family: px-icons; font-weight: normal !important; text-transform: none !important; } .sig { border-top-left-radius: 0px !important; border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important; border-bottom-left-radius: 0px !important; } .sig.icon { color: rgb(255, 255, 255); text-shadow: rgba(51, 51, 51, 0.701961) 0px -1px 0px; font-size: 10px; padding: 1px 1px 1px 2px; } .sig20.icon { min-width: 18px; min-height: 18px; font-size: 13px; padding: 2px 0px 0px 4px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .media, .bd, .fclear { overflow: hidden; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .f_right { float: right !important; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .f_left { float: left; } .font15 { font-size: 15px !important; } .bold { font-weight: bold; } .gray { color: rgb(102, 102, 102) !important; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .font10 { font-size: 10px !important; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .f_left { float: left; } .up2 { position: relative; top: -2px; } .grad_red { background-color: rgb(227, 36, 28); background-position: initial initial; background-repeat: initial initial; } .results_bar { padding: 3px 0px; margin-left: 6px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .font15 { font-size: 15px !important; } .bold { font-weight: bold; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .font11 { font-size: 11px !important; } .gray { color: rgb(102, 102, 102) !important; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .media, .bd, .fclear { overflow: hidden; } .results_row { border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: rgb(153, 153, 153); padding: 4px 0px; } .media { margin: 5px 0px; } .results_row_wrap .results_row:last-child { border: none; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .media .img { float: left; margin-right: 5px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .grad_navy { background-color: rgb(50, 136, 189); background-position: initial initial; background-repeat: initial initial; } .sig { display: block; float: left; min-width: 9px; min-height: 9px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; margin: 0px 4px 0px 0px; position: relative; top: 1px; } .icon { font-family: px-icons; font-weight: normal !important; text-transform: none !important; } .sig { border-top-left-radius: 0px !important; border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important; border-bottom-left-radius: 0px !important; } .sig.icon { color: rgb(255, 255, 255); text-shadow: rgba(51, 51, 51, 0.701961) 0px -1px 0px; font-size: 10px; padding: 1px 1px 1px 2px; } .sig20.icon { min-width: 18px; min-height: 18px; font-size: 13px; padding: 2px 0px 0px 4px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .media, .bd, .fclear { overflow: hidden; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .f_right { float: right !important; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .f_left { float: left; } .font15 { font-size: 15px !important; } .bold { font-weight: bold; } .gray { color: rgb(102, 102, 102) !important; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .font10 { font-size: 10px !important; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .f_left { float: left; } .up2 { position: relative; top: -2px; } .grad_navy { background-color: rgb(50, 136, 189); background-position: initial initial; background-repeat: initial initial; } .results_bar { padding: 3px 0px; margin-left: 6px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .font15 { font-size: 15px !important; } .bold { font-weight: bold; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .font11 { font-size: 11px !important; } .gray { color: rgb(102, 102, 102) !important; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } .font11 { font-size: 11px !important; } .light_bot { text-shadow: rgba(255, 255, 255, 0.901961) 0px 1px 0px; } .upper { text-transform: uppercase; } .center { text-align: center; }
+
+crowbar.js:51
+* { margin: 0px; padding: 0px; outline: 0px; } a { color: rgb(96, 173, 203); text-decoration: none; } a { color: rgb(22, 141, 217); text-decoration: none; }
+
+crowbar.js:51
+</style>
+<body>
+<div class="js-minipoll art_prompt_wrap css_round2" style="background-color: rgb(230, 230, 230); ">
+    <div class="mp-vote-div">
+        <table cellpadding="0" cellspacing="0" class="margintb5">
+            <tbody><tr>
+                <td>
+                    <div class="icon" style="color:#168dd9; font-size:40px; opacity:.85; margin:-7px 8px -7px 0">?</div>
+                </td>
+                <td style="outline: none;">
+                    <h3 class="font17">Should Weiner go, and Spitzer and Cheney stay?</h3>
+                </td>
+            </tr>
+            </tbody></table>
+        <section class="button_wrapper" style="padding:0 4px;">
+            <ul data-role="listview" data-inset="true" class="voteflow_button minipoll" style="margin:0 0 6px;">
+                <li data-icon="false">
+                    <a href="#" class="mp-vote-link colored_tab" px-mp-optid="option1" style="" data-login="1">
+                        <span class="mini_tab grad_gold icon" style=""><span class="opa_65">&gt;</span></span>
+                        <p class="font15 bold q" style="margin-right:39px;">
+                            Yes, that's about right
+                        </p>
+                    </a>
+                </li>
+            </ul>
+            <ul data-role="listview" data-inset="true" class="voteflow_button minipoll" style="margin:0 0 6px;">
+                <li data-icon="false">
+                    <a href="#" class="mp-vote-link colored_tab" px-mp-optid="option2" style="" data-login="1">
+                        <span class="mini_tab grad_red icon" style=""><span class="opa_65">&gt;</span></span>
+                        <p class="font15 bold q" style="margin-right:39px;">
+                            Nope, they should all go
+                        </p>
+                    </a>
+                </li>
+            </ul>
+            <ul data-role="listview" data-inset="true" class="voteflow_button minipoll" style="margin:0 0 6px;">
+                <li data-icon="false">
+                    <a href="#" class="mp-vote-link colored_tab" px-mp-optid="option3" style="" data-login="1">
+                        <span class="mini_tab grad_navy icon" style=""><span class="opa_65">&gt;</span></span>
+                        <p class="font15 bold q" style="margin-right:39px;">
+                            Another reaction (explain in comments)
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <p class="font11 upper center" style="margin:10px 0 3px 5px;"><a href="#" class="mp-showresults-link">View results</a></p>
+    </div>
+    <div class="mp-results-div" style="display:none">
+        <table cellpadding="0" cellspacing="0" class="margintb5">
+            <tbody><tr>
+                <td>
+                    <div class="icon" style="color:#168dd9; font-size:40px; opacity:.85; margin:-7px 8px -7px 0">?</div>
+                </td>
+                <td>
+                    <h3 class="font17">Should Weiner go, and Spitzer and Cheney stay?</h3>
+                </td>
+            </tr>
+            </tbody></table>
+        <div class="results_row_wrap" style="margin:0 0 5px;">
+            <div class="results_row media">
+                <div class="img" style="width:32px; padding-left:6px; margin:3px 0 0;">
+                    <span class="sig sig20 grad_gold icon"></span>
+                </div>
+                <section class="bd">
+                    <div class="f_right" style="margin:5px 0 0 8px;">
+                        <p class="bold font15 gray f_left">24<span class="font10">%</span>
+                        </p><div style="width:108px; float:right">
+                        <p class="results_bar f_left up2 grad_gold" style="width:45px;">&nbsp;</p>
+                    </div>
+                    </div>
+                    <p class="bold font15">Yes, that's about right</p>
+                    <p class="font11 gray"><b>18</b> votes</p>
+                </section>
+            </div>
+            <div class="results_row media">
+                <div class="img" style="width:32px; padding-left:6px; margin:3px 0 0;">
+                    <span class="sig sig20 grad_red icon"></span>
+                </div>
+                <section class="bd">
+                    <div class="f_right" style="margin:5px 0 0 8px;">
+                        <p class="bold font15 gray f_left">53<span class="font10">%</span>
+                        </p><div style="width:108px; float:right">
+                        <p class="results_bar f_left up2 grad_red" style="width:100px;">&nbsp;</p>
+                    </div>
+                    </div>
+                    <p class="bold font15">Nope, they should all go</p>
+                    <p class="font11 gray"><b>40</b> votes</p>
+                </section>
+            </div>
+            <div class="results_row media">
+                <div class="img" style="width:32px; padding-left:6px; margin:3px 0 0;">
+                    <span class="sig sig20 grad_navy icon"></span>
+                </div>
+                <section class="bd">
+                    <div class="f_right" style="margin:5px 0 0 8px;">
+                        <p class="bold font15 gray f_left">24<span class="font10">%</span>
+                        </p><div style="width:108px; float:right">
+                        <p class="results_bar f_left up2 grad_navy" style="width:45px;">&nbsp;</p>
+                    </div>
+                    </div>
+                    <p class="bold font15">Another reaction (explain in comments)</p>
+                    <p class="font11 gray"><b>18</b> votes</p>
+                </section>
+            </div>
+        </div>
+        <p class="font11 upper center light_bot" style="margin:0 0 3px;"><a href="#" class="mp-showvote-link">Vote now</a></p>
+    </div>
+</div>
+</body></html>
