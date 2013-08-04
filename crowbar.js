@@ -56,7 +56,7 @@
 
            rule = getMatchedRules(this)
 
-           rule = rule.replace(/\*/, "")
+           rule = rule.replace(/\*\s\{(.*)\}/, "")
 
            log += rule.replace(/\s/g, "") ? rule + "\n" : ""
 
