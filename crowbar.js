@@ -50,15 +50,15 @@
 
        var rule = getMatchedRules(currEl)
 
-       log += rule ? rule + "\n" : ""
+       log += rule ? rule + "\n\n" : ""
 
        $(currEl).find('*').each(function(){
 
            rule = getMatchedRules(this)
 
-           rule = rule.replace(new RegExp("[*]\s[\{](.*)[\}]", "g"), "")
+           rule = rule.replace(new RegExp("[\\*]\\s[\\{](.*)[}]", "g"), "")
 
-           log += rule.replace(/\s/g, "") ? rule + "\n" : ""
+           log += rule.replace(/\s/g, "") ? rule + "\n\n" : ""
 
        });
 
