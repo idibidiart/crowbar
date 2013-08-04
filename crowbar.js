@@ -13,7 +13,7 @@
             }
             return cssText + '\n\n';
         }
-        return "None.\n\n";
+        return null;
     }
   
   window.onmouseover = function(e) {
@@ -56,6 +56,8 @@
             + currEl.outerHTML + "\n"
 
       log += "</body></html>"
+
+      console.log(null)
 
       console.log(log)
 
