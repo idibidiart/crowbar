@@ -31,7 +31,7 @@
         "dl", "div", "fieldset", "form", "output",
         "blockquote", "table", "tfoot",
         "article", "section", "aside", "nav",
-        "header", "footer", "figcaption",
+        "header", "footer", "hr", "figcaption",
         "figure", "address", "dd"]
             .indexOf(e.target.tagName.toLowerCase()) == -1
         )
