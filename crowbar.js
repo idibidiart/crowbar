@@ -56,7 +56,7 @@
 
            rule = getMatchedRules(this)
 
-           rule = rule.replace(new RegExp("(\\*\\s\\{)(.*)(})", "g"), "")
+           rule = rule.replace(new RegExp("(\\* \\{)(.*)(})", "g"), "")
 
            log += rule.replace(/\s/g, "") ? rule + "\n\n" : ""
 
