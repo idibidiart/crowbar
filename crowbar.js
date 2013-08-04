@@ -24,8 +24,7 @@
 
   window.onmouseover = function(e) {
 
-    if (e.target.tagName.toLowerCase() != "div" &&
-        e.target.parentNode.tagName.toLowerCase() != "div" &&
+    if (e.target.parentNode.tagName.toLowerCase() != "div" &&
         e.target.parentNode.tagName.toLowerCase() != "body" )
                 return;
 
@@ -57,11 +56,7 @@
 
        log += rules ? rules + "\n" : ""
 
-       rules = getMatchedRules(currEl)
-
-       rules = rules.replace(/\*\s\{(.*)\}/g, "")
-
-       rules = rules.replace(new RegExp("^[\\s]+$", "gm"), log.match(/\n$/) ? "" : "\n" )
+       rules = getMatchedRules(currEl, log)
 
        log += rules ? rules + "\n" : ""
 
@@ -69,20 +64,15 @@
 
            rules = getMatchedRules(this, log)
 
-           rules = rules.replace(/\*\s\{(.*)\}/g, "")
-           rules = rules.replace(new RegExp("^[\\s]+$", "gm"), log.match(/\n$/) ? "" : "\n" )
-
            if (rules) {
                log += rules;
            }
-
        });
 
       log += "\n\n</style>\n<body>\n"
             + currEl.outerHTML + "\n</body></html>\n\n"
 
       console.log(log)
-
    }
 
     // p for parent
