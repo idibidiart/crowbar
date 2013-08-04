@@ -5,13 +5,16 @@
   var currEl;
 
   function getMatchedRules(el, list) {
+
+    var currList = list || "";
+
     var rules = "";
     var cssRuleList = window.getMatchedCSSRules(el, '');
 
     if (cssRuleList) {
         for (var i = 0; i < cssRuleList.length; i++) {
 
-            if (list.indexOf(cssRuleList[i].cssText) == -1)
+            if (currList.indexOf(cssRuleList[i].cssText) == -1)
                 rules += "\n\n" + cssRuleList[i].cssText;
         }
         return rules;
