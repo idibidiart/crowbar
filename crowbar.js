@@ -19,14 +19,11 @@
     return "";
   }
 
-  function quote(regex) {
-     return regex.replace(/([()[{*+.$^\\|?])/g, '\\$1');
-  }
-  
   window.onmouseover = function(e) {
 
-    if (e.target.tagName.toLowerCase() == "html"
-            || e.target.tagName.toLowerCase() == "body")
+    if (e.target.tagName.toLowerCase() != "div" &&
+        e.target.parentNode.tagName.toLowerCase() != "div" &&
+        e.target.parentNode.tagName.toLowerCase() != "body" )
                 return;
 
     if (currEl) { 
@@ -53,16 +50,13 @@
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n"
 
-       rules = getMatchedRules(currEl, log)
+       rules = getMatchedRules($('body')[0])
 
        log += rules ? rules + "\n" : ""
 
-       $(currEl)
-           .parentsUntil('html')
-           .addback()
-           .each(function() {
-               console.log(this);
-           })
+       rules = getMatchedRules(currEl)
+
+       log += rules ? rules + "\n" : ""
 
        $(currEl).find('*').each(function(){
 
@@ -87,7 +81,7 @@
     // p for parent
     if (key == 80) {
 
-        if (currEl.parentNode.toLowerCase() == "body")
+        if (!currEl || currEl.parentNode.toLowerCase() == "body")
             return;
 
         $(currEl).css({outline: 'none'})
