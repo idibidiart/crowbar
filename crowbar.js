@@ -59,6 +59,10 @@
 
        rules = getMatchedRules(currEl)
 
+       rules.replace(/\*\s\{(.*)\}/g, "")
+
+       rules = rules.replace(new RegExp("^[\\s]+$", "gm"), log.match(/\n$/) ? "" : "\n" )
+
        log += rules ? rules + "\n" : ""
 
        $(currEl).find('*').each(function(){
