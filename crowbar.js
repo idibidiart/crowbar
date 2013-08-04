@@ -57,6 +57,13 @@
 
        log += rules ? rules + "\n" : ""
 
+       $(currEl)
+           .parentsUntil('html')
+           .addback()
+           .each(function() {
+               console.log(this);
+           })
+
        $(currEl).find('*').each(function(){
 
            rules = getMatchedRules(this, log)
