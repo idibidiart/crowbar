@@ -47,6 +47,15 @@
        )
                 return;
 
+        alert((["p", "h1", "h2", "h3", "h4", "h5", "h6",
+            "ol", "ul", "pre", "address", "blockquote",
+            "dl", "div", "fieldset", "form", "output",
+            "blockquote", "table", "tfoot",
+            "article", "section", "aside", "nav",
+            "header", "footer", "hr", "figcaption",
+            "figure", "address", "dd"]
+            .indexOf(e.target.tagName.toLowerCase()) == -1))
+
     if (currEl) { 
       $(currEl).css({outline: 'none'})
     }
