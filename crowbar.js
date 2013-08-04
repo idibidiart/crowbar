@@ -58,7 +58,7 @@
 
            rule = rule.replace(/\*\s\{(.*)\}/, "")
 
-           log += rule.replace(/\s/g, "") ? rule + "\n" : ""
+           log += (rule = rule.replace(/\s/g, ""), rule) ? rule + "\n" : ""
 
        });
 
