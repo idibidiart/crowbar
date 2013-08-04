@@ -24,7 +24,8 @@
 
   window.onmouseover = function(e) {
 
-    // return if not block-level element
+    // return if element or parent is not block-level element
+    // or body in case of parent
     if (
         (["p", "h1", "h2", "h3", "h4", "h5", "h6",
         "ol", "ul", "pre", "address", "blockquote",
