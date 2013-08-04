@@ -46,9 +46,11 @@
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
-       var log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n"
+       var log, rule = "";
 
-       var rule = getMatchedRules(currEl)
+       log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n"
+
+       rule = getMatchedRules(currEl)
 
        log += rule ? rule + "\n" : ""
 
@@ -56,9 +58,11 @@
 
            rule = getMatchedRules(this)
 
-           rule = rule.replace(/\*\s\{(.*)\}/, "")
+           rule = rule.replace(/\*\s\{(.*)\}/g, "").replace(/[ ]+$/m, "")
 
-           log += (rule = rule.replace(/\s/g, ""), rule) ? rule + "\n" : ""
+           if (rule) {
+               log += rule;
+           }
 
        });
 
