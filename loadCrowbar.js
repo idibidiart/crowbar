@@ -8,7 +8,7 @@
   if (typeof ____l0g____ == 'undefined') {
     myScript=document.createElement('SCRIPT');
     myScript.type='text/javascript';
-    myScript.src='https://github.com/idibidiart/crowbar/blob/master/log.js';
+    myScript.src='https://rawgithub.com/idibidiart/crowbar/master/log.js';
     document.getElementsByTagName('body')[0].appendChild(myScript);
   }
   if(typeof ____cr0wB6r____ == 'undefined'){
