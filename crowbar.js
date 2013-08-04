@@ -24,17 +24,16 @@
 
   window.onmouseover = function(e) {
 
-    // return if parent is not semantically decoupled from element
+    // return if not block-level element
     if (
-            e.target.parentNode.tagName.toLowerCase() != "div" &&
-            e.target.parentNode.tagName.toLowerCase() != "span" &&
-            e.target.parentNode.tagName.toLowerCase() != "header" &&
-            e.target.parentNode.tagName.toLowerCase() != "footer" &&
-            e.target.parentNode.tagName.toLowerCase() != "nav" &&
-            e.target.parentNode.tagName.toLowerCase() != "article" &&
-            e.target.parentNode.tagName.toLowerCase() != "section" &&
-            e.target.parentNode.tagName.toLowerCase() != "aside" &&
-            e.target.parentNode.tagName.toLowerCase() != "body"
+        ["p", "h1", "h2", "h3", "h4", "h5", "h6",
+        "ol", "ul", "pre", "address", "blockquote",
+        "dl", "div", "fieldset", "form", "output",
+        "blockquote", "table", "tfoot",
+        "article", "section", "aside", "nav",
+        "header", "footer", "figcaption",
+        "figure", "address", "dd"]
+            .indexOf(e.target.tagName.toLowerCase()) == -1
         )
                 return;
 
