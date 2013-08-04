@@ -4,13 +4,15 @@
 
   var currEl;
 
-  function getMatchedRules(domNode) {
+  function getMatchedRules(el, list) {
     var rules = "";
-    var cssRuleList = window.getMatchedCSSRules(domNode, '');
+    var cssRuleList = window.getMatchedCSSRules(el, '');
 
     if (cssRuleList) {
         for (var i = 0; i < cssRuleList.length; i++) {
-            rules += "\n\n" + cssRuleList[i].cssText;
+
+            if (list.indexOf(cssRuleList[i].cssText) == -1)
+                rules += "\n\n" + cssRuleList[i].cssText;
         }
         return rules;
     }
@@ -51,13 +53,13 @@
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n"
 
-       rules = getMatchedRules(currEl)
+       rules = getMatchedRules(currEl, log)
 
        log += rules ? rules + "\n" : ""
 
        $(currEl).find('*').each(function(){
 
-           rules = getMatchedRules(this)
+           rules = getMatchedRules(this, log)
 
            rules = rules.replace(/\*\s\{(.*)\}/g, "")
            rules = rules.replace(new RegExp("^[\\s]+$", "gm"), log.match(/\n$/) ? "" : "\n" )
