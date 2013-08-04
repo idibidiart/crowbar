@@ -68,7 +68,7 @@
 
        });
 
-      log += "</style>\n<body>\n"
+      log += "\n\n</style>\n<body>\n"
             + currEl.outerHTML + "\n</body></html>\n\n"
 
       console.log(log)
