@@ -60,7 +60,7 @@
            rule = getMatchedRules(this)
 
            rule = rule.replace(/\*\s\{(.*)\}/g, "")
-           rule = rule.replace(new RegExp("^[\\s]+$", "g"), "")
+           rule = rule.replace(new RegExp("^[\\s]+$", "gm"), "\n")
 
            if (rule) {
                log += rule;
