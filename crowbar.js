@@ -111,14 +111,12 @@
 
        var log, rules;
 
-       var containerClass = "crowbar_container"
-
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n" +
              "<!-- INHERITED STYLE for Crowbar container -->\n\n"
 
-       log += "." + containerClass + " { " + computeInheritedStyle(currEl.parentNode) + " }\n\n"
+       log += "body" + " { " + computeInheritedStyle(currEl.parentNode) + " }\n\n"
 
-       log += "<!-- AUTHOR CSS RULES -->\n\n"
+       log += "<!-- AUTHOR CSS RULES -->\n"
 
        rules = getMatchedRules(currEl, log)
 
@@ -133,8 +131,8 @@
            }
        });
 
-      log += "\n\n</style>\n<body>\n<div class='crowbar_container>'\n"
-            + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
+      log += "\n\n</style>\n<body>\n"
+            + currEl.outerHTML + "\n</body>\n</html>\n\n"
 
       console.log(log)
    }
