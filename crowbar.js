@@ -46,7 +46,7 @@
     "list-style-type",
     "list-style",
     "text-align",
-    "text-index",
+    "text-indent",
     "text-transform",
     "visibility",
     "white-space",
@@ -88,11 +88,11 @@
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
-       var log, rules = "", parents = [], inheritedRules;
+       var log = "", rules = "", inheritedRules = "", inheritanceChain;
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n"
 
-       var inheritanceChain = $(currEl)
+       inheritanceChain = $(currEl)
            .parentsUntil('html')
            .addBack()
 
@@ -105,11 +105,15 @@
 
            rules = getMatchedRules(this, log)
 
-           log += rules ? rules + "\n" : ""
+           inheritedRules = CSSOM.parse(rules)
+
+           console.log(inheritedRules)
+
+           //log += rules ? rules + "\n" : ""
 
        })
 
-       console.log(log)
+       //console.log(log)
 
        return
 
