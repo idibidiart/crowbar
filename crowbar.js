@@ -122,7 +122,7 @@
 
        rules = getMatchedRules(currEl, log)
 
-       log += rules ? rules + "\n" : ""
+       log += rules.trim() ? rules + "\n" : ""
 
        $(currEl).find('*').each(function(){
 
