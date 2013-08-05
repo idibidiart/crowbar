@@ -94,7 +94,7 @@
            .parentsUntil('html')
            .addBack()
            .map(function() {
-               return this.nodeName;
+               return this.nodeName.toLowerCase();
            }).get().join(" > ")
 
        var doc= currEl.ownerDocument;
@@ -102,7 +102,8 @@
 
        rules = win.getMatchedCSSRules($('body')[0])
 
-       console.log(Array.prototype.slice.call(rules, 0))
+       rules = Array.prototype.slice.call(rules, 0)
+
 
 
        return
