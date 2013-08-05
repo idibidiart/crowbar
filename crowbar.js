@@ -90,31 +90,28 @@
 
        var log, rules = "", parents = [], inheritedRules;
 
-       var cssPath = $(currEl)
-           .parentsUntil('html')
-           .addBack()
-           .map(function() {
-               return this.nodeName.toLowerCase();
-           }).get().join(" > ")
-
-       var doc= currEl.ownerDocument;
-       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
-
-       rules = win.getMatchedCSSRules($('body')[0])
-
-       rules = Array.prototype.slice.call(rules, 0)
-
-
-
-       return
-
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n"
 
+       var inheritanceChain = $(currEl)
+           .parentsUntil('html')
+           .addBack()
 
+       var cssPath = inheritanceChain
+                        .map(function() {
+                            return this.nodeName.toLowerCase();
+                        }).get().join(" > ")
 
-       rules = getMatchedRules($('body')[0])
+       $(inheritanceChain).each(function() {
 
-       log += rules ? rules + "\n" : ""
+           rules = getMatchedRules(this, log)
+
+           log += rules ? rules + "\n" : ""
+
+       })
+
+       console.log(log)
+
+       return
 
        rules = getMatchedRules(currEl, log)
 
