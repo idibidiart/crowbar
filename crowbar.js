@@ -61,7 +61,7 @@
       var doc= el.ownerDocument;
       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
 
-      return win.getComputedStyle(this, null).getPropertyCSSValue("font-family").cssText
+      return win.getComputedStyle(el, null).getPropertyCSSValue("font-family").cssText
 
 
   }
