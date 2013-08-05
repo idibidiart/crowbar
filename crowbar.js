@@ -89,15 +89,10 @@
 
        var parents = $(currEl)
            .parentsUntil('html')
-           .each(function() {
-             parents.push(this)
-           }).map(function() {
+           .addBack()
+           .map(function() {
                return this.nodeName;
-           }).get()
-
-       parents.push(currEl)
-
-       parents.join(" > ")
+           }).get().join(" > ")
 
        console.log(parents)
 
