@@ -85,16 +85,18 @@
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
-       var log, rules = "";
+       var log, rules = "", parents = [];
 
        $(currEl)
            .parentsUntil('html')
            .each(function() {
-             var _rules = window.getMatchedCSSRules(this)
-             console.log(_rules)
-             var intersect = _.intersection(inherited, _rules)
-             console.log(intersect)
+             parents.push(this)
            })
+       parents.push(currEl)
+
+       parents.join(" > ")
+
+       console.log(parents)
 
        return
 
