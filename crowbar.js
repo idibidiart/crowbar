@@ -105,6 +105,8 @@
 
            rules = getMatchedRules(this, log)
 
+           console.log(rules)
+
            inheritedRules = CSSOM.parse(rules)
 
            console.log(inheritedRules)
