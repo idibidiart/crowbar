@@ -22,10 +22,37 @@
     return "";
   }
 
+  var inherited = [
+    "border-collapse",
+    "border-spacing",
+    "caption-side",
+    "color",
+    "cursor",
+    "direction",
+    "empty-cells",
+    "font-family",
+    "font-size",
+    "font-style",
+    "font-variant",
+    "font-weight",
+    "font",
+    "letter-spacing",
+    "line-height",
+    "list-style-image",
+    "list-style-position",
+    "list-style-type",
+    "list-style",
+    "text-align",
+    "text-index",
+    "text-transform",
+    "visibility",
+    "white-space",
+    "word-spacing"
+  ]
+
   window.onmouseover = function(e) {
 
-    // return if element or parent is not block-level element
-    // or body in case of parent
+    // ignore if not block-level element
     if (
         (["p", "h1", "h2", "h3", "h4", "h5", "h6",
         "ol", "ul", "pre", "address", "blockquote",
@@ -36,7 +63,7 @@
         "figure", "address", "dd"]
             .indexOf(e.target.tagName.toLowerCase()) == -1)
        )
-                return;
+         return;
 
     if (currEl) { 
       $(currEl).css({outline: 'none'})
@@ -60,7 +87,13 @@
 
        var log, rules = "";
 
-       console.log($(currEl).parentsUntil('html'))
+       $(currEl)
+           .parentsUntil('html')
+           .each(function() {
+             var _rules = Array.prototype.slice.call(window.getMatchedCSSRules(this), 0)
+             var intersect = _.intersection(inherited, _rules)
+             console.log(intersect)
+           })
 
        return
 

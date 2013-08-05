@@ -1,4 +1,11 @@
 (function() {
+  var myScript;
+  if(typeof _ == 'undefined'){
+    myScript=document.createElement('SCRIPT');
+    myScript.type='text/javascript';
+    myScript.src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js';
+    document.getElementsByTagName('body')[0].appendChild(myScript);
+  }
   if(typeof jQuery == 'undefined'){
     myScript=document.createElement('SCRIPT');
     myScript.type='text/javascript';
