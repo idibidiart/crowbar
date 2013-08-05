@@ -96,7 +96,7 @@
 
        rules = getMatchedRules($('body')[0])
 
-       console.log(Array.prototype.slice.call(rules))
+       console.log(Array.prototype.slice.call(rules, 0))
 
 
        return
