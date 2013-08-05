@@ -76,8 +76,7 @@
   window.onmouseover = function(e) {
 
     // if not block-level element
-    // it can't be directly appended to the body of a document
-    // so ignore
+    // it can't be directly appended to the body of a document (our use case)
     if (
         (["p", "h1", "h2", "h3", "h4", "h5", "h6",
         "ol", "ul", "pre", "address", "blockquote",
@@ -142,6 +141,9 @@
 
     // p for parent
     if (key == 80) {
+
+        // previous filter (on mouse over) allows only block-level elements to be selected
+        // this prevents body element from being selected via "p" key, per our use case
 
         if (!currEl || currEl.parentNode.toLowerCase() == "body")
             return;
