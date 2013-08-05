@@ -105,13 +105,13 @@
 
            rules = getMatchedRules(this, log)
 
-           console.log(rules)
+           log += rules ? rules + "\n" : ""
 
            inheritedRules = CSSOM.parse(rules)
 
            console.log(inheritedRules)
 
-           //log += rules ? rules + "\n" : ""
+
 
        })
 
