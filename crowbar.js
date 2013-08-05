@@ -85,16 +85,19 @@
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
-       var log, rules = "";
+       var log, rules = "", parents = [], inheritedRules;
 
-       var parents = $(currEl)
+       var cssPath = $(currEl)
            .parentsUntil('html')
            .addBack()
            .map(function() {
                return this.nodeName;
            }).get().join(" > ")
 
-       console.log(parents)
+       rules = getMatchedRules($('body')[0])
+
+       console.log(rules)
+
 
        return
 
