@@ -90,7 +90,7 @@
        $(currEl)
            .parentsUntil('html')
            .each(function() {
-             var _rules = Array.prototype.slice.call(window.getMatchedCSSRules(this), 0)
+             var _rules = (window.getMatchedCSSRules(this)
              console.log(_rules)
              var intersect = _.intersection(inherited, _rules)
              console.log(intersect)
