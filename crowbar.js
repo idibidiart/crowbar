@@ -25,7 +25,7 @@
     return "";
   }
 
-  function computeInheritedProperties(el) {
+  function computeInheritedStyle(el) {
 
       var doc= el.ownerDocument;
       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
@@ -61,15 +61,23 @@
       var doc= el.ownerDocument;
       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
 
-      return win.getComputedStyle(el, null).getPropertyValue("font-family")
+      var inheritedStyle = "";
 
+      $(inheritedProperties).each(function() {
+
+          inheritedStyle += this + ": " + win.getComputedStyle(el, null).getPropertyValue(this) + "; "
+      })
+
+      return inheritedStyle;
 
   }
 
 
   window.onmouseover = function(e) {
 
-    // ignore if not block-level element
+    // if not block-level element
+    // it can't be directly appended to the body of a document
+    // so ignore
     if (
         (["p", "h1", "h2", "h3", "h4", "h5", "h6",
         "ol", "ul", "pre", "address", "blockquote",
@@ -102,21 +110,16 @@
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
-       var log, rules, inheritedCSSStyles;
+       var log, rules;
 
        var containerClass = "crowbar_container"
 
-       log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n"
+       log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n" +
+             "<!-- INHERITED STYLE AS COMPUTED ON CONTAINER -->\n\n"
 
-       inheritanceChain = $(currEl)
-           .parentsUntil('html')
-           .addBack()
+       log += "." + containerClasss + " { " + computeInheritedStyle(currEl.parentNode) + " }\n\n"
 
-       inheritedCSSStyles = computeInheritedProperties(currEl.parentNode)
-
-       console.log(inheritedCSSStyles)
-
-       return
+       log += "<!-- AUTHOR STYLESHEET RULES -->\n\n"
 
        rules = getMatchedRules(currEl, log)
 
