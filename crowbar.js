@@ -114,11 +114,11 @@
        var containerClass = "crowbar_container"
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n" +
-             "<!-- INHERITED STYLE AS COMPUTED ON CONTAINER -->\n\n"
+             "<!-- INHERITED STYLE for Crowbar container -->\n\n"
 
        log += "." + containerClass + " { " + computeInheritedStyle(currEl.parentNode) + " }\n\n"
 
-       log += "<!-- AUTHOR STYLESHEET RULES -->\n\n"
+       log += "<!-- AUTHOR CSS RULES -->\n\n"
 
        rules = getMatchedRules(currEl, log)
 
