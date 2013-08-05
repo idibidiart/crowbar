@@ -96,7 +96,7 @@
 
        rules = getMatchedRules($('body')[0])
 
-       console.log(rules)
+       console.log(rules.cssText)
 
 
        return
