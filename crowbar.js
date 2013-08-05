@@ -109,9 +109,7 @@
 
            inheritedRules = CSSOM.parse(rules)
 
-           console.log(inheritedRules)
-
-
+           console.log(JSON.stringify(JSON.parse(inheritedRules), null, '\t'))
 
        })
 
