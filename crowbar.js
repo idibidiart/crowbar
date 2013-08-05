@@ -8,8 +8,11 @@
 
     var currList = list || "";
 
+    var doc= el.ownerDocument;
+    var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
+
     var rules = "";
-    var cssRuleList = window.getMatchedCSSRules(el, '');
+    var cssRuleList = win.getMatchedCSSRules(el, '');
 
     if (cssRuleList) {
         for (var i = 0; i < cssRuleList.length; i++) {
@@ -94,7 +97,10 @@
                return this.nodeName;
            }).get().join(" > ")
 
-       rules = getMatchedRules($('body')[0])
+       var doc= currEl.ownerDocument;
+       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
+
+       rules = win.getMatchedCSSRules($('body')[0])
 
        console.log(Array.prototype.slice.call(rules, 0))
 
