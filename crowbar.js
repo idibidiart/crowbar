@@ -1,6 +1,6 @@
 (function() {
 
-  ____cr0wB6r____ = {};
+  ____crowbar____ = {};
 
   var currEl;
 
@@ -25,33 +25,47 @@
     return "";
   }
 
-  var inherited = [
-    "border-collapse",
-    "border-spacing",
-    "caption-side",
-    "color",
-    "cursor",
-    "direction",
-    "empty-cells",
-    "font-family",
-    "font-size",
-    "font-style",
-    "font-variant",
-    "font-weight",
-    "font",
-    "letter-spacing",
-    "line-height",
-    "list-style-image",
-    "list-style-position",
-    "list-style-type",
-    "list-style",
-    "text-align",
-    "text-indent",
-    "text-transform",
-    "visibility",
-    "white-space",
-    "word-spacing"
-  ]
+  function computeInheritedProperty(el) {
+
+      var doc= el.ownerDocument;
+      var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
+
+      var inheritedProperties = [
+          "border-collapse",
+          "border-spacing",
+          "caption-side",
+          "color",
+          "cursor",
+          "direction",
+          "empty-cells",
+          "font-family",
+          "font-size",
+          "font-style",
+          "font-variant",
+          "font-weight",
+          "font",
+          "letter-spacing",
+          "line-height",
+          "list-style-image",
+          "list-style-position",
+          "list-style-type",
+          "list-style",
+          "text-align",
+          "text-indent",
+          "text-transform",
+          "visibility",
+          "white-space",
+          "word-spacing"
+      ]
+
+      var doc= el.ownerDocument;
+      var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
+
+      return win.getComputedStyle(this, null).getPropertyCSSValue("font-family").cssText
+
+
+  }
+
 
   window.onmouseover = function(e) {
 
@@ -88,7 +102,9 @@
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
-       var log = "", rules = "", inheritedRules = "", inheritanceChain;
+       var log, rules, inheritedStyles;
+
+       var containerClass = "crowbar_container"
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n"
 
@@ -96,24 +112,9 @@
            .parentsUntil('html')
            .addBack()
 
-       var cssPath = inheritanceChain
-                        .map(function() {
-                            return this.nodeName.toLowerCase();
-                        }).get().join(" > ")
+       inheritedCSSStyles += computeInheritedProperties(currEl.parentNode)
 
-       $(inheritanceChain).each(function() {
-
-           rules = getMatchedRules(this, log)
-
-           log += rules ? rules + "\n" : ""
-
-           inheritedRules = CSSOM.parse(rules)
-
-           console.log(inheritedRules)
-
-       })
-
-       //console.log(log)
+       console.log(inheritedStyles)
 
        return
 
@@ -130,8 +131,8 @@
            }
        });
 
-      log += "\n\n</style>\n<body>\n"
-            + currEl.outerHTML + "\n</body></html>\n\n"
+      log += "\n\n</style>\n<body>\n<div class='crowbar_container>'\n"
+            + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
 
       console.log(log)
    }

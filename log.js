@@ -109,9 +109,9 @@
         return 537.38 <= parseInt(m[1], 10) + (parseInt(m[2], 10) / 100);
     };
     if ((isSafari() && !safariSupport()) || isIE()) {
-        window.____l0g____ = _log;
+        window.____log____ = _log;
     } else {
-        window.____l0g____ = log;
+        window.____log____ = log;
     }
-    window.____l0g____.l = _log;
+    window.____log____.l = _log;
 })();
