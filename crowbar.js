@@ -85,13 +85,16 @@
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
-       var log, rules = "", parents = [];
+       var log, rules = "";
 
-       $(currEl)
+       var parents = $(currEl)
            .parentsUntil('html')
            .each(function() {
              parents.push(this)
-           })
+           }).map(function() {
+               return this.nodeName;
+           }).get()
+
        parents.push(currEl)
 
        parents.join(" > ")
