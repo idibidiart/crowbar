@@ -102,7 +102,7 @@
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
-       var log, rules, inheritedStyles;
+       var log, rules, inheritedCSSStyles;
 
        var containerClass = "crowbar_container"
 
@@ -112,9 +112,9 @@
            .parentsUntil('html')
            .addBack()
 
-       inheritedCSSStyles += computeInheritedProperties(currEl.parentNode)
+       inheritedCSSStyles = computeInheritedProperties(currEl.parentNode)
 
-       console.log(inheritedStyles)
+       console.log(inheritedCSSStyles)
 
        return
 
