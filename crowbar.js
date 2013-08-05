@@ -35,27 +35,8 @@
         "header", "footer", "hr", "figcaption",
         "figure", "address", "dd"]
             .indexOf(e.target.tagName.toLowerCase()) == -1)
-        ||
-        (["p", "h1", "h2", "h3", "h4", "h5", "h6",
-        "ol", "ul", "pre", "address", "blockquote",
-        "dl", "div", "fieldset", "form", "output",
-        "blockquote", "table", "tfoot",
-        "article", "section", "aside", "nav",
-        "header", "footer", "hr", "figcaption",
-        "figure", "address", "dd", "body"]
-        .indexOf(e.target.parentNode.tagName.toLowerCase()) == -1)
        )
                 return;
-
-        console.log(e.target.tagName.toLowerCase())
-        console.log((["p", "h1", "h2", "h3", "h4", "h5", "h6",
-            "ol", "ul", "pre", "address", "blockquote",
-            "dl", "div", "fieldset", "form", "output",
-            "blockquote", "table", "tfoot",
-            "article", "section", "aside", "nav",
-            "header", "footer", "hr", "figcaption",
-            "figure", "address", "dd"]
-            .indexOf(e.target.tagName.toLowerCase()) == -1))
 
     if (currEl) { 
       $(currEl).css({outline: 'none'})
@@ -79,7 +60,13 @@
 
        var log, rules = "";
 
+       console.log($(currEl).parentsUntil('html'))
+
+       return
+
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n"
+
+
 
        rules = getMatchedRules($('body')[0])
 
