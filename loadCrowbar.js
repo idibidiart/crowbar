@@ -15,7 +15,7 @@
   if(typeof CSSOM == 'undefined'){
     myScript=document.createElement('SCRIPT');
     myScript.type='text/javascript';
-    myScript.src='https://rawgithub.com/idibidiart/crowbar/master/crowbar.js';
+    myScript.src='https://rawgithub.com/idibidiart/crowbar/master/CSSOM.js';
     document.getElementsByTagName('body')[0].appendChild(myScript);
   }
   if (typeof ____l0g____ == 'undefined') {
