@@ -25,7 +25,7 @@
     return "";
   }
 
-  function computeInheritedProperty(el) {
+  function computeInheritedProperties(el) {
 
       var doc= el.ownerDocument;
       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
