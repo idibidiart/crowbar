@@ -98,7 +98,7 @@
             for (var j = 0; j < ss[i].cssRules.length; j++)
             {
                 if (ss[i].cssRules[j].type == window.CSSRule.FONT_FACE_RULE)
-                    result.push(s[i].cssRules[j].cssText)
+                    result.push(ss[i].cssRules[j].cssText)
             }
     }
     return result;
