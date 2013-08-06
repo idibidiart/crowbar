@@ -71,6 +71,7 @@
           "white-space",
           "word-spacing",
           "opacity",
+          "background",
           "-webkit-filter",
           "-webkit-transform",
           "-webkit-transform-style",
