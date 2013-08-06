@@ -30,12 +30,14 @@
       var doc= el.ownerDocument;
       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
 
+      // a mix of traditional inherited properties
+      // (minus speech/accessibility related properties)
+      // and block-scoped visual effects
       var enclosingProperties = [
           "border-collapse",
           "border-spacing",
           "caption-side",
           "color",
-          "opacity",
           "cursor",
           "direction",
           "empty-cells",
@@ -56,6 +58,7 @@
           "visibility",
           "white-space",
           "word-spacing",
+          "opacity",
           "-webkit-transform",
           "-webkit-transform-origin",
           "-webkit-transform-style",
@@ -103,8 +106,6 @@
     }
     return result;
   }
-
-  console.log(getFontFaceRules())
 
   window.onmouseover = function(e) {
 
@@ -169,6 +170,10 @@
                log += rules;
            }
        });
+
+      $(getFontFaceRules()).each(function() {
+          log += "\n" + this
+      })
 
       log += "\n\n</style>\n<body>\n<div class='enclosing_styles'>"
             + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
