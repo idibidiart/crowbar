@@ -37,6 +37,7 @@
           "border-spacing",
           "caption-side",
           "color",
+          "opacity",
           "cursor",
           "direction",
           "empty-cells",
