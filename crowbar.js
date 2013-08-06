@@ -203,6 +203,15 @@
 
       $('.____crowbar_overlay').html("<pre>" + $('<div/>').text(log).html() + "</pre>")
 
+       $('.____crowbar_overlay').css({
+           top: '0px',
+           left: '0px',
+           width: '100%',
+           height: '100%',
+           zIndex: 100000,
+           backgroundColor: 'white'
+       })
+
        $('.____crowbar_overlay').fadeIn('slow')
    }
 
