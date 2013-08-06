@@ -25,7 +25,7 @@
     return "";
   }
 
-  function computeInheritedStyle(el) {
+  function computeInheritedStyle(el, prop) {
 
       var doc= el.ownerDocument;
       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
@@ -67,20 +67,35 @@
       var doc= el.ownerDocument;
       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
 
-      var enclosingStyle = "", computedProperties;
+      var result = "", computedStyle;
 
-      $(enclosingProperties).each(function() {
+      if (!prop) {
+          $(enclosingProperties).each(function() {
+    
+              computedStyle = win.getComputedStyle(el, null)
+              result += this + ": "
+                                    + computedStyle.getPropertyValue(this)
+                                    + " " + computedStyle.getPropertyPriority(this) + "; "
+          })
 
-          computedProperties = win.getComputedStyle(el, null)
-          enclosingStyle += this + ": "
-                                + computedProperties.getPropertyValue(this)
-                                + " " + computedProperties.getPropertyPriority(this) + "; "
-      })
+          return result;
 
-      return enclosingStyle;
+      }   else {
+
+          return prop + ": "
+              + computedStyle.getPropertyValue(prop)
+              + " " + computedStyle.getPropertyPriority(prop) + "; "
+      }  
+
+
   }
 
   window.onmouseover = function(e) {
+
+    if (!e.target instanceof HTMLElement) {
+
+        console.log("Sorry, only HTML elements. SVG will be supported in next version")
+    }
 
     // if not block-level element
     // it can't be directly appended to the body of a document (our use case)
@@ -116,11 +131,13 @@
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
-       var log, rules;
+       var log, rules, position;
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
+       
+       position = currEl.getB
 
-       log += ".crowbarCSS" + " { " + computeInheritedStyle(currEl) + " }\n"
+       log += ".enclosing_css" + " { " + computeInheritedStyle(currEl) + " }\n"
 
        rules = getMatchedRules(currEl, log)
 
@@ -135,7 +152,7 @@
            }
        });
 
-      log += "\n\n</style>\n<body>\n<div class='crowbarCSS'>"
+      log += "\n\n</style>\n<body>\n<div class='enclosing_css'>"
             + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
 
       console.log(log)
