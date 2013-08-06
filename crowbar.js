@@ -64,7 +64,7 @@
 
       $(inheritedProperties).each(function() {
 
-          inheritedStyle += this + ": " + win.getComputedStyle(e, null).getPropertyValue(this) + "; "
+          inheritedStyle += this + ": " + win.getComputedStyle(el, null).getPropertyValue(this) + "; "
       })
 
       return inheritedStyle;
