@@ -10,7 +10,7 @@
 
   $(overlay).css({
     display: "none",
-    position: fixed,
+    position: "fixed",
     top: 0,
     marginLeft: "auto",
     marginRight: "auto",
