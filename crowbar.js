@@ -72,10 +72,11 @@
 
       var result = "", computedStyle;
 
+      computedStyle = win.getComputedStyle(el, null)
+
       if (!prop) {
           $(enclosingProperties).each(function() {
-    
-              computedStyle = win.getComputedStyle(el, null)
+
               result += this + ": "
                                     + computedStyle.getPropertyValue(this)
                                     + " " + computedStyle.getPropertyPriority(this) + "; "
