@@ -131,8 +131,8 @@
        position = currEl.getBoundingClientRect()
 
        log += ".enclosing_styles" +
-                " { width: " + (position.left - position.right) + "px; " +
-                "height: " + (position.top - position.bottom) + "; " + computeInheritedStyle(currEl) + " }\n"
+                " { width: " + (position.right- position.left) + "px; " +
+                "height: " + (position.bottom - position.top) + "px; " + computeInheritedStyle(currEl) + " }\n"
 
        rules = getMatchedRules(currEl, log)
 
