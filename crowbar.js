@@ -85,9 +85,7 @@
           return prop + ": "
               + computedStyle.getPropertyValue(prop)
               + " " + computedStyle.getPropertyPriority(prop) + "; "
-      }  
-
-
+      }
   }
 
   window.onmouseover = function(e) {
@@ -130,9 +128,11 @@
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
        
-       position = currEl.getB
+       position = currEl.getBoundingClientRect()
 
-       log += ".enclosing_styles" + " { " + computeInheritedStyle(currEl) + " }\n"
+       log += ".enclosing_styles" +
+                " { width: " + (position.left - position.right) + "px; " +
+                "height: " + (position.top - position.bottom) + "; " + computeInheritedStyle(currEl) + " }\n"
 
        rules = getMatchedRules(currEl, log)
 
