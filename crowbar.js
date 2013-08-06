@@ -67,11 +67,12 @@
       var doc= el.ownerDocument;
       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
 
-      var enclosingStyle = "";
+      var enclosingStyle = "", computedProperties;
 
       $(enclosingProperties).each(function() {
 
-          enclosingStyle += this + ": " + win.getComputedStyle(el, null).getPropertyValue(this) + "; "
+          computedProperties = win.getComputedStyle(el, null)
+          enclosingStyle += this + ": " + computedProperties.getPropertyValue(this) + " " + computedProperties.getPropertyPriority() + "; "
       })
 
       return enclosingStyle;
