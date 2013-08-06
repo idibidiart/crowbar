@@ -120,7 +120,7 @@
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
 
-       log += "body" + " { " + computeInheritedStyle(currEl) + " }\n"
+       log += ".crowbarCSS" + " { " + computeInheritedStyle(currEl) + " }\n"
 
        rules = getMatchedRules(currEl, log)
 
@@ -135,8 +135,8 @@
            }
        });
 
-      log += "\n\n</style>\n<body>\n"
-            + currEl.outerHTML + "\n</body>\n</html>\n\n"
+      log += "\n\n</style>\n<body>\n<div class='crowbarCSS'>"
+            + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
 
       console.log(log)
    }
