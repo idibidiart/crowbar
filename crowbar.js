@@ -13,7 +13,6 @@
           width: '100%',
           height: '100%',
           zIndex: 100000,
-          '-webkit-filter': 'none',
           display: 'none'
       })
 
@@ -165,8 +164,8 @@
 
       on = true;
 
-      document.body.style['-webkit-transition'] = "-webkit-filter .50s"
-      document.body.style['-webkit-filter'] = "blur(129px) hue-rotate(21.7deg) saturate(14)"
+      $('[data-role="page"]').css({'-webkit-transition': "-webkit-filter .50s",
+          '-webkit-filter': 'blur(129px) hue-rotate(21.7deg) saturate(14)'})
 
       var log, rules, position, overflow;
 
@@ -216,8 +215,8 @@
 
        on = false;
 
-       document.body.style['-webkit-transition'] = "-webkit-filter .50s"
-       document.body.style['-webkit-filter'] = "none"
+       $('[data-role="page"]').css({'-webkit-transition': "-webkit-filter .50s",
+           '-webkit-filter': 'none'})
 
        $('.____crowbar_overlay').fadeOut('slow')
 
