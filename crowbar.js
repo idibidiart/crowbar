@@ -9,7 +9,7 @@
   $(overlay).attr("class", "____crowbar_overlay")
 
   $(overlay).css({position: 'absolute', top: '0px',
-          left: '0px',
+          left: '20px',
           width: '100%',
           height: '100%',
           zIndex: 100000,
