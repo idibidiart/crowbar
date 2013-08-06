@@ -25,7 +25,7 @@
     return "";
   }
 
-  function computeInheritedStyle(el, prop) {
+  function computeEnclosingStyles(el, prop) {
 
       var doc= el.ownerDocument;
       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
@@ -124,15 +124,20 @@
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
-       var log, rules, position;
+       var log, rules, position, overflow;
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
        
        position = currEl.getBoundingClientRect()
+       
+       overflow = computeEnclosingStyles(currEl.parentNode, "overflow")
 
        log += ".enclosing_styles" +
                 " { width: " + (position.right- position.left) + "px; " +
-                "height: " + (position.bottom - position.top) + "px; " + computeInheritedStyle(currEl) + " }\n"
+                "height: " + (position.bottom - position.top) + "px; " +
+                "overflow: " + overflow + "; "
+                +  computeEnclosingStyles(currEl)
+                + " }\n"
 
        rules = getMatchedRules(currEl, log)
 
