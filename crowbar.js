@@ -18,9 +18,7 @@
         for (var i = 0; i < cssRuleList.length; i++) {
 
             if (currList.indexOf(cssRuleList[i].cssText) == -1)
-                rules += cssRuleList[i].cssText ?
-                    "\n\n" + cssRuleList[i].cssText :
-                    "";
+                rules += "\n" + cssRuleList[i].cssText
         }
         return rules;
     }
@@ -123,7 +121,7 @@
 
            rules = getMatchedRules(this, log)
 
-           if (rules) {
+           if (rules.trim()) {
                log += rules;
            }
        });
