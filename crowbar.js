@@ -74,7 +74,7 @@
           enclosingStyle += this + ": " + win.getComputedStyle(el, null).getPropertyValue(this) + "; "
       })
 
-      return inheritedStyle;
+      return enclosingStyle;
   }
 
   window.onmouseover = function(e) {
