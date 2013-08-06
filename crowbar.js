@@ -121,7 +121,7 @@
 
        log += "body" + " { " + computeInheritedStyle(currEl.parentNode) + " }\n\n"
 
-       log += "<!-- AUTHOR CSS RULES -->\n"
+       log += "<!-- AUTHOR STYLESHEET RULES -->\n"
 
        rules = getMatchedRules(currEl, log)
 
