@@ -16,7 +16,6 @@
           '-webkit-filter': 'none',
           display: 'none'
       })
-  })
 
   function getMatchedRules(el, list) {
 
