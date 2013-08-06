@@ -213,9 +213,9 @@
             + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
 
 
-      $('.____crowbar_overlay').contents(log)
+      $('.____crowbar_overlay')[0].textContent = log;
 
-       $(overlay).fadeIn('slow')
+       $('.____crowbar_overlay').fadeIn('slow')
    }
 
    if (key == 88 || key == 27) {
@@ -225,7 +225,7 @@
        document.body.style['-webkit-transition'] = "-webkit-filter .50s"
        document.body.style['-webkit-filter'] = "none"
 
-       $(overlay).fadeOut('slow')
+       $('.____crowbar_overlay').fadeOut('slow')
 
    }
 
