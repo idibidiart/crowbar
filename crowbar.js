@@ -9,21 +9,20 @@
   $(overlay).attr("class", "____crowbar_overlay")
 
   $(overlay).css({
-    display: "none",
-    position: "fixed",
-    top: 0,
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginTop: "auto",
-    marginBottom: "auto",
-    width: "60%",
-    height: "80%",
+    display: 'none',
+    height: '75%',
+    width: '75%',
+    position: 'fixed',
+    left: '50%',
+    margin: '0 0 0 -37.5%',
     backgroundColor: "#000",
     opacity: 0.5,
     zIndex: 10000,
     overflow: "scroll",
     borderRadius: "15px",
-    boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.25)"
+    boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.25)",
+    content: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    color: 'black'
   })
 
   function getMatchedRules(el, list) {
