@@ -50,7 +50,6 @@
           "font-style",
           "font-variant",
           "font-weight",
-          "font",
           "letter-spacing",
           "line-height",
           "list-style-image",
