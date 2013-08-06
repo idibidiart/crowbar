@@ -209,6 +209,8 @@
 
 
        $('.____crowbar_overlay').fadeIn('slow')
+
+       $("html, body").animate({ scrollTop: 0 }, 600);
    }
 
    if (key == 88 || key == 27) {
