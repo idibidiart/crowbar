@@ -2,7 +2,7 @@
 
   ____crowbar____ = {};
 
-  var currEl;
+  var currEl, on, off;
 
   function getMatchedRules(el, list) {
 
@@ -93,7 +93,9 @@
   }
 
   function getFontFaceRules() {
+
     var ss = document.styleSheets;
+
     var result = []
 
     for (var i = 0; i < ss.length; i++)
@@ -110,6 +112,8 @@
 
   window.onmouseover = function(e) {
 
+    this.focus();
+
     // if not block-level element
     // it can't be directly appended to the body of a document (our use case)
     if (
@@ -124,8 +128,8 @@
        )
          return;
 
-    if (currEl) { 
-      $(currEl).css({outline: 'none'})
+    if (currEl) {
+       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
     }
 
     currEl = e.target;
@@ -144,7 +148,12 @@
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
 
-       var log, rules, position, overflow;
+      on = true;
+
+      document.body.style['-webkit-transition'] = "-webkit-filter .50s"
+      document.body.style['-webkit-filter'] = "blur(15px)"
+
+      var log, rules, position, overflow;
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
        
@@ -181,11 +190,23 @@
       log += "\n\n</style>\n<body>\n<div class='enclosing_styles'>"
             + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
 
+
       console.log(log)
+   }
+
+   if (key == 88 || key == 27) {
+
+       on = false;
+
+       document.body.style['-webkit-transition'] = "-webkit-filter .50s"
+       document.body.style['-webkit-filter'] = "none"
+
    }
 
     // p for parent
     if (key == 80) {
+
+        if (on) return;
 
         // previous filter (on mouse over) allows only block-level elements to be selected
         // this prevents body element from being selected via "p" key, per our use case
