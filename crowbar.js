@@ -120,13 +120,13 @@
 
        log += "body" + " { " + computeInheritedStyle(currEl.parentNode) + " }\n\n"
 
-       rules = getMatchedRules(currEl, log).replace(/^\s+|\s+$/gm,'')
+       rules = String(getMatchedRules(currEl, log)).replace(/^\s+|\s+$/gm,'')
 
        log += rules? rules + "\n" : ""
 
        $(currEl).find('*').each(function(){
 
-           rules = getMatchedRules(this, log).replace(/^\s+|\s+$/gm,'')
+           rules = String(getMatchedRules(this, log)).replace(/^\s+|\s+$/gm,'')
 
            if (rules) {
                log += rules.tr;
