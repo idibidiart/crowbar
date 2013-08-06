@@ -132,7 +132,7 @@
        
        position = currEl.getB
 
-       log += ".enclosing_css" + " { " + computeInheritedStyle(currEl) + " }\n"
+       log += ".enclosing_styles" + " { " + computeInheritedStyle(currEl) + " }\n"
 
        rules = getMatchedRules(currEl, log)
 
@@ -147,7 +147,7 @@
            }
        });
 
-      log += "\n\n</style>\n<body>\n<div class='enclosing_css'>"
+      log += "\n\n</style>\n<body>\n<div class='enclosing_styles'>"
             + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
 
       console.log(log)
