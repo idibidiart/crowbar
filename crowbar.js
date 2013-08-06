@@ -71,11 +71,10 @@
           "white-space",
           "word-spacing",
           "opacity",
+          "-webkit-filter",
           "-webkit-transform",
-          "-webkit-transform-origin",
           "-webkit-transform-style",
           "-webkit-perspective",
-          "-webkit-perspective-origin",
           "-webkit-backface-visibility"
       ]
 
@@ -165,7 +164,7 @@
       on = true;
 
       $('[data-role="page"]').css({'-webkit-transition': "-webkit-filter .50s",
-          '-webkit-filter': 'blur(129px) hue-rotate(21.7deg) saturate(14)'})
+          '-webkit-filter': 'blur(129px) brightness(1.01) hue-rotate(21.7deg) saturate(14)'})
 
       var log, rules, position, overflow;
 
