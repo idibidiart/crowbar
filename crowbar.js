@@ -177,7 +177,7 @@
        log += ".____enclosing_styles" +
                 " { width: " + (position.right- position.left) + "px; " +
                 "height: " + (position.bottom - position.top) + "px; " +
-                "overflow: " + overflow
+                overflow
                 +  computeEnclosingStyles(currEl)
                 + " }\n"
 
