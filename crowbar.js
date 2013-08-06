@@ -177,7 +177,7 @@
       log += "\n\n";
 
       $(getFontFaceRules()).each(function() {
-          log += this[0] + "\n"
+          log += this + "\n"
       })
 
       log += "\n\n</style>\n<body>\n<div class='enclosing_styles'>"
