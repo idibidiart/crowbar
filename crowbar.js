@@ -30,6 +30,13 @@
       var doc= el.ownerDocument;
       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
 
+      var temp = document.createElement(el.tagName.toLocaleUpperCase())
+
+      temp.style.position = "absolute"
+      temp.style.left = "-10000px"
+
+      var sibling = el.parentNode.appendChild(temp)
+
       var inheritedProperties = [
           "border-collapse",
           "border-spacing",
@@ -65,7 +72,7 @@
 
       $(inheritedProperties).each(function() {
 
-          inheritedStyle += this + ": " + win.getComputedStyle(el, null).getPropertyValue(this) + "; "
+          inheritedStyle += this + ": " + win.getComputedStyle(sibling, null).getPropertyValue(this) + "; "
       })
 
       return inheritedStyle;
@@ -112,7 +119,7 @@
        var log, rules;
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n" +
-             "<!-- INHERITED STYLE for Crowbar container -->\n\n"
+             "<!-- INHERITED STYLE -->\n\n"
 
        log += "body" + " { " + computeInheritedStyle(currEl.parentNode) + " }\n\n"
 
