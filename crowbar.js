@@ -4,7 +4,7 @@
 
   var currEl, on, off;
 
-  var overlay = document.body.append(document.createElement("DIV"))
+  var overlay = document.body.appendChild(document.createElement("DIV"))
 
   $(overlay).attr("class", "____crowbar_overlay")
 
