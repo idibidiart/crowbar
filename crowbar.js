@@ -18,7 +18,7 @@
         for (var i = 0; i < cssRuleList.length; i++) {
 
             if (currList.indexOf(cssRuleList[i].cssText) == -1)
-                rules += "\n\n" + cssRuleList[i].cssText;
+                rules += (rules.trim() ? "\n\n" : "") + cssRuleList[i].cssText;
         }
         return rules;
     }
@@ -29,13 +29,6 @@
 
       var doc= el.ownerDocument;
       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
-
-      var temp = document.createElement(el.tagName.toLocaleUpperCase())
-
-      temp.style.position = "absolute"
-      temp.style.left = "-10000px"
-
-      var sibling = el.parentNode.appendChild(temp)
 
       var inheritedProperties = [
           "border-collapse",
@@ -71,7 +64,7 @@
 
       $(inheritedProperties).each(function() {
 
-          inheritedStyle += this + ": " + win.getComputedStyle(sibling, null).getPropertyValue(this) + "; "
+          inheritedStyle += this + ": " + win.getComputedStyle(e, null).getPropertyValue(this) + "; "
       })
 
       return inheritedStyle;
@@ -117,7 +110,7 @@
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
 
-       log += "body" + " { " + computeInheritedStyle(currEl.parentNode) + " }\n\n"
+       log += "body" + " { " + computeInheritedStyle(currEl) + " }\n\n"
 
        rules = getMatchedRules(currEl, log)
 
@@ -127,7 +120,7 @@
 
            rules = getMatchedRules(this, log)
 
-           if (rules.trim()) {
+           if (rules) {
                log += rules;
            }
        });
