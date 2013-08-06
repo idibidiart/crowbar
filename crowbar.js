@@ -95,6 +95,9 @@
     if (!e.target instanceof HTMLElement) {
 
         console.log("Sorry, only HTML elements. SVG will be supported in next version")
+    }  else {
+
+        alert(1)
     }
 
     // if not block-level element
