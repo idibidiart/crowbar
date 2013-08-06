@@ -92,14 +92,6 @@
 
   window.onmouseover = function(e) {
 
-    if (!e.target instanceof HTMLElement) {
-
-        console.log("Sorry, only HTML elements. SVG will be supported in next version")
-    }  else {
-
-        console.log(1)
-    }
-
     // if not block-level element
     // it can't be directly appended to the body of a document (our use case)
     if (
