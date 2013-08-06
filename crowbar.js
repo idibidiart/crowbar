@@ -114,6 +114,8 @@
 
     this.focus();
 
+    if (on) return;
+
     // if not block-level element
     // it can't be directly appended to the body of a document (our use case)
     if (
@@ -151,7 +153,7 @@
       on = true;
 
       document.body.style['-webkit-transition'] = "-webkit-filter .50s"
-      document.body.style['-webkit-filter'] = "blur(15px)"
+      document.body.style['-webkit-filter'] = "blur(35px)"
 
       var log, rules, position, overflow;
 
