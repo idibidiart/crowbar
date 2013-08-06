@@ -21,7 +21,6 @@
     overflow: "scroll",
     borderRadius: "15px",
     boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.25)",
-    content: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX',
     color: 'black'
   })
 
@@ -176,8 +175,6 @@
       document.body.style['-webkit-transition'] = "-webkit-filter .50s"
       document.body.style['-webkit-filter'] = "blur(129px) hue-rotate(21.7deg) saturate(14)"
 
-      $(overlay).fadeIn('slow')
-
       var log, rules, position, overflow;
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
@@ -216,7 +213,9 @@
             + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
 
 
-      console.log(log)
+      $('.____crowbar_overlay').contents(log)
+
+       $(overlay).fadeIn('slow')
    }
 
    if (key == 88 || key == 27) {
