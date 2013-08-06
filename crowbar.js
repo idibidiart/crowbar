@@ -203,8 +203,7 @@
 
       $('.____crowbar_overlay').html("<pre>" + $('<div/>').text(log).html() + "</pre>")
 
-       $('.____crowbar_overlay').css({
-           top: '0px',
+       $('.____crowbar_overlay').css({position: 'absolute', top: '0px',
            left: '0px',
            width: '100%',
            height: '100%',
