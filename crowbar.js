@@ -201,7 +201,7 @@
             + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
 
 
-      $('.____crowbar_overlay').html("<pre>" + log + "</pre>")
+      $('.____crowbar_overlay').html("<pre>" + $('<div/>').text(log).html() + "</pre>")
 
        $('.____crowbar_overlay').fadeIn('slow')
    }
