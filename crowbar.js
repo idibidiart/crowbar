@@ -88,23 +88,22 @@
       }
   }
 
-    getFontFaceRules()
+  function getFontFaceRules() {
+    var ss = document.styleSheets;
+    var result = []
+
+    for (var i = 0; i < ss.length; ++i)
     {
-        var ss = document.styleSheets;
-        var result = []
-
-        for (var i = 0; i < ss.length; ++i)
+        for (var j = 0; j < ss[i].cssRules.length; ++j)
         {
-            for (var j = 0; j < ss[i].cssRules.length; ++j)
-            {
-                if (ss[i].cssRules[j].type == window.CSSRule.FONT_FACE_RULE && ss[i].cssRules[j].selectorText == "font-face")
-                    retsult.push(s[i].cssRules[j])
-            }
+            if (ss[i].cssRules[j].type == window.CSSRule.FONT_FACE_RULE && ss[i].cssRules[j].selectorText == "font-face")
+                retsult.push(s[i].cssRules[j])
         }
-        return result;
     }
+    return result;
+  }
 
-    console.log(getFontFaceRules())
+  console.log(getFontFaceRules())
 
   window.onmouseover = function(e) {
 
