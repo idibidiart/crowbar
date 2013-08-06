@@ -4,6 +4,28 @@
 
   var currEl, on, off;
 
+  var overlay = document.body.append(document.createElement("DIV"))
+
+  $(overlay).attr("class", "____crowbar_overlay")
+
+  $(overlay).css({
+    display: "none",
+    position: fixed,
+    top: 0,
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "auto",
+    marginBottom: "auto",
+    width: "60%",
+    height: "80%",
+    backgroundColor: "#000",
+    opacity: 0.5,
+    zIndex: 10000,
+    overflow: "scroll",
+    borderRadius: "15px",
+    boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.25)"
+  })
+
   function getMatchedRules(el, list) {
 
     var currList = list || "";
@@ -155,6 +177,8 @@
       document.body.style['-webkit-transition'] = "-webkit-filter .50s"
       document.body.style['-webkit-filter'] = "blur(129px) hue-rotate(21.7deg) saturate(14)"
 
+      $(overlay).fadeIn('slow')
+
       var log, rules, position, overflow;
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
@@ -163,7 +187,7 @@
        
        overflow = computeEnclosingStyles(currEl.parentNode, "overflow")
 
-       log += ".enclosing_styles" +
+       log += ".____enclosing_styles" +
                 " { width: " + (position.right- position.left) + "px; " +
                 "height: " + (position.bottom - position.top) + "px; " +
                 "overflow: " + overflow + "; "
@@ -189,7 +213,7 @@
           log += this + "\n"
       })
 
-      log += "\n\n</style>\n<body>\n<div class='enclosing_styles'>"
+      log += "\n\n</style>\n<body>\n<div class='____enclosing_styles'>"
             + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
 
 
@@ -202,6 +226,8 @@
 
        document.body.style['-webkit-transition'] = "-webkit-filter .50s"
        document.body.style['-webkit-filter'] = "none"
+
+       $(overlay).fadeOut('slow')
 
    }
 
