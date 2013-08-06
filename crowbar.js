@@ -76,9 +76,7 @@
       })
 
       return inheritedStyle;
-
   }
-
 
   window.onmouseover = function(e) {
 
