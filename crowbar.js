@@ -56,12 +56,12 @@
           "visibility",
           "white-space",
           "word-spacing",
-          "transform",
-          "transform-origin",
-          "transform-style",
-          "perspective",
-          "perspective-origin",
-          "backface-visibility"
+          "-webkit-transform",
+          "-webkit-transform-origin",
+          "-webkit-transform-style",
+          "-webkit-perspective",
+          "-webkit-perspective-origin",
+          "-webkit-backface-visibility"
       ]
 
       var doc= el.ownerDocument;
