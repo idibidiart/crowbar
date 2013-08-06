@@ -20,7 +20,7 @@
             if (currList.indexOf(cssRuleList[i].cssText) == -1)
                 rules += cssRuleList[i].cssText ?
                     "\n\n" + cssRuleList[i].cssText :
-                    "\n" + cssRuleList[i].cssText;
+                    "";
         }
         return rules;
     }
