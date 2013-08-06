@@ -174,8 +174,10 @@
            }
        });
 
+      log += "\n\n";
+
       $(getFontFaceRules()).each(function() {
-          log += "\n" + this
+          log += this + "\n"
       })
 
       log += "\n\n</style>\n<body>\n<div class='enclosing_styles'>"
