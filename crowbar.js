@@ -18,7 +18,7 @@
         for (var i = 0; i < cssRuleList.length; i++) {
 
             if (currList.indexOf(cssRuleList[i].cssText) == -1)
-                rules += (rules.trim() ? "\n\n" : "") + cssRuleList[i].cssText +"\n";
+                rules += "\n\n" + cssRuleList[i].cssText;
         }
         return rules;
     }
@@ -114,14 +114,14 @@
 
        rules = getMatchedRules(currEl, log)
 
-       log += rules.trim()
+       log += rules.trim() ? rules + "\n" : ""
 
        $(currEl).find('*').each(function(){
 
            rules = getMatchedRules(this, log)
 
            if (rules) {
-               log += rules;
+               log += rules.trim() ? rules + "\n" : ""
            }
        });
 
