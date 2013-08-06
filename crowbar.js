@@ -102,10 +102,10 @@
             for (var j = 0; j < ss[i].cssRules.length; j++)
             {
                 if (ss[i].cssRules[j].type == window.CSSRule.FONT_FACE_RULE)
-                    return ss[i].cssRules[j].cssText
+                    result.push(ss[i].cssRules[j].cssText)
             }
     }
-    return null;
+    return result;
   }
 
   window.onmouseover = function(e) {
@@ -174,8 +174,9 @@
 
       log += "\n\n";
 
-      log += getFontFaceRules() + "\n"
-
+      $(getFontFaceRules()).each(function() {
+          log += this + "\n"
+      })
 
       log += "\n\n</style>\n<body>\n<div class='enclosing_styles'>"
             + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
