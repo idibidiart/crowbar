@@ -160,8 +160,8 @@
 
       on = true;
 
-      //document.body.style['-webkit-transition'] = "-webkit-filter .50s"
-      //document.body.style['-webkit-filter'] = "blur(129px) hue-rotate(21.7deg) saturate(14)"
+      document.body.style['-webkit-transition'] = "-webkit-filter .50s"
+      document.body.style['-webkit-filter'] = "blur(129px) hue-rotate(21.7deg) saturate(14)"
 
       var log, rules, position, overflow;
 
@@ -207,8 +207,7 @@
            left: '0px',
            width: '100%',
            height: '100%',
-           zIndex: 100000,
-           backgroundColor: 'white'
+           zIndex: 100000
        })
 
        $('.____crowbar_overlay').fadeIn('slow')
@@ -218,8 +217,8 @@
 
        on = false;
 
-       //document.body.style['-webkit-transition'] = "-webkit-filter .50s"
-       //document.body.style['-webkit-filter'] = "none"
+       document.body.style['-webkit-transition'] = "-webkit-filter .50s"
+       document.body.style['-webkit-filter'] = "none"
 
        $('.____crowbar_overlay').fadeOut('slow')
 
