@@ -92,19 +92,14 @@
     var ss = document.styleSheets;
     var result = []
 
-    console.log(ss)
-
     for (var i = 0; i < ss.length; i++)
     {
-        console.log(ss[i])
-        console.log(ss[i].cssRules)
-        console.log(ss[i].cssRules.length)
-
-        for (var j = 0; j < ss[i].cssRules.length; j++)
-        {
-            if (ss[i].cssRules[j].type == window.CSSRule.FONT_FACE_RULE && ss[i].cssRules[j].selectorText == "font-face")
-                retsult.push(s[i].cssRules[j].cssText)
-        }
+        if (ss[i])
+            for (var j = 0; j < ss[i].cssRules.length; j++)
+            {
+                if (ss[i].cssRules[j].type == window.CSSRule.FONT_FACE_RULE && ss[i].cssRules[j].selectorText == "font-face")
+                    retsult.push(s[i].cssRules[j].cssText)
+            }
     }
     return result;
   }
