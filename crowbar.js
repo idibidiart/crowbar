@@ -30,7 +30,7 @@
       var doc= el.ownerDocument;
       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
 
-      var inheritedProperties = [
+      var enclosingProperties = [
           "border-collapse",
           "border-spacing",
           "caption-side",
@@ -55,17 +55,23 @@
           "text-transform",
           "visibility",
           "white-space",
-          "word-spacing"
+          "word-spacing",
+          "transform",
+          "transform-origin",
+          "transform-style",
+          "perspective",
+          "perspective-origin",
+          "backface-visibility"
       ]
 
       var doc= el.ownerDocument;
       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
 
-      var inheritedStyle = "";
+      var enclosingStyle = "";
 
-      $(inheritedProperties).each(function() {
+      $(enclosingProperties).each(function() {
 
-          inheritedStyle += this + ": " + win.getComputedStyle(el, null).getPropertyValue(this) + "; "
+          enclosingStyle += this + ": " + win.getComputedStyle(el, null).getPropertyValue(this) + "; "
       })
 
       return inheritedStyle;
@@ -111,11 +117,11 @@
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
 
-       log += "body" + " { " + computeInheritedStyle(currEl) + " }\n\n"
+       log += "body" + " { " + computeInheritedStyle(currEl) + " }\n"
 
        rules = getMatchedRules(currEl, log)
 
-       log += rules.trim() ? rules + "\n" : ""
+       log += rules.trim() ? rules : ""
 
        $(currEl).find('*').each(function(){
 
