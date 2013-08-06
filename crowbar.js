@@ -9,19 +9,7 @@
   $(overlay).attr("class", "____crowbar_overlay")
 
   $(overlay).css({
-    display: 'none',
-    height: '75%',
-    width: '75%',
-    position: 'fixed',
-    left: '50%',
-    margin: '0 0 0 -37.5%',
-    backgroundColor: "#000",
-    opacity: 0.5,
-    zIndex: 10000,
-    overflow: "scroll",
-    borderRadius: "15px",
-    boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.25)",
-    color: 'black'
+    display: 'none'
   })
 
   function getMatchedRules(el, list) {
@@ -213,7 +201,7 @@
             + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
 
 
-      $('.____crowbar_overlay')[0].textContent = log;
+      $('.____crowbar_overlay').html("<pre>" + log + "</pre>")
 
        $('.____crowbar_overlay').fadeIn('slow')
    }
