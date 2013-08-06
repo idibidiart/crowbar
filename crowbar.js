@@ -116,12 +116,9 @@
 
        var log, rules;
 
-       log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n" +
-             "<!-- INHERITED STYLE -->\n\n"
+       log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
 
        log += "body" + " { " + computeInheritedStyle(currEl.parentNode) + " }\n\n"
-
-       log += "<!-- AUTHOR STYLESHEET RULES -->\n"
 
        rules = getMatchedRules(currEl, log)
 
@@ -131,7 +128,7 @@
 
            rules = getMatchedRules(this, log)
 
-           if (rules) {
+           if (rules.trim()) {
                log += rules;
            }
        });
