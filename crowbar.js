@@ -8,8 +8,14 @@
 
   $(overlay).attr("class", "____crowbar_overlay")
 
-  $(overlay).css({
-    display: 'none'
+  $(overlay).css({position: 'absolute', top: '0px',
+          left: '0px',
+          width: '100%',
+          height: '100%',
+          zIndex: 100000,
+          '-webkit-filter': 'none',
+          display: 'none'
+      })
   })
 
   function getMatchedRules(el, list) {
@@ -203,12 +209,6 @@
 
       $('.____crowbar_overlay').html("<pre>" + $('<div/>').text(log).html() + "</pre>")
 
-       $('.____crowbar_overlay').css({position: 'absolute', top: '0px',
-           left: '0px',
-           width: '100%',
-           height: '100%',
-           zIndex: 100000
-       })
 
        $('.____crowbar_overlay').fadeIn('slow')
    }
