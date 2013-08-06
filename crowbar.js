@@ -103,8 +103,6 @@
             {
                 if (ss[i].cssRules[j].type == window.CSSRule.FONT_FACE_RULE)
                     result.push(ss[i].cssRules[j].cssText)
-
-                    console.log(ss[i].cssRules[j].cssText)
             }
     }
     return result;
