@@ -153,7 +153,7 @@
       on = true;
 
       document.body.style['-webkit-transition'] = "-webkit-filter .50s"
-      document.body.style['-webkit-filter'] = "blur(155px) brightness(1.008) hue-rotate(150deg) saturate(120)"
+      document.body.style['-webkit-filter'] = "blur(155px) hue-rotate(150deg) saturate(65)"
 
       var log, rules, position, overflow;
 
