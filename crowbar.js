@@ -2,7 +2,15 @@
 
   ____crowbar____ = {};
 
-  var currEl;
+  var currEl, q$ = documemt.querySelector;
+
+  function removeOutline(el) {
+      el.style.outline = null;
+  }
+
+  function addOutline(el) {
+      el.style.outline  ='red 2px solid'
+  }
 
   function getMatchedRules(el, list) {
 
@@ -75,11 +83,11 @@
       computedStyle = win.getComputedStyle(el.parentNode, null)
 
       if (!prop) {
-          $(enclosingProperties).each(function() {
+          enclosingProperties.forEach(function(v, i) {
 
-              result += this + ": "
-                                    + computedStyle.getPropertyValue(this)
-                                    + " " + computedStyle.getPropertyPriority(this) + "; "
+              result += v + ": "
+                        + computedStyle.getPropertyValue(v)
+                        + " " + computedStyle.getPropertyPriority(v) + "; "
           })
 
           return result;
@@ -118,7 +126,7 @@
     // it can't be directly appended to the body of a document (our use case)
     if (
         (["p", "h1", "h2", "h3", "h4", "h5", "h6",
-        "ol", "ul", "address", "blockquote",
+        "ol", "ul", "pre", "address", "blockquote",
         "dl", "div", "fieldset", "form", "output",
         "blockquote", "table", "tfoot",
         "article", "section", "aside", "nav",
@@ -129,12 +137,12 @@
          return;
 
     if (currEl) {
-       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
+        removeOutline(currEl)
     }
 
     currEl = e.target;
 
-    $(currEl).css({outline: 'red 2px solid'})
+    addOutline(currEl)
   }
   
   window.onkeyup = function(e) {
@@ -146,7 +154,7 @@
    // s for select
    if (key == 83) {
 
-      $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
+      removeOutline(currEl)
 
       var log, rules, bounds;
 
@@ -164,9 +172,9 @@
 
        log += rules.trim() ? rules : ""
 
-       $(currEl).find('*').each(function(){
+       [].slice(currEl.q$('*'),0).forEach(function(v, i){
 
-           rules = getMatchedRules(this, log)
+           rules = getMatchedRules(v, log)
 
            if (rules.trim()) {
                log += rules;
@@ -175,22 +183,20 @@
 
       log += "\n\n";
 
-      $(getFontFaceRules()).each(function() {
-          log += this + "\n"
+      getFontFaceRules().forEach(function(v, i) {
+          log += v + "\n"
       })
 
       log += "\n\n</style>\n<body>\n<div class='____enclosing_styles'>\n"
             + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
 
-      var save = "<pre>" + $('<div/>').text(log).html() + "</pre>"
+      //var save = "<pre>" + $('<div/>').text(log).html() + "</pre>"
 
       console.log(log)
    }
 
    // esc or x
    if (key == 88 || key == 27) {
-
-
 
    }
 
@@ -203,11 +209,11 @@
         if (!currEl || currEl.parentNode.toLowerCase() == "body")
             return;
 
-        $(currEl).css({outline: 'none'})
+        removeOutline(currEl)
 
         currEl = currEl.parentNode;
 
-        $(currEl).css({outline: 'red 2px solid'})
+        addOutline(currEl)
     }
 
   }
