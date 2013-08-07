@@ -60,9 +60,6 @@
           "word-spacing",
           "opacity",
           "background",
-          "overflow",
-          "width",
-          "height",
           "-webkit-filter",
           "-webkit-transform",
           "-webkit-transform-style",
@@ -155,12 +152,15 @@
 
       on = true;
 
-      var log, rules, position, overflow;
+      var log, rules, bounds;
 
-       log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
+      log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
 
-       log += ".____enclosing_styles"
-                + " { "
+      bounds = currEl.getBoundingClientRect()
+
+      log += ".____enclosing_styles"
+                + " { width: " + bounds.width  + " ; "
+                + "height: " + bounds.height + " ; "
                 +  computeEnclosingStyles(currEl)
                 + " }\n"
 
