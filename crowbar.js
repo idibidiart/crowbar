@@ -188,7 +188,7 @@
 
       var save = "<pre>" + $('<div/>').text(log).html() + "</pre>"
 
-      console.log(save)
+      console.log(log)
    }
 
    if (key == 88 || key == 27) {
