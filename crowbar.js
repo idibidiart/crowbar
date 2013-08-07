@@ -14,8 +14,9 @@
 
     links.forEach(function(v, i) {
 
-        style.styleSheet.cssText += "@import url(" + v.getAttribute("href") + ")\n"
+        var css = "@import url(" + v.getAttribute("href") + ")"
 
+        style.appendChild(document.createTextNode(css))
 
     })
 
