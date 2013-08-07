@@ -84,7 +84,7 @@
 
       var result = "", computedStyle;
 
-      computedStyle = win.getComputedStyle(el, null)
+      computedStyle = win.getComputedStyle(el.parentNode, null)
 
       if (!prop) {
           $(enclosingProperties).each(function() {
