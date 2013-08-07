@@ -14,6 +14,8 @@
     var rules = "";
     var cssRuleList = win.getMatchedCSSRules(el, '');
 
+    console.log(cssRuleList)
+
     if (cssRuleList) {
         for (var i = 0; i < cssRuleList.length; i++) {
 
