@@ -170,9 +170,9 @@
 
        rules = getMatchedRules(currEl, log)
 
-       log += rules.trim() ? rules : ""
+       log += rules.trim() ? rules : "";
 
-       [].slice(currEl.q$('*'),0).forEach(function(v, i){
+       Array.prototype.slice.call(currEl.q$('*'),0).forEach(function(v, i){
 
            rules = getMatchedRules(v, log)
 
