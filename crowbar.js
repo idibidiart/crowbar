@@ -179,7 +179,7 @@
           log += this + "\n"
       })
 
-      log += "\n\n</style>\n<body>\n<div class='____enclosing_styles'>"
+      log += "\n\n</style>\n<body>\n<div class='____enclosing_styles'>\n"
             + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
 
       var save = "<pre>" + $('<div/>').text(log).html() + "</pre>"
