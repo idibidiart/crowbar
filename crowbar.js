@@ -14,8 +14,6 @@
     var rules = "";
     var cssRuleList = win.getMatchedCSSRules(el, '');
 
-    console.log(cssRuleList)
-
     if (cssRuleList) {
         for (var i = 0; i < cssRuleList.length; i++) {
 
@@ -120,7 +118,7 @@
     // it can't be directly appended to the body of a document (our use case)
     if (
         (["p", "h1", "h2", "h3", "h4", "h5", "h6",
-        "ol", "ul", "pre", "address", "blockquote",
+        "ol", "ul", "address", "blockquote",
         "dl", "div", "fieldset", "form", "output",
         "blockquote", "table", "tfoot",
         "article", "section", "aside", "nav",
