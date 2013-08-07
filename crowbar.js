@@ -122,15 +122,15 @@
 
       var els = [];
 
-      var t = el.children;
-      for (var i = 0; i < t.length; i++)
-              recurseAndAdd(t[i], els);
+      var children = el.children;
+      for (var i = 0; i < children.length; i++)
+              recurseAndAdd(children[i], els);
 
-      function recurseAndAdd(_el, _els) {
-          _els.push(_el.id);
-          var children = _el.children;
-          for (var j = 0; j < children.length; j++) {
-                  recurseAndAdd(children[j]);
+      function recurseAndAdd(elChild, elArray) {
+          elArray.push(elChild);
+          var descendants = elChild.children;
+          for (var j = 0; j < descendants.length; j++) {
+                  recurseAndAdd(descendants[j]);
           }
       }
   }
