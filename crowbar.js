@@ -4,18 +4,6 @@
 
   var currEl, on, off;
 
-  var overlay = document.body.appendChild(document.createElement("DIV"))
-
-  $(overlay).attr("class", "____crowbar_overlay")
-
-  $(overlay).css({position: 'absolute', top: '0px',
-          left: '20px',
-          width: '100%',
-          height: '100%',
-          zIndex: 100000,
-          display: 'none'
-      })
-
   function getMatchedRules(el, list) {
 
     var currList = list || "";
@@ -44,7 +32,7 @@
 
       // a mix of traditional inherited properties
       // (minus speech/accessibility related properties)
-      // and block-scoped visual effects
+      // and block-scoped visual effects from the parent
       var enclosingProperties = [
           "border-collapse",
           "border-spacing",
@@ -72,6 +60,7 @@
           "word-spacing",
           "opacity",
           "background",
+          "overflow",
           "-webkit-filter",
           "-webkit-transform",
           "-webkit-transform-style",
@@ -164,21 +153,15 @@
 
       on = true;
 
-      $('[data-role="page"]').css({'-webkit-transition': "-webkit-filter .50s",
-          '-webkit-filter': 'blur(129px) brightness(1.01) hue-rotate(21.7deg) saturate(14)'})
-
       var log, rules, position, overflow;
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
        
-       position = currEl.getBoundingClientRect()
-       
-       overflow = computeEnclosingStyles(currEl.parentNode, "overflow")
+       bounds = currEl.getBoundingClientRect()
 
-       log += ".____enclosing_styles" +
-                " { width: " + (position.right- position.left) + "px; " +
-                "height: " + (position.bottom - position.top) + "px; " +
-                overflow
+       log += ".____enclosing_styles"
+                + " { width: " + (bounds.width) + "px; "
+                + "height: " + (bounds.height) + "px; "
                 +  computeEnclosingStyles(currEl)
                 + " }\n"
 
@@ -204,13 +187,8 @@
       log += "\n\n</style>\n<body>\n<div class='____enclosing_styles'>"
             + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
 
+      var save = "<pre>" + $('<div/>').text(log).html() + "</pre>"
 
-      $('.____crowbar_overlay').html("<pre>" + $('<div/>').text(log).html() + "</pre>")
-
-
-       $('.____crowbar_overlay').fadeIn('slow')
-
-       $("html, body").animate({ scrollTop: 0 }, 600);
    }
 
    if (key == 88 || key == 27) {
