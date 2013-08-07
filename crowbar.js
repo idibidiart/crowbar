@@ -7,7 +7,7 @@
 
   (function() {
 
-    var links = q$$('link[rel="stylesheet"]')
+    var links = document.querySelectorAll('[rel="stylesheet"]')
 
     console.log(links)
 
