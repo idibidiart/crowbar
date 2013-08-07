@@ -32,7 +32,7 @@
 
       // a mix of traditional inherited properties
       // (minus speech/accessibility related properties)
-      // and block-scoped visual effects from the parent
+      // and visually and physically enclosing styles
       var enclosingProperties = [
           "border-collapse",
           "border-spacing",
@@ -61,6 +61,8 @@
           "opacity",
           "background",
           "overflow",
+          "width",
+          "height",
           "-webkit-filter",
           "-webkit-transform",
           "-webkit-transform-style",
@@ -156,12 +158,9 @@
       var log, rules, position, overflow;
 
        log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
-       
-       bounds = currEl.getBoundingClientRect()
 
        log += ".____enclosing_styles"
-                + " { width: " + (bounds.width) + "px; "
-                + "height: " + (bounds.height) + "px; "
+                + " { "
                 +  computeEnclosingStyles(currEl)
                 + " }\n"
 
@@ -189,6 +188,7 @@
 
       var save = "<pre>" + $('<div/>').text(log).html() + "</pre>"
 
+      console.log(save)
    }
 
    if (key == 88 || key == 27) {
