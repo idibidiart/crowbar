@@ -2,7 +2,7 @@
 
   ____crowbar____ = {};
 
-  var currEl, on, off;
+  var currEl;
 
   function getMatchedRules(el, list) {
 
@@ -114,8 +114,6 @@
 
     this.focus();
 
-    if (on) return;
-
     // if not block-level element
     // it can't be directly appended to the body of a document (our use case)
     if (
@@ -149,8 +147,6 @@
    if (key == 83) {
 
       $(currEl).attr("style", $(currEl).attr("style").replace(/outline:(.*);/, ""))
-
-      on = true;
 
       var log, rules, bounds;
 
@@ -191,21 +187,15 @@
       console.log(log)
    }
 
+   // esc or x
    if (key == 88 || key == 27) {
 
-       on = false;
 
-       $('[data-role="page"]').css({'-webkit-transition': "-webkit-filter .50s",
-           '-webkit-filter': 'none'})
-
-       $('.____crowbar_overlay').fadeOut('slow')
 
    }
 
     // p for parent
     if (key == 80) {
-
-        if (on) return;
 
         // previous filter (on mouse over) allows only block-level elements to be selected
         // this prevents body element from being selected via "p" key, per our use case
