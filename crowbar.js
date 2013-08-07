@@ -159,8 +159,8 @@
       bounds = currEl.getBoundingClientRect()
 
       log += ".____enclosing_styles"
-                + " { width: " + bounds.width  + " ; "
-                + "height: " + bounds.height + " ; "
+                + " { width: " + bounds.width  + "px ; "
+                + "height: " + bounds.height + "px ; "
                 +  computeEnclosingStyles(currEl)
                 + " }\n"
 
