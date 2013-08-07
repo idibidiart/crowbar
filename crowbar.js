@@ -7,7 +7,7 @@
 
   (function() {
 
-    var links = Array.prototype.slice.call(q$$('link[rel="stylesheet"]'))
+    var links = Array.prototype.slice.call(q$$('link[rel="stylesheet"]'),0)
 
       function xhr(url, callback) {
           var XHR =  new XMLHttpRequest();
