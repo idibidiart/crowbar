@@ -2,38 +2,26 @@
 
   ____crowbar____ = {};
 
-  var currEl, q$ = document.querySelector, q$$ = document.querySelectorAll;
+  var currEl;
 
 
   (function() {
 
-    var links = document.querySelectorAll('[rel="stylesheet"]')
+    var links = Array.prototype.slice.call(document.querySelectorAll('link[rel="stylesheet"]'), 0)
 
-    console.log(links)
+    var style = document.querySelector('style') ||
+                document.querySelector('head').appendChild(document.createElement('style'));
 
-      function xhr(url, callback) {
-          var XHR =  new XMLHttpRequest();
+    console.log(style)
 
-          XHR.onreadystatechange = function () {
-              if (XHR.readyState == 4 && XHR.status == 200) {
-                  callback(XHR.responseText, XHR);
-              }
-          };
+//    links.forEach(function(v, i) {
+//
+//
+//    })
+//      if (style.styleSheet){
+//          style.styleSheet.cssText += v;
+//      }
 
-          XHR.open("GET", url, true);
-          XHR.send("");
-          return XHR;
-      }
-
-      links = Array.prototype.slice.call(links, 0)
-
-      links.forEach(function(v, i) {xhr(
-              v.getAttribute("href"),
-              function(data){
-                  console.log(data)
-              }
-          )
-      })
 
   })()
 
