@@ -178,7 +178,7 @@
 
        log += rules.trim() ? rules : "";
 
-       console.log(findAll(el))
+       console.log(findAll(currEl))
 
        return
 
