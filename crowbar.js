@@ -20,8 +20,6 @@
 
     })
 
-    console.log(window.getMatchedCSSRules(document.querySelector('.ra1-pw')))
-
   })()
 
   function removeOutline(el) {
