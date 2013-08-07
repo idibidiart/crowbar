@@ -2,7 +2,36 @@
 
   ____crowbar____ = {};
 
-  var currEl, q$ = document.querySelector, q$a = document.querySelectorAll;
+  var currEl, q$ = document.querySelector, q$$ = document.querySelectorAll;
+
+
+  (function() {
+
+    var links = Array.prototype.slice.call(q$$('link[rel="stylesheet"]'))
+
+      function xhr(url, callback) {
+          var XHR =  new XMLHttpRequest();
+
+          XHR.onreadystatechange = function () {
+              if (XHR.readyState == 4 && XHR.status == 200) {
+                  callback(XHR.responseText, XHR);
+              }
+          };
+
+          XHR.open("GET", url, true);
+          XHR.send("");
+          return XHR;
+      }
+
+      links.forEach(function(v, i) {xhr(
+              v.getAttribute("href"),
+              function(data){
+                  console.log(data)
+              }
+          )
+      })
+
+  })()
 
   function removeOutline(el) {
       el.style.outline = null;
