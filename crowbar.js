@@ -4,21 +4,36 @@
 
   var currEl;
 
-
+  // EXPERIMENTAL "CROSS-DOMAIN CSS" WORKAROUND
   (function() {
 
     var links = Array.prototype.slice.call(document.querySelectorAll('link[rel="stylesheet"]'), 0)
 
-    var style = document.querySelector('style') ||
-                document.querySelector('head').appendChild(document.createElement('style'));
+    var style = document.querySelector('style')
+                || document.querySelector('head').appendChild(document.createElement('STYLE'))
 
-    links.forEach(function(v, i) {
+      function xhr(url, callback) {
+          var XHR =  new XMLHttpRequest();
 
-        var css = "@import url(" + v.getAttribute("href") + ")"
+          XHR.onreadystatechange = function () {
+              if (XHR.readyState == 4 && XHR.status == 200) {
+                  callback(XHR.responseText, XHR);
+              }
+          };
 
-        style.appendChild(document.createTextNode(css))
+          XHR.open("GET", url, true);
+          XHR.send("");
+          return XHR;
+      }
 
-    })
+      links.forEach(function(v, i) {xhr(
+             " http://ev11:9000/?src=" + v.getAttribute("href").replace(/(http:\/\/)/,""),
+              function(css){
+                  console.log(css)
+                  style.appendChild(document.createTextNode(css))
+              }
+          )
+      })
 
   })()
 
