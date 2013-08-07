@@ -12,16 +12,14 @@
     var style = document.querySelector('style') ||
                 document.querySelector('head').appendChild(document.createElement('style'));
 
+    links.forEach(function(v, i) {
+
+        style.styleSheet.cssText += "@import url(" + v.getAttribute("href") + ")\n"
+
+
+    })
+
     console.log(style)
-
-//    links.forEach(function(v, i) {
-//
-//
-//    })
-//      if (style.styleSheet){
-//          style.styleSheet.cssText += v;
-//      }
-
 
   })()
 
