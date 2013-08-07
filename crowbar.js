@@ -20,7 +20,7 @@
 
     })
 
-    console.log(style)
+    console.log(window.getMatchedCSSRules(document.querySelector('.ra1-pw')))
 
   })()
 
