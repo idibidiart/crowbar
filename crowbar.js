@@ -120,19 +120,8 @@
 
   function findAll(el) {
 
-      var els = [];
+      return Array.prototype.slice.call(el.getElementsByTagName("*"), 0);
 
-      var children = el.children;
-      for (var i = 0; i < children.length; i++)
-              recurseAndAdd(children[i], els);
-
-      function recurseAndAdd(elChild, elArray) {
-          elArray.push(elChild);
-          var descendants = elChild.children;
-          for (var j = 0; j < descendants.length; j++) {
-                  recurseAndAdd(descendants[j]);
-          }
-      }
   }
 
   window.onmouseover = function(e) {
@@ -188,6 +177,10 @@
        rules = getMatchedRules(currEl, log)
 
        log += rules.trim() ? rules : "";
+
+       console.log(findAll(el))
+
+       return
 
        findAll(currEl).forEach(function(v, i){
 
