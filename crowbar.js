@@ -178,10 +178,6 @@
 
        log += rules.trim() ? rules : "";
 
-       console.log(findAll(currEl))
-
-       return
-
        findAll(currEl).forEach(function(v, i){
 
            rules = getMatchedRules(v, log)
