@@ -2,7 +2,7 @@
 
   ____crowbar____ = {};
 
-  var currEl, q$ = documemt.querySelector;
+  var currEl, q$ = document.querySelector, q$a = document.querySelectorAll;
 
   function removeOutline(el) {
       el.style.outline = null;
@@ -118,6 +118,23 @@
     return result;
   }
 
+  function findAll(el) {
+
+      var els = [];
+
+      var t = el.children;
+      for (var i = 0; i < t.length; i++)
+              recurseAndAdd(t[i], els);
+
+      function recurseAndAdd(_el, _els) {
+          _els.push(_el.id);
+          var children = _el.children;
+          for (var j = 0; j < children.length; j++) {
+                  recurseAndAdd(children[j]);
+          }
+      }
+  }
+
   window.onmouseover = function(e) {
 
     this.focus();
@@ -172,7 +189,7 @@
 
        log += rules.trim() ? rules : "";
 
-       Array.prototype.slice.call(currEl.q$('*'),0).forEach(function(v, i){
+       findAll(currEl).forEach(function(v, i){
 
            rules = getMatchedRules(v, log)
 
