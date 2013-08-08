@@ -2,7 +2,7 @@
 
   ____crowbar____ = {};
 
-  var currEl;
+  var currEl; overlay;
 
   function removeOutline(el) {
       el.style.outline = null;
@@ -196,7 +196,17 @@
       log += "\n\n</style>\n<body>\n<div class='____enclosing_styles'>\n"
             + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
 
-      //var save = "<pre>" + $('<div/>').text(log).html() + "</pre>"
+      var d = document.createElement("DIV")
+
+      if (!overlay) {
+          d.style.csstext = "display: none; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);"
+
+          overlay = document.body.appenChild(d)
+      }
+
+      overlay.innerHTML =  "<pre>" + log + "</pre>"
+
+      overlay.style.display = "block"
 
       console.log(log)
    }
