@@ -124,6 +124,11 @@
 
   }
 
+  String.prototype.replaceAll = function(str1, str2, ignore)
+  {
+      return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+  }
+
   window.onmouseover = function(e) {
 
     this.focus();
@@ -199,14 +204,21 @@
       var d = document.createElement("DIV")
 
       if (!overlay) {
-          d.style.csstext = "display: none; position: absolute; z-index: 100000; left: 0px; top: 0px; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);"
+          d.style.cssText = "display: none; position: absolute; z-index: 100000; left: 0px; top: 0px; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);"
 
           d.class = "____overlay"
 
           overlay = document.body.appendChild(d)
       }
 
-      overlay.innerHTML =  "<pre>" + escape(log) + "</pre>"
+      log = log
+          .replaceAll('&', '&amp;')
+          .replaceAll('"', '&quot;')
+          .replaceAll("'", '&#39;')
+          .replaceAll('<', '&lt;')
+          .replaceAll('>', '&gt;');
+
+      overlay.innerHTML =  "<pre>" + log + "</pre>"
 
       overlay.style.display = "block"
 
