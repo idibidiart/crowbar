@@ -230,6 +230,8 @@
           d.class = "____overlay"
 
           overlay = document.body.appendChild(d)
+
+          overlay.style['-webkit-user-select'] = 'text'
       }
 
       log = log
@@ -243,7 +245,6 @@
 
       overlay.style.display = "block"
 
-      console.log(log)
    }
 
    // esc or x
@@ -254,15 +255,8 @@
        if (overlay) {
 
            overlay.style.display = "none"
-       }
 
-       document.body.onselectstart = function(e) {
-
-           if (e.target != overlay) {
-               e.preventDefault()
-           }   else {
-
-               alert(e.target)
+           document.body.onselectstart = function(e) {
            }
        }
    }
