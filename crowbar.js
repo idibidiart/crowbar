@@ -178,9 +178,7 @@
 
       if (on) return;
 
-      document.body.onselectstart = function(e) {
-          e.preventDefault()
-      }
+      document.body.style['-webkit-user-select'] = 'none'
 
       on = true;
 
@@ -256,8 +254,7 @@
 
            overlay.style.display = "none"
 
-           document.body.onselectstart = function(e) {
-           }
+           document.body.style['-webkit-user-select'] = 'text'
        }
    }
 
