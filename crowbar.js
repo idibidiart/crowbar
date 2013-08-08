@@ -221,8 +221,8 @@
       var d = document.createElement("DIV")
 
       if (!overlay) {
-          d.style.cssText = "display: none; position: absolute; z-index: 100000; left: 0px;" +
-                            "top: 0px; width: 100%; height: " + getDocHeight() + "px ; background-color: rgba(0,0,0,0.97);" +
+          d.style.cssText = "opacity: 0; display: none; position: absolute; z-index: 100000; left: 0px;" +
+                            "top: 0px; width: 100%; height: " + getDocHeight() + "px;" +
                             "color: yellow;"
 
           d.class = "____overlay"
@@ -243,6 +243,16 @@
 
       overlay.style.display = "block"
 
+      overlay.style['-webkit-transition'] = "opacity .50s"
+
+      overlay.style.opacity = "1"
+
+      document.body.style['-webkit-transition'] = "-webkit-filter .50s"
+
+      document.body.style['-webkit-filter'] = "blur(150px) saturate(14) hue-rotate(20)"
+
+
+
    }
 
    // esc or x
@@ -252,9 +262,20 @@
 
        if (overlay) {
 
-           overlay.style.display = "none"
+           document.body.style['-webkit-transition'] = "-webkit-filter .50s"
+
+           document.body.style['-webkit-filter'] = "none"
 
            document.body.style['-webkit-user-select'] = 'text'
+
+           overlay.style['-webkit-transition'] = "opacity .50s"
+
+           overlay.style.opacity = "0"
+
+           //overlay.style.display = "none"
+
+
+
        }
    }
 
