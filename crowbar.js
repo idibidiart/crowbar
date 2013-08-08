@@ -257,7 +257,8 @@
        }
 
        document.body.onselectstart = function(e) {
-           e.preventDefault()
+
+           if (e.target != overlay) e.preventDefault()
        }
    }
 
