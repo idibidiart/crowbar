@@ -27,11 +27,11 @@
       }
 
       links.forEach(function(v, i) {xhr(
-             " http://ev11:9000/?src=" + v.getAttribute("href").replace(/(http:\/\/)/,""),
-              function(css){
-                  style.appendChild(document.createTextNode(css))
-              }
-          )
+          "http://ev11:9292/" + v.getAttribute("href").replace(/(http:\/\/)/,""),
+          function(css){
+              style.appendChild(document.createTextNode(css))
+          }
+      )
       })
 
       console.log(style)
