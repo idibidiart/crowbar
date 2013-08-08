@@ -32,10 +32,10 @@
 
           if (v.getAttribute("href").match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
-                url = "http://ev11:9292/" + v.getAttribute("href").replace(/(http[s]{0,}:\/\/|\/\/)/, "")
+                url = "http://ev11:8000/path?=" + v.getAttribute("href").replace(/(http[s]{0,}:\/\/|\/\/)/, "")
           } else {
 
-              url = "http://ev11:9292/" + window.location.hostname + v.getAttribute("href")
+              url = "http://ev11:8000/path?=" + window.location.hostname + v.getAttribute("href")
           }
 
           xhr(url,
