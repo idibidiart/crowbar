@@ -178,6 +178,10 @@
 
       if (on) return;
 
+      document.body.onselectstart = function(e) {
+          e.preventDefault()
+      }
+
       on = true;
 
       removeOutline(currEl)
@@ -250,6 +254,10 @@
        if (overlay) {
 
            overlay.style.display = "none"
+       }
+
+       document.body.onselectstart = function(e) {
+           e.preventDefault()
        }
    }
 
