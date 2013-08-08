@@ -30,7 +30,7 @@
 
           var url = "";
 
-          if (!v.getAttribute("href").match(/(http[s]{0,}:\/\/|\/\/)/)) {
+          if (v.getAttribute("href").match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
                 url = v.getAttribute("href").replace(/(http[s]{0,}:\/\/|\/\/)/, "")
           } else {
