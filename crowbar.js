@@ -26,10 +26,22 @@
           return XHR;
       }
 
-      links.forEach(function(v, i) {xhr(
-          "http://ev11:9292/" + v.getAttribute("href").replace(/(http:\/\/)/,""),
+      links.forEach(function(v, i) {
+
+          var url = "";
+
+          if (!v.getAttribute("href").match(/(http[s]{0,}:\/\/|\/\/)/)) {
+
+                url = v.getAttribute("href").replace(/(http[s]{0,}:\/\/|\/\/)/, "")
+          } else {
+
+              url = window.location.hostname + v.getAttribute("href")
+          }
+
+          xhr(url,
+
           function(css){
-              style.appendChild(document.createTextNode(css))
+             style.appendChild(document.createTextNode(css))
           }
       )
       })
