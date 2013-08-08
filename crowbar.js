@@ -206,7 +206,7 @@
           overlay = document.body.appendChild(d)
       }
 
-      overlay.innerHTML =  "<pre>" + log + "</pre>"
+      overlay.innerHTML =  "<pre>" + escape(log) + "</pre>"
 
       overlay.style.display = "block"
 
