@@ -129,6 +129,15 @@
       return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
   }
 
+  function getDocHeight() {
+    var D = document;
+    return Math.max(
+        D.body.scrollHeight, D.documentElement.scrollHeight,
+        D.body.offsetHeight, D.documentElement.offsetHeight,
+        D.body.clientHeight, D.documentElement.clientHeight
+    );
+  }
+
   window.onmouseover = function(e) {
 
     this.focus();
@@ -210,7 +219,9 @@
       var d = document.createElement("DIV")
 
       if (!overlay) {
-          d.style.cssText = "display: none; position: absolute; z-index: 100000; left: 0px; top: 0px; width: 100%; height: 100%; background-color: rgba(0,0,0,0.97); color: yellow;"
+          d.style.cssText = "display: none; position: absolute; z-index: 100000; left: 0px;" +
+                            "top: 0px; width: 100%; height: " + getDocHeight() + "px ; background-color: rgba(0,0,0,0.97);" +
+                            "color: yellow;"
 
           d.class = "____overlay"
 
