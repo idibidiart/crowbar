@@ -258,7 +258,12 @@
 
        document.body.onselectstart = function(e) {
 
-           if (e.target != overlay) e.preventDefault()
+           if (e.target != overlay) {
+               e.preventDefault()
+           }   else {
+
+               alert(e.target)
+           }
        }
    }
 
