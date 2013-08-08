@@ -2,7 +2,7 @@
 
   ____crowbar____ = {};
 
-  var currEl, overlay;
+  var currEl, overlay, on;
 
   function removeOutline(el) {
       el.style.outline = null;
@@ -133,6 +133,8 @@
 
     this.focus();
 
+    if (on) return;
+
     // if not block-level element
     // it can't be directly appended to the body of a document (our use case)
     if (
@@ -164,6 +166,10 @@
 
    // s for select
    if (key == 83) {
+
+      if (on) return;
+
+      on = true;
 
       removeOutline(currEl)
 
@@ -204,7 +210,7 @@
       var d = document.createElement("DIV")
 
       if (!overlay) {
-          d.style.cssText = "display: none; position: absolute; z-index: 100000; left: 0px; top: 0px; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);"
+          d.style.cssText = "display: none; position: absolute; z-index: 100000; left: 0px; top: 0px; width: 100%; height: 100%; background-color: rgba(0,0,0,0.97); color: yellow;"
 
           d.class = "____overlay"
 
@@ -227,6 +233,8 @@
 
    // esc or x
    if (key == 88 || key == 27) {
+
+       on = false;
 
        if (overlay) {
 
