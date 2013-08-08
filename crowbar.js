@@ -243,13 +243,13 @@
 
       overlay.style.display = "block"
 
-      overlay.style['-webkit-transition'] = "opacity .50s"
+      //overlay.style['-webkit-transition'] = "opacity .50s"
 
       overlay.style.opacity = "1"
 
-      document.body.style['-webkit-transition'] = "-webkit-filter .50s"
+     // document.body.style['-webkit-transition'] = "-webkit-filter .50s;"
 
-      document.body.style['-webkit-filter'] = "blur(150px) saturate(14) hue-rotate(20)"
+      document.body.style['-webkit-filter'] = "blur(150px) saturate(14) hue-rotate(20);"
 
 
 
@@ -262,17 +262,17 @@
 
        if (overlay) {
 
-           document.body.style['-webkit-transition'] = "-webkit-filter .50s"
+           //document.body.style['-webkit-transition'] = "-webkit-filter .50s"
 
            document.body.style['-webkit-filter'] = "none"
 
            document.body.style['-webkit-user-select'] = 'text'
 
-           overlay.style['-webkit-transition'] = "opacity .50s"
+           //overlay.style['-webkit-transition'] = "opacity .50s"
 
            overlay.style.opacity = "0"
 
-           //overlay.style.display = "none"
+           overlay.style.display = "none"
 
 
 
