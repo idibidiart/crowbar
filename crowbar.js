@@ -62,8 +62,6 @@
 
   function getMatchedRules(el, currList) {
 
-    j++;
-
     var doc= el.ownerDocument;
     var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
 
@@ -84,6 +82,9 @@
   }
 
     function computeEnclosingStyles(el) {
+
+        var doc= el.ownerDocument;
+        var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
 
         var enclosingProperties = [
             "opacity",
