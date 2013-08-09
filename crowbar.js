@@ -83,7 +83,7 @@
     return "";
   }
 
-  function computeEnclosingStyles(el, prop) {
+  function computeStyles(el) {
 
       var doc= el.ownerDocument;
       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
@@ -91,7 +91,7 @@
       // a mix of traditional inherited properties
       // (minus speech/accessibility related properties)
       // and visually and physically enclosing styles
-      var enclosingProperties = [
+      var inheritedProperties = [
           "border-collapse",
           "border-spacing",
           "caption-side",
@@ -116,6 +116,9 @@
           "visibility",
           "white-space",
           "word-spacing",
+      ]
+      
+      var enclosingProperties = [
           "opacity",
           "background",
           "-webkit-filter",
@@ -130,24 +133,26 @@
 
       var result = "", computedStyle;
 
+      computedStyle = win.getComputedStyle(el, null)
+
+      inheritedProperties.forEach(function(v, i) {
+
+          result += v + ": "
+                    + computedStyle.getPropertyValue(v)
+                    + " " + computedStyle.getPropertyPriority(v) + "; "
+      })
+
       computedStyle = win.getComputedStyle(el.parentNode, null)
 
-      if (!prop) {
-          enclosingProperties.forEach(function(v, i) {
+      enclosingProperties.forEach(function(v, i) {
 
               result += v + ": "
-                        + computedStyle.getPropertyValue(v)
-                        + " " + computedStyle.getPropertyPriority(v) + "; "
+                  + computedStyle.getPropertyValue(v)
+                  + " " + computedStyle.getPropertyPriority(v) + "; "
           })
 
-          return result;
+      return result;
 
-      }   else {
-
-          return prop + ": "
-              + computedStyle.getPropertyValue(prop)
-              + " " + computedStyle.getPropertyPriority(prop) + "; "
-      }
   }
 
   function getFontFaceRules() {
@@ -241,7 +246,7 @@
       log += ".____enclosing_styles"
                 + " { width: " + bounds.width  + "px ; "
                 + "height: " + bounds.height + "px ; "
-                +  computeEnclosingStyles(currEl)
+                +  computeStyles(currEl)
                 + " }\n"
 
        rules = getMatchedRules(currEl, log)
