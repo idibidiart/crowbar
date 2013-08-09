@@ -219,7 +219,7 @@
       var d = document.createElement("DIV")
 
       if (!overlay) {
-          d.style.cssText = "opacity: 0; display: none; position: absolute; z-index: 100000; left: 0px;" +
+          d.style.cssText = "display: none; position: absolute; z-index: 100000; left: 0px;" +
                             "padding-left: 10px; top: 0px; width: 100%; height: " + getDocHeight() + "px;" +
                             "color: yellow;"
 
@@ -244,13 +244,9 @@
 
       overlay.innerHTML =  "<pre>" + log + "</pre>"
 
-      overlay.style.display = "block"
-
-      overlay.style['-webkit-transition'] = "opacity .50s"
-
-      overlay.style.opacity = "1"
-
       document.body.style['-webkit-user-select'] = 'none'
+
+      overlay.style.display = "block"
 
    }
 
@@ -267,13 +263,7 @@
 
            document.body.style['-webkit-user-select'] = 'text'
 
-           overlay.style['-webkit-transition'] = "opacity .50s"
-
-           overlay.style.opacity = "0"
-
-           //overlay.style.display = "none"
-
-
+           overlay.style.display = "none"
 
        }
    }
