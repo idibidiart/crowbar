@@ -249,15 +249,13 @@
 
        rules = getMatchedRules(currEl, log)
 
-       log += rules.trim() ? rules : "";
+       log += rules ? rules : "";
 
        findAll(currEl).forEach(function(v, i){
 
            rules = getMatchedRules(v, log)
 
-           if (rules.trim()) {
-               log += rules;
-           }
+           log += rules ? rules : "";
        });
 
       log += "\n\n";
