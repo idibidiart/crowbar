@@ -219,8 +219,8 @@
       var d = document.createElement("DIV")
 
       if (!overlay) {
-          d.style.cssText = "opacity: 0; display: none; position: absolute; z-index: 100000; left: 0px;" +
-                            "top: 0px; width: 100%; height: " + getDocHeight() + "px;" +
+          d.style.cssText = "opacity: 0; display: none; position: margin-left: 10px; absolute; z-index: 100000;" +
+                            "left: 0px; top: 0px; width: 100%; height: " + getDocHeight() + "px;" +
                             "color: yellow;"
 
           d.class = "____overlay"
