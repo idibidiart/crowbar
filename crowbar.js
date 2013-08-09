@@ -230,7 +230,7 @@
     currEl = e.target;
 
 
-      if ((JSON.stringify(currEl.getBoundingClientRect()) ===  JSON.stringify(currEl.parentNode.getBoundingClientRect())) &&
+      while ((JSON.stringify(currEl.getBoundingClientRect()) ===  JSON.stringify(currEl.parentNode.getBoundingClientRect())) &&
             currEl.parentNode.tagName.toLowerCase() !== "body") {
 
        currEl = currEl.parentNode
