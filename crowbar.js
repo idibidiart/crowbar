@@ -166,7 +166,7 @@
 
     var ss = document.styleSheets;
 
-    var result = []
+    var result = [];
 
     for (var i = 0; i < ss.length; i++)
     {
@@ -175,7 +175,7 @@
             {
                 if (ss[i].cssRules[j].type == window.CSSRule.FONT_FACE_RULE)
 
-                    if (currList.indexOf(ss[i].cssRules[j].cssText) == -1)
+                    if (result.indexOf(ss[i].cssRules[j].cssText) == -1)
 
                         result.push(ss[i].cssRules[j].cssText)
             }
