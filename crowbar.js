@@ -245,9 +245,11 @@
 
       overlay.style.display = "block"
 
+      overlay.style['-webkit-filter'] = 'none'
+
       document.body.style['-webkit-user-select'] = 'none'
 
-      //overlay.style['-webkit-transition'] = "opacity .50s"
+      overlay.style['-webkit-transition'] = "opacity .50s"
 
       overlay.style.opacity = "1"
 
