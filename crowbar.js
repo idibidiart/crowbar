@@ -223,7 +223,7 @@
       var d = document.createElement("DIV")
 
       if (!overlay) {
-          d.style.cssText = "opacity: 0; display: none; position: absolute; z-index: 100000; left: 0px;" +
+          d.style.cssText = "display: none; position: absolute; z-index: 100000; left: 0px;" +
                             "top: 0px; width: 100%; height: " + getDocHeight() + "px;" +
                             "color: yellow;"
 
@@ -241,18 +241,14 @@
           .replaceAll('<', '&lt;')
           .replaceAll('>', '&gt;');
 
-      overlay.innerHTML =  "<pre>" + log + "</pre>"
-
-      overlay.style.display = "block"
 
       overlay.style['-webkit-filter'] = 'none'
 
+      overlay.style.display = "block"
+
+      overlay.innerHTML =  "<pre>" + log + "</pre>"
+
       document.body.style['-webkit-user-select'] = 'none'
-
-      overlay.style['-webkit-transition'] = "opacity .50s"
-
-      overlay.style.opacity = "1"
-
 
 
 
