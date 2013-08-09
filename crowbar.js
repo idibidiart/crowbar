@@ -83,7 +83,32 @@
     return "";
   }
 
-  function computeStyles(el) {
+    function computeEnclosingStyles(el) {
+
+        var enclosingProperties = [
+            "opacity",
+            "background",
+            "-webkit-filter",
+            "-webkit-transform",
+            "-webkit-transform-style",
+            "-webkit-perspective",
+            "-webkit-backface-visibility"
+        ]
+
+        computedStyle = win.getComputedStyle(el.parentNode, null)
+
+        enclosingProperties.forEach(function(v, i) {
+
+            result += v + ": "
+                + computedStyle.getPropertyValue(v)
+                + " " + computedStyle.getPropertyPriority(v) + "; "
+        })
+
+        return result;
+
+    }
+
+  function computeInheritedStyles(el) {
 
       var doc= el.ownerDocument;
       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
@@ -117,16 +142,6 @@
           "white-space",
           "word-spacing",
       ]
-      
-      var enclosingProperties = [
-          "opacity",
-          "background",
-          "-webkit-filter",
-          "-webkit-transform",
-          "-webkit-transform-style",
-          "-webkit-perspective",
-          "-webkit-backface-visibility"
-      ]
 
       var doc= el.ownerDocument;
       var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
@@ -141,15 +156,6 @@
                     + computedStyle.getPropertyValue(v)
                     + " " + computedStyle.getPropertyPriority(v) + "; "
       })
-
-      computedStyle = win.getComputedStyle(el.parentNode, null)
-
-      enclosingProperties.forEach(function(v, i) {
-
-              result += v + ": "
-                  + computedStyle.getPropertyValue(v)
-                  + " " + computedStyle.getPropertyPriority(v) + "; "
-          })
 
       return result;
 
@@ -246,7 +252,8 @@
       log += ".____enclosing_styles"
                 + " { width: " + bounds.width  + "px ; "
                 + "height: " + bounds.height + "px ; "
-                +  computeStyles(currEl)
+                +  computeInheritedStyles(currEl)
+                +  computeEnclosingStyles(currEl)
                 + " }\n"
 
        rules = getMatchedRules(currEl, log)
