@@ -2,7 +2,7 @@
 
   ____crowbar____ = {};
 
-  var currEl, overlay, on;
+  var currEl, overlay, on, page = document.querySelector('[data-role="page"]');
 
   function removeOutline(el) {
       el.style.outline = null;
@@ -182,10 +182,6 @@
 
       removeOutline(currEl)
 
-      document.body.style['-webkit-transition'] = "-webkit-filter .50s"
-
-      document.body.style['-webkit-filter'] = "blur(150px) hue-rotate(20deg) saturate(14)"
-
       var log, rules, bounds;
 
       log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
@@ -223,7 +219,7 @@
       var d = document.createElement("DIV")
 
       if (!overlay) {
-          d.style.cssText = "display: none; position: absolute; z-index: 100000; left: 0px;" +
+          d.style.cssText = "opacity: 0; display: none; position: absolute; z-index: 100000; left: 0px;" +
                             "top: 0px; width: 100%; height: " + getDocHeight() + "px;" +
                             "color: yellow;"
 
@@ -239,18 +235,22 @@
           .replaceAll('"', '&quot;')
           .replaceAll("'", '&#39;')
           .replaceAll('<', '&lt;')
-          .replaceAll('>', '&gt;');
+          .replaceAll('>', '&gt;')
 
 
-      overlay.style['-webkit-filter'] = 'none'
+      page.style['-webkit-transition'] = "-webkit-filter .50s"
 
-      overlay.style.display = "block"
+      page.style['-webkit-filter'] = "blur(150px) hue-rotate(20deg) saturate(14)"
 
       overlay.innerHTML =  "<pre>" + log + "</pre>"
 
+      overlay.style.display = "block"
+
+      overlay.style['-webkit-transition'] = "opacity .50s"
+
+      overlay.style.opacity = "1"
+
       document.body.style['-webkit-user-select'] = 'none'
-
-
 
    }
 
@@ -261,13 +261,13 @@
 
        if (overlay) {
 
-           document.body.style['-webkit-transition'] = "-webkit-filter .50s"
+           page.style['-webkit-transition'] = "-webkit-filter .50s"
 
-           document.body.style['-webkit-filter'] = "none"
+           page.style['-webkit-filter'] = "none"
 
            document.body.style['-webkit-user-select'] = 'text'
 
-           //overlay.style['-webkit-transition'] = "opacity .50s"
+           overlay.style['-webkit-transition'] = "opacity .50s"
 
            overlay.style.opacity = "0"
 
