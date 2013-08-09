@@ -220,7 +220,7 @@
 
       if (!overlay) {
           d.style.cssText = "opacity: 0; display: none; position: absolute; z-index: 100000; left: 0px;" +
-                            "top: 0px; width: 100%; height: " + getDocHeight() + "px;" +
+                            "padding-left: 10px; top: 0px; width: 100%; height: " + getDocHeight() + "px;" +
                             "color: yellow;"
 
           d.class = "____overlay"
