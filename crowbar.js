@@ -271,7 +271,7 @@
                             "padding-left: 10px; top: 0px; width: 100%; height: " + getDocHeight() + "px;" +
                             "color: black;"
 
-          d.class = "____overlay"
+          d.setAttribute("class", "____overlay")
 
           overlay = document.body.appendChild(d)
 
