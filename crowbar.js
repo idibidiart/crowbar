@@ -277,7 +277,7 @@
 
           overlay.style['-webkit-user-select'] = 'text'
 
-          page = document.body.children
+          page = [].slice.call(document.body.children,0)
       }
 
       log = log
