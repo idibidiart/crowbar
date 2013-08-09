@@ -50,15 +50,13 @@
     })()
 
 
-    function removeOutline(el) {
+  function removeOutline(el) {
       el.style.outline = null;
   }
 
   function addOutline(el) {
       el.style.outline  ='red 2px solid'
   }
-
-    var j = 0;
 
   function getMatchedRules(el, currList) {
 
@@ -81,35 +79,35 @@
     return "";
   }
 
-    function computeEnclosingStyles(el) {
+  function computeEnclosingStyles(el) {
 
-        var enclosingProperties = [
-            "opacity",
-            "background",
-            "-webkit-filter",
-            "-webkit-transform",
-            "-webkit-transform-style",
-            "-webkit-perspective",
-            "-webkit-backface-visibility"
-        ]
+    var enclosingProperties = [
+        "opacity",
+        "background",
+        "-webkit-filter",
+        "-webkit-transform",
+        "-webkit-transform-style",
+        "-webkit-perspective",
+        "-webkit-backface-visibility"
+    ]
 
-        var doc= el.ownerDocument;
-        var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
+    var doc= el.ownerDocument;
+    var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
 
-        var result = "", computedStyle;
+    var result = "", computedStyle;
 
-        computedStyle = win.getComputedStyle(el.parentNode, null)
+    computedStyle = win.getComputedStyle(el.parentNode, null)
 
-        enclosingProperties.forEach(function(v, i) {
+    enclosingProperties.forEach(function(v, i) {
 
-            result += v + ": "
-                + computedStyle.getPropertyValue(v)
-                + " " + computedStyle.getPropertyPriority(v) + "; "
-        })
+        result += v + ": "
+            + computedStyle.getPropertyValue(v)
+            + " " + computedStyle.getPropertyPriority(v) + "; "
+    })
 
-        return result;
+    return result;
 
-    }
+  }
 
   function computeInheritedStyles(el) {
 
@@ -164,7 +162,7 @@
 
   }
 
-  function getFontFaceRules() {
+  function getFontFaceRules(currList) {
 
     var ss = document.styleSheets;
 
@@ -176,7 +174,10 @@
             for (var j = 0; j < ss[i].cssRules.length; j++)
             {
                 if (ss[i].cssRules[j].type == window.CSSRule.FONT_FACE_RULE)
-                    result.push(ss[i].cssRules[j].cssText)
+
+                    if (currList.indexOf(ss[i].cssRules[j].cssText) == -1)
+
+                        result.push(ss[i].cssRules[j].cssText)
             }
     }
     return result;
