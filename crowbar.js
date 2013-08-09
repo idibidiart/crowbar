@@ -83,9 +83,6 @@
 
     function computeEnclosingStyles(el) {
 
-        var doc= el.ownerDocument;
-        var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
-
         var enclosingProperties = [
             "opacity",
             "background",
@@ -95,6 +92,11 @@
             "-webkit-perspective",
             "-webkit-backface-visibility"
         ]
+
+        var doc= el.ownerDocument;
+        var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
+
+        var result = "", computedStyle;
 
         computedStyle = win.getComputedStyle(el.parentNode, null)
 
