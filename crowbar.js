@@ -297,8 +297,6 @@
 
           if (v.getAttribute("class") != '____overlay') {
 
-              console.log(v.getAttribute("class"))
-
               v.style['-webkit-transition'] = "-webkit-filter .50s"
 
               v.style['-webkit-filter'] = "blur(150px) hue-rotate(20deg) saturate(14)"
