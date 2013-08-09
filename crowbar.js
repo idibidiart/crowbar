@@ -73,7 +73,7 @@
     if (cssRuleList) {
         for (var i = 0; i < cssRuleList.length; i++) {
 
-            if (currList.indexOf(cssRuleList[i].cssText) == -1)
+            if (currList.indexOf(String(cssRuleList[i].cssText)) == -1)
                 rules += "\n" + cssRuleList[i].cssText
             console.log(j++, rules)
         }
