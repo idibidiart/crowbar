@@ -178,8 +178,6 @@
 
       if (on) return;
 
-      document.body.style['-webkit-user-select'] = 'none'
-
       on = true;
 
       removeOutline(currEl)
@@ -243,13 +241,15 @@
 
       overlay.style.display = "block"
 
+      document.body.style['-webkit-user-select'] = 'none'
+
       //overlay.style['-webkit-transition'] = "opacity .50s"
 
       overlay.style.opacity = "1"
 
-     // document.body.style['-webkit-transition'] = "-webkit-filter .50s;"
+      document.body.style['-webkit-transition'] = "-webkit-filter .50s;"
 
-      document.body.style.webkitFilter = "blur(150px) saturate(14) hue-rotate(20);"
+      document.body.style['-webkit-filter'] = "blur(150px) saturate(14) hue-rotate(20deg);"
 
 
 
@@ -262,7 +262,7 @@
 
        if (overlay) {
 
-           //document.body.style['-webkit-transition'] = "-webkit-filter .50s"
+           document.body.style['-webkit-transition'] = "-webkit-filter .50s"
 
            document.body.style['-webkit-filter'] = "none"
 
