@@ -271,7 +271,7 @@
 
            overlay.style.opacity = "0"
 
-           overlay.style.display = "none"
+           //overlay.style.display = "none"
 
 
 
