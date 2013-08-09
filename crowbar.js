@@ -365,6 +365,8 @@
         currEl = currEl.parentNode;
 
         addOutline(currEl)
+
+        console.log(currEl.outerHTML)
     }
 
   }
