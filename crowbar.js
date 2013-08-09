@@ -60,9 +60,7 @@
 
     var j = 0;
 
-  function getMatchedRules(el, list) {
-
-    var currList = list || "";
+  function getMatchedRules(el, currList) {
 
     var doc= el.ownerDocument;
     var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
