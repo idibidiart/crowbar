@@ -75,7 +75,9 @@
 
             if (currList.indexOf(String(cssRuleList[i].cssText)) == -1)  {
                 rules += "\n" + cssRuleList[i].cssText
-                console.log(j++, rules)
+                console.log(j++, currList)
+                console.log(j, rules)
+
             }
         }
 
