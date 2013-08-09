@@ -292,9 +292,9 @@
 
           if (v != document.querySelector('.____overlay')) {
 
-              page.style['-webkit-transition'] = "-webkit-filter .50s"
+              v.style['-webkit-transition'] = "-webkit-filter .50s"
 
-              page.style['-webkit-filter'] = "blur(150px) hue-rotate(20deg) saturate(14)"
+              v.style['-webkit-filter'] = "blur(150px) hue-rotate(20deg) saturate(14)"
           }
       })
 
@@ -317,9 +317,9 @@
 
                if (v != document.querySelector('.____overlay')) {
 
-                   page.style['-webkit-transition'] = "-webkit-filter .50s"
+                   v.style['-webkit-transition'] = "-webkit-filter .50s"
 
-                   page.style['-webkit-filter'] = "none"
+                   v.style['-webkit-filter'] = "none"
                }
            })
 
