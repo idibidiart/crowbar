@@ -249,7 +249,7 @@
 
      // document.body.style['-webkit-transition'] = "-webkit-filter .50s;"
 
-      document.body.style['-webkit-filter'] = "blur(150px) saturate(14) hue-rotate(20);"
+      document.body.style.webkitFilter = "blur(150px) saturate(14) hue-rotate(20);"
 
 
 
