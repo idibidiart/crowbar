@@ -290,7 +290,7 @@
 
       page.forEach(function(v, i) {
 
-          if (v != document.querySelector('.____overlay')) {
+          if (v.getAttribute("class") != '____overlay') {
 
               v.style['-webkit-transition'] = "-webkit-filter .50s"
 
@@ -315,7 +315,7 @@
 
            page.forEach(function(v, i) {
 
-               if (v != document.querySelector('.____overlay')) {
+               if (v.getAttribute("class") != '____overlay') {
 
                    v.style['-webkit-transition'] = "-webkit-filter .50s"
 
