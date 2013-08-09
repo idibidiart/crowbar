@@ -47,8 +47,6 @@
             document.querySelector('head').removeChild(v)
         })
 
-        console.log(style)
-
     })()
 
 
@@ -77,9 +75,6 @@
 
             if (currList.indexOf(cssRuleList[i].cssText) == -1)  {
                 rules += "\n" + cssRuleList[i].cssText
-                console.log(j, "currList: ", currList)
-                console.log(j, "rules ", rules)
-
             }
         }
 
