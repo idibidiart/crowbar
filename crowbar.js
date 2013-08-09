@@ -1,16 +1,9 @@
-(function() {
+;(function() {
 
   ____crowbar____ = {};
 
   var currEl, overlay, on, page = document.querySelector('[data-role="page"]');
 
-(function() {
-
-    ____crowbar____ = {};
-
-    var currEl;
-
-    // EXPERIMENTAL "CROSS-DOMAIN CSS" WORKAROUND
     (function() {
 
         var links = Array.prototype.slice.call(document.querySelectorAll('link[rel="stylesheet"]'), 0)
@@ -54,9 +47,10 @@
 
         console.log(style)
 
-  })()
+    })()
 
-  function removeOutline(el) {
+
+    function removeOutline(el) {
       el.style.outline = null;
   }
 
