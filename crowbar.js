@@ -2,7 +2,7 @@
 
   ____crowbar____ = {};
 
-  var currEl, overlay, on, page = document.querySelector('[data-role="page"]');
+  var currEl, overlay, on, page;
 
     (function() {
 
@@ -276,6 +276,8 @@
           overlay = document.body.appendChild(d)
 
           overlay.style['-webkit-user-select'] = 'text'
+
+          page = document.body.children
       }
 
       log = log
@@ -286,9 +288,15 @@
           .replaceAll('>', '&gt;')
 
 
-      page.style['-webkit-transition'] = "-webkit-filter .50s"
+      page.forEach(function(v, i) {
 
-      page.style['-webkit-filter'] = "blur(150px) hue-rotate(20deg) saturate(14)"
+          if (v != document.querySelector('.____overlay')) {
+
+              page.style['-webkit-transition'] = "-webkit-filter .50s"
+
+              page.style['-webkit-filter'] = "blur(150px) hue-rotate(20deg) saturate(14)"
+          }
+      })
 
       overlay.innerHTML =  "<pre>" + log + "</pre>"
 
@@ -305,9 +313,15 @@
 
        if (overlay) {
 
-           page.style['-webkit-transition'] = "-webkit-filter .50s"
+           page.forEach(function(v, i) {
 
-           page.style['-webkit-filter'] = "none"
+               if (v != document.querySelector('.____overlay')) {
+
+                   page.style['-webkit-transition'] = "-webkit-filter .50s"
+
+                   page.style['-webkit-filter'] = "none"
+               }
+           })
 
            document.body.style['-webkit-user-select'] = 'text'
 
