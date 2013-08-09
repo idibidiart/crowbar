@@ -43,6 +43,8 @@
                     style.appendChild(document.createTextNode(css))
                 }
             )
+
+            document.querySelector('head').removeChild(v)
         })
 
         console.log(style)
@@ -249,13 +251,13 @@
 
        rules = getMatchedRules(currEl, log)
 
-       log += rules ? rules : "";
+       log += rules.trim() ? rules : "";
 
        findAll(currEl).forEach(function(v, i){
 
            rules = getMatchedRules(v, log)
 
-           log += rules ? rules : "";
+           log += rules.trim() ? rules : "";
        });
 
       log += "\n\n";
