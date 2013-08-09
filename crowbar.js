@@ -256,6 +256,9 @@
       currEl.style.wdith = bounds.width  + "px ; "
       currEl.style.height = bounds.height + "px ; "
 
+      console.log(currEl.style.wdith)
+      console.log(currEl.style.height)
+
       log += ".____enclosing_styles"
                 + " { "
                 +  computeInheritedStyles(currEl)
