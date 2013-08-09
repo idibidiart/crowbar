@@ -4,6 +4,58 @@
 
   var currEl, overlay, on, page = document.querySelector('[data-role="page"]');
 
+(function() {
+
+    ____crowbar____ = {};
+
+    var currEl;
+
+    // EXPERIMENTAL "CROSS-DOMAIN CSS" WORKAROUND
+    (function() {
+
+        var links = Array.prototype.slice.call(document.querySelectorAll('link[rel="stylesheet"]'), 0)
+
+        var style = document.querySelector('style')
+            || document.querySelector('head').appendChild(document.createElement('STYLE'))
+
+        function xhr(url, callback) {
+            var XHR =  new XMLHttpRequest();
+
+            XHR.onreadystatechange = function () {
+                if (XHR.readyState == 4 && XHR.status == 200) {
+                    callback(XHR.responseText, XHR);
+                }
+            };
+
+            XHR.open("GET", url, true);
+            XHR.send("");
+            return XHR;
+        }
+
+        links.forEach(function(v, i) {
+
+            var url = "";
+
+            if (v.getAttribute("href").match(/(http[s]{0,}:\/\/|\/\/)/)) {
+
+                url = "http://ev11:5000/" + v.getAttribute("href").replace(/(http[s]{0,}:\/\/|\/\/)/, "")
+            } else {
+
+                url = "http://ev11:5000/" + window.location.hostname + v.getAttribute("href")
+            }
+
+            xhr(url,
+
+                function(css){
+                    style.appendChild(document.createTextNode(css))
+                }
+            )
+        })
+
+        console.log(style)
+
+  })()
+
   function removeOutline(el) {
       el.style.outline = null;
   }
