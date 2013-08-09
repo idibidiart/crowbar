@@ -31,10 +31,10 @@
 
             if (v.getAttribute("href").match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
-                url = "http://ev11:5000/" + v.getAttribute("href").replace(/(http[s]{0,}:\/\/|\/\/)/, "")
+                url = "http://www.corsproxy.com/" + v.getAttribute("href").replace(/(http[s]{0,}:\/\/|\/\/)/, "")
             } else {
 
-                url = "http://ev11:5000/" + window.location.hostname + v.getAttribute("href")
+                url = "http://www.corsproxy.com/" + window.location.hostname + v.getAttribute("href")
             }
 
             xhr(url,
