@@ -229,18 +229,16 @@
 
     currEl = e.target;
 
-    addOutline(currEl)
-
-    console.log('el', JSON.stringify(currEl.getBoundingClientRect()))
-
-    console.log('parentl', JSON.stringify(currEl.parentNode.getBoundingClientRect()))
-
 
       if ((JSON.stringify(currEl.getBoundingClientRect()) ===  JSON.stringify(currEl.parentNode.getBoundingClientRect())) &&
             currEl.parentNode.tagName.toLowerCase() !== "body") {
 
        currEl = currEl.parentNode
-    }
+
+       console.log(1)
+      }
+
+      addOutline(currEl)
 
   }
   
