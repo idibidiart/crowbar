@@ -253,9 +253,11 @@
 
       bounds = currEl.getBoundingClientRect()
 
+      currEl.style.wdith = bounds.width  + "px ; "
+      currEl.style.height = bounds.height + "px ; "
+
       log += ".____enclosing_styles"
-                + " { width: " + bounds.width  + "px ; "
-                + "height: " + bounds.height + "px ; "
+                + " { "
                 +  computeInheritedStyles(currEl)
                 +  computeEnclosingStyles(currEl)
                 + " }\n"
