@@ -62,6 +62,8 @@
 
   function getMatchedRules(el, currList) {
 
+    j++;
+
     var doc= el.ownerDocument;
     var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
 
@@ -73,7 +75,7 @@
 
             if (currList.indexOf(cssRuleList[i].cssText) == -1)  {
                 rules += "\n" + cssRuleList[i].cssText
-                console.log(j++, "currList: ", currList)
+                console.log(j, "currList: ", currList)
                 console.log(j, "rules ", rules)
 
             }
