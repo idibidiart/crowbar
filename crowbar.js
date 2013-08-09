@@ -231,7 +231,12 @@
 
     addOutline(currEl)
 
-    while ((JSON.parse(currEl.getBoundingClientRect()) ===  JSON.parse(currEl.parentNode.getBoundingClientRect())) &&
+    console.log('el', JSON.parse(currEl.getBoundingClientRect()))
+
+    console.log('parentl', JSON.parse(currEl.parentNode.getBoundingClientRect()))
+
+
+      while ((JSON.parse(currEl.getBoundingClientRect()) ===  JSON.parse(currEl.parentNode.getBoundingClientRect())) &&
             currEl.parentNode.tagName.toLowerCase() !== "body") {
 
        currEl = currEl.parentNode
@@ -262,7 +267,7 @@
 
       log += ".____enclosing_styles"
                 + " { width: " + bounds.width  + "px ; "
-                + " { height: " + bounds.height  + "px ; "
+                + " height: " + bounds.height  + "px ; "
                 +  computeInheritedStyles(currEl)
                 +  computeEnclosingStyles(currEl)
                 + " }\n"
