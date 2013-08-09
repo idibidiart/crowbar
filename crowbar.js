@@ -182,6 +182,10 @@
 
       removeOutline(currEl)
 
+      document.body.style['-webkit-transition'] = "-webkit-filter .50s"
+
+      document.body.style['-webkit-filter'] = "blur(150px) hue-rotate(20deg) saturate(14)"
+
       var log, rules, bounds;
 
       log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
@@ -247,9 +251,6 @@
 
       overlay.style.opacity = "1"
 
-      document.body.style['-webkit-transition'] = "-webkit-filter .50s;"
-
-      document.body.style['-webkit-filter'] = "blur(150px) saturate(14) hue-rotate(20deg);"
 
 
 
