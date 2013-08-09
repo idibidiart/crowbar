@@ -58,6 +58,8 @@
       el.style.outline  ='red 2px solid'
   }
 
+    var j = 0;
+
   function getMatchedRules(el, list) {
 
     var currList = list || "";
@@ -73,8 +75,9 @@
 
             if (currList.indexOf(cssRuleList[i].cssText) == -1)
                 rules += "\n" + cssRuleList[i].cssText
+            console.log(j++, rules)
         }
-        console.log(rules)
+
         return rules;
     }
     return "";
