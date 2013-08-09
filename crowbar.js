@@ -231,12 +231,12 @@
 
     addOutline(currEl)
 
-    console.log('el', JSON.parse(currEl.getBoundingClientRect()))
+    console.log('el', JSON.stringify(currEl.getBoundingClientRect()))
 
-    console.log('parentl', JSON.parse(currEl.parentNode.getBoundingClientRect()))
+    console.log('parentl', JSON.stringify(currEl.parentNode.getBoundingClientRect()))
 
 
-      while ((JSON.parse(currEl.getBoundingClientRect()) ===  JSON.parse(currEl.parentNode.getBoundingClientRect())) &&
+      while ((JSON.stringify(currEl.getBoundingClientRect()) ===  JSON.stringify(currEl.parentNode.getBoundingClientRect())) &&
             currEl.parentNode.tagName.toLowerCase() !== "body") {
 
        currEl = currEl.parentNode
