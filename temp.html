@@ -3,10 +3,15 @@
 <meta charset='UTF-8'/>
 <style>
 
-    .____enclosing_styles { border-collapse: separate ; border-spacing: 0px 0px ; caption-side: top ; color: rgb(138, 138, 138) ; cursor: -webkit-zoom-in ; direction: ltr ; empty-cells: show ; font-family: 'Helvetica Neue', arial, sans-serif ; font-size: 11px ; font-style: normal ; font-variant: normal ; font-weight: bold ; letter-spacing: normal ; line-height: normal ; list-style-image: none ; list-style-position: outside ; list-style-type: disc ; list-style: disc outside none ; text-align: start ; text-indent: 0px ; text-transform: none ; visibility: visible ; white-space: normal ; word-spacing: 0px ; opacity: 1 ; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box ; -webkit-filter: none ; -webkit-transform: none ; -webkit-transform-style: flat ; -webkit-perspective: none ; -webkit-backface-visibility: visible ;  }
+    .____enclosing_styles { border-collapse: separate ; border-spacing: 0px 0px ; caption-side: top ; color: rgb(138, 138, 138) ; cursor: -webkit-zoom-in ; direction: ltr ; empty-cells: show ; font-family: 'Helvetica Neue', arial, sans-serif ; font-size: 11px ; font-style: normal ; font-variant: normal ; font-weight: bold ; letter-spacing: normal ; line-height: normal ; list-style-image: none ; list-style-position: outside ; list-style-type: disc ; list-style: disc outside none ; text-align: start ; text-indent: 0px ; text-transform: none ; visibility: visible ; white-space: normal ; word-spacing: 0px ; opacity: 1 ; background: rgb(147, 147, 141) none repeat scroll 0% 0% / auto padding-box border-box ; -webkit-filter: none ; -webkit-transform: none ; -webkit-transform-style: flat ; -webkit-perspective: none ; -webkit-backface-visibility: visible ;  }
 
     .Pin.summary .hoverMask { border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; -webkit-box-shadow: none; box-shadow: none; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; z-index: 100; }
     .Pin.summary .pinHolder:hover .hoverMask { background-color: rgba(255, 255, 255, 0.0980392); background-position: initial initial; background-repeat: initial initial; }
+    img { max-width: 100%; height: auto; vertical-align: middle; border: 0px; }
+    .Pin.summary .pinImg { display: block; margin: 0px auto; position: relative; z-index: 5; opacity: 0; }
+    .Pin.summary .pinImg.loaded { opacity: 1; }
+    .Pin.summary .pinImg.fade { transition: opacity 0.4s; -webkit-transition: opacity 0.4s; }
+    .Pin.summary .pinImg.fullBleed { border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; }
 
     @font-face { font-family: Abril-Bold; src: url(http://pinterest.com/fonts/abril/bold/abril_bold_tt-webfont.woff) format(woff); font-weight: normal; font-style: normal; }
     @font-face { font-family: Abril-Italic; src: url(http://pinterest.com/fonts/abril/italic/abril_italic_tt-webfont.woff) format(woff); font-weight: normal; font-style: normal; }
@@ -19,7 +24,18 @@
 </style>
 <body>
 <div class='____enclosing_styles'>
-    <div class="hoverMask" style=""></div>
+    <div class="fadeContainer" style="">
+        <div class="hoverMask" style=""></div>
+
+
+
+
+
+
+
+
+        <img src="http://media-cache-ak0.pinimg.com/236x/aa/9c/bd/aa9cbd1285b49595e38d9fd435e12653.jpg" class="pinImg fullBleed loaded fade" style="width: 236px;height: 305px;" onload="P.Lazy.imageLoad(this)" alt="LAB magazine { issue 04 : paper, scissors, rock : Matt Shlian }">
+    </div>
 </div>
 </body>
 </html>

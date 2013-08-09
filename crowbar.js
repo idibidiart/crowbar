@@ -230,6 +230,13 @@
     currEl = e.target;
 
     addOutline(currEl)
+
+    while ((JSON.parse(currEl.getBoundingClientRect()) ===  JSON.parse(currEl.parentNode.getBoundingClientRect())) &&
+            currEl.parentNode.tagName.toLowerCase() !== "body") {
+
+       currEl = currEl.parentNode
+    }
+
   }
   
   window.onkeyup = function(e) {
@@ -253,14 +260,9 @@
 
       bounds = currEl.getBoundingClientRect()
 
-      currEl.style.wdith = bounds.width  + "px ; "
-      currEl.style.height = bounds.height + "px ; "
-
-      console.log(currEl.style.wdith)
-      console.log(currEl.style.height)
-
       log += ".____enclosing_styles"
-                + " { "
+                + " { width: " + bounds.width  + "px ; "
+                + " { height: " + bounds.height  + "px ; "
                 +  computeInheritedStyles(currEl)
                 +  computeEnclosingStyles(currEl)
                 + " }\n"
@@ -366,7 +368,6 @@
 
         addOutline(currEl)
 
-        console.log(currEl.outerHTML)
     }
 
   }
