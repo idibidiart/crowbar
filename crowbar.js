@@ -74,6 +74,7 @@
             if (currList.indexOf(cssRuleList[i].cssText) == -1)
                 rules += "\n" + cssRuleList[i].cssText
         }
+        console.log(rules)
         return rules;
     }
     return "";
@@ -267,7 +268,7 @@
       if (!overlay) {
           d.style.cssText = "display: none; position: absolute; z-index: 100000; left: 0px;" +
                             "padding-left: 10px; top: 0px; width: 100%; height: " + getDocHeight() + "px;" +
-                            "color: yellow;"
+                            "color: black;"
 
           d.class = "____overlay"
 
