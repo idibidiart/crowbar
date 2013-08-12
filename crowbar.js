@@ -27,19 +27,33 @@
 
         links.forEach(function(v, i) {
 
-            var url = "";
+            var url = v.getAttribute("href").resolve;
 
             if (v.getAttribute("href").match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
                 url = "http://www.corsproxy.com/" + v.getAttribute("href").replace(/(http[s]{0,}:\/\/|\/\/)/, "")
             } else {
 
-                url = "http://www.corsproxy.com/" + window.location.hostname + v.getAttribute("href")
+                url = "http://www.corsproxy.com/" + toAbsoluteURL(v.getAttribute("href"), window.location.hostname + "/")
             }
 
             xhr(url,
 
                 function(css){
+
+//                    css = css.replace(/kk/g, function r(match, p1, offset, string){
+//
+//                        if (p1.match(/(http[s]{0,}:\/\/|\/\/)/)) {
+//
+//                            return "http://www.corsproxy.com/" + v.getAttribute("href").replace(/(http[s]{0,}:\/\/|\/\/)/, "")
+//                        } else {
+//
+//                            return "http://www.corsproxy.com/" +
+//                                        toAbsoluteURL(v.getAttribute("href"), window.location.hostname + "/")
+//                        }
+//                    })
+
+
                     style.appendChild(document.createTextNode(css))
                 }
             )
@@ -49,6 +63,27 @@
 
     })()
 
+  function toAbsoluteURL(url, base_url) {
+    var doc = document
+        , old_base = doc.querySelector('base')
+        , head = doc.head || doc.querySelector('head')
+        , base = old_base || head.appendChild(doc.createElement('base'))
+        , resolver = doc.querySelector(".____base_resolver") ||
+                        doc.createElement('a')
+                            .setAttribute("class", "____base_resolver")
+        , absolute_url;
+
+    if (base.href != base_url)   // avoid DOM write if possible
+            base.href = base_url;
+
+    resolver.href = url;
+
+    absolute_url = resolver.href;
+
+    console.log(absolute_url)
+
+    return absolute_url;
+  }
 
   function removeOutline(el) {
       el.style.outline = null;
@@ -182,6 +217,8 @@
     }
     return result;
   }
+
+
 
   function findAll(el) {
 
