@@ -71,18 +71,23 @@
         , resolver = doc.querySelector(".____base_resolver") ||
             (function() {
                 var a = doc.createElement('a')
-                    doc.body.append(a)
+                    doc.body.appendChild(a)
                     a.setAttribute("class", "____base_resolver")
                     return a;
             })()
         , absolute_url;
-
+    try {
     if (base.href != base_url)   // avoid DOM write if possible
             base.href = base_url;
 
     resolver.href = url;
 
     absolute_url = resolver.href;
+    } catch (e)
+    {
+        console.log(e)
+    }
+
 
     console.log(absolute_url)
 
