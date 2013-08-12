@@ -72,17 +72,21 @@
 
   function toAbsoluteURL(url, base_url) {
 
-    var doc = document
-        , head = doc.head || doc.querySelector('head')
-        , base = head.appendChild(doc.createElement('base'))
-        , resolver = doc.querySelector(".____base_resolver") ||
+    var _base = document.querySelector('base')
+
+    if (_base)
+        document.removeChild(_base)
+
+    var head = document.head || document.querySelector('head'),
+        base = head.appendChild(document.createElement('base')),
+        resolver = document.querySelector(".____base_resolver") ||
             (function() {
-                var a = doc.createElement('a')
-                    doc.body.appendChild(a)
+                var a = document.createElement('a')
+                    document.body.appendChild(a)
                     a.setAttribute("class", "____base_resolver")
                     return a;
-            })()
-        , absolute_url;
+            })(),
+    absolute_url;
 
     base.href = base_url;
 
@@ -90,7 +94,7 @@
 
     absolute_url = resolver.href
 
-    head.removeChild('base')
+    head.removeChild(base)
 
     return absolute_url;
   }
