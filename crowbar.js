@@ -2,7 +2,7 @@
 
   ____crowbar____ = {};
 
-  var currEl, overlay, on, page, _base;
+  var currEl, overlay, on, page;
 
     (function() {
 
@@ -25,19 +25,21 @@
             return XHR;
         }
 
-        _base = document.querySelector('base')
-
         links.forEach(function(v, i) {
 
-            var url = v.getAttribute("href").resolve;
+            var cssBase;
 
             if (v.getAttribute("href").match(/(http[s]{0,1}:\/\/|\/\/)/)) {
+
+                cssBase = parseURL(v.getAttribute("href")).host + "/"
 
                 url = "http://www.corsproxy.com/" + v.getAttribute("href").replace(/(http[s]{0,1}:\/\/|\/\/)/, "")
             } else {
 
+                cssBase = window.location.hostname + "/"
+
                 url = "http://www.corsproxy.com/" +
-                    toAbsoluteURL(v.getAttribute("href"), window.location.hostname + "/")
+                    toAbsoluteURL(v.getAttribute("href"), cssBase)
                         .replace(/(http[s]{0,1}:\/\/|\/\/)/, "")
             }
 
@@ -52,20 +54,56 @@
                             if (!p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
                                 return "url('" +
-                                            toAbsoluteURL(p, window.location.hostname + "/")
+                                            toAbsoluteURL(p, cssBase)
                                             + "')"
                             }
                         }
                     })
-
                     style.appendChild(document.createTextNode(css))
                 }
             )
 
             document.querySelector('head').removeChild(v)
         })
-
     })()
+
+  function parseURL(url) {
+
+    var a =  document.querySelector(".____resolver") ||
+        (function() {
+            var a = document.createElement('a')
+            document.body.appendChild(a)
+            a.setAttribute("class", "____resolver")
+            return a;
+        })()
+
+    a.href = url;
+
+    return {
+
+        source: url,
+        protocol: a.protocol.replace(':',''),
+        host: a.hostname,
+        port: a.port,
+        query: a.search,
+        params: (function(){
+            var ret = {},
+                seg = a.search.replace(/^\?/,'').split('&'),
+                len = seg.length, i = 0, s;
+            for (;i<len;i++) {
+                if (!seg[i]) { continue; }
+                s = seg[i].split('=');
+                ret[s[0]] = s[1];
+            }
+            return ret;
+        })(),
+        file: (a.pathname.match(/\/([^\/?#]+)$/i) || [,''])[1],
+        hash: a.hash.replace('#',''),
+        path: a.pathname.replace(/^([^\/])/,'/$1'),
+        relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [,''])[1],
+        segments: a.pathname.replace(/^\//,'').split('/')
+    }
+  }
 
   function toAbsoluteURL(url, base_url) {
 
@@ -76,11 +114,11 @@
 
     var head = document.head || document.querySelector('head'),
         base = head.appendChild(document.createElement('base')),
-        resolver = document.querySelector(".____base_resolver") ||
+        resolver = document.querySelector(".____resolver") ||
             (function() {
                 var a = document.createElement('a')
                     document.body.appendChild(a)
-                    a.setAttribute("class", "____base_resolver")
+                    a.setAttribute("class", "____resolver")
                     return a;
             })(),
     absolute_url;
