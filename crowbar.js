@@ -355,7 +355,7 @@
                return p1 + "='http://www.corsproxy.com/" + p2.trim().replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "'"
            } else {
 
-               return p1 "='http://www.corsproxy.com/" +
+               return p1 + "='http://www.corsproxy.com/" +
                    toAbsoluteURL(p2.trim(), window.location.hostname + "/")
                        .replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "'"
            }
