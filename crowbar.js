@@ -345,6 +345,14 @@
           page = [].slice.call(document.body.children,0)
       }
 
+      log = log.replace(/(href|src)\s*=\s*['"]+((?!data).*):?['"]\s*\)/gi, function r(m, p1, p2, offset, string){
+
+           if (!p2.match(/(http[s]{0,}:\/\/|\/\/)/)) {
+
+               return p1 + "='" + toAbsoluteURL(p2.trim(), window.location.hostname + "/") + "'"
+           }
+      })
+
       log = log
           .replaceAll('&', '&amp;')
           .replaceAll('"', '&quot;')
@@ -360,14 +368,6 @@
               v.style['-webkit-transition'] = "-webkit-filter .50s"
 
               v.style['-webkit-filter'] = "blur(150px) hue-rotate(20deg) saturate(14)"
-          }
-      })
-
-      log = log.replace(/(href|src)\s*=\s*['"]+((?!data).*):?['"]\s*\)/gi, function r(m, p1, p2, offset, string){
-
-          if (!p2.match(/(http[s]{0,}:\/\/|\/\/)/)) {
-
-              return p1 + "='" + toAbsoluteURL(p2.trim(), window.location.hostname + "/") + "'"
           }
       })
 
