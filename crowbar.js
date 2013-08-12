@@ -43,18 +43,17 @@
 
                 function(css){
 
-//                    css = css.replace(/kk/g, function r(match, p1, offset, string){
-//
-//                        if (p1.match(/(http[s]{0,}:\/\/|\/\/)/)) {
-//
-//                            return "http://www.corsproxy.com/" + v.getAttribute("href").replace(/(http[s]{0,}:\/\/|\/\/)/, "")
-//                        } else {
-//
-//                            return "http://www.corsproxy.com/" +
-//                                        toAbsoluteURL(v.getAttribute("href"), window.location.hostname + "/")
-//                        }
-//                    })
+                    css = css.replace(/url\(([^'"]+)\)/g, function r(match, p1, offset, string){
 
+                        if (p1.match(/(http[s]{0,}:\/\/|\/\/)/)) {
+
+                            return "http://www.corsproxy.com/" + p1.trim().replace(/(http[s]{0,}:\/\/|\/\/)/, "")
+                        } else {
+
+                            return "http://www.corsproxy.com/" +
+                                        toAbsoluteURL(p1.trim(), window.location.hostname + "/")
+                        }
+                    })
 
                     style.appendChild(document.createTextNode(css))
                 }
