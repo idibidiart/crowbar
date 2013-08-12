@@ -2,7 +2,7 @@
 
   ____crowbar____ = {};
 
-  var currEl, overlay, on, page, _base, _base_href;
+  var currEl, overlay, on, page;
 
     (function() {
 
@@ -24,9 +24,6 @@
             XHR.send("");
             return XHR;
         }
-
-        _base = document.querySelector('base')
-        _base_href = _base && _base.href
 
         links.forEach(function(v, i) {
 
@@ -93,9 +90,7 @@
 
     absolute_url = resolver.href
 
-    if (_base) {
-       old_base.href = _base_href
-    }
+    base.href = "";
 
     return absolute_url;
   }
