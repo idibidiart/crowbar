@@ -2,7 +2,7 @@
 
   ____crowbar____ = {};
 
-  var currEl, overlay, on, page;
+  var currEl, overlay, on, page, _base;
 
     (function() {
 
@@ -24,6 +24,8 @@
             XHR.send("");
             return XHR;
         }
+
+        _base = document.querySelector('base')
 
         links.forEach(function(v, i) {
 
@@ -70,27 +72,24 @@
 
   function toAbsoluteURL(url, base_url) {
 
-    var doc = document
-        , old_base = doc.querySelector('base')
-        , head = doc.head || doc.querySelector('head')
-        , base = old_base || head.appendChild(doc.createElement('base'))
-        , resolver = doc.querySelector(".____base_resolver") ||
-            (function() {
-                var a = doc.createElement('a')
-                    doc.body.appendChild(a)
-                    a.setAttribute("class", "____base_resolver")
-                    return a;
-            })()
-        , absolute_url;
+      var doc      = document
+          , old_base = doc.getElementsByTagName('base')[0]
+          , old_href = old_base && old_base.href
+          , doc_head = doc.head || doc.getElementsByTagName('head')[0]
+          , our_base = old_base || doc_head.appendChild(doc.createElement('base'))
+          , resolver = doc.createElement('a')
+          , resolved_url
+          ;
+      our_base.href = base_url;
+      resolver.href = url;
+      resolved_url  = resolver.href; // browser magic at work here
+      doc.removeChild(resolver)
 
-    if (base.href != base_url)   // avoid DOM write if possible
-            base.href = base_url;
+      if (old_base) old_base.href = old_href;
+      else doc_head.removeChild(our_base);
 
-    resolver.href = url;
+      return resolved_url;
 
-    absolute_url = resolver.href
-
-    return absolute_url;
   }
 
   function removeOutline(el) {
