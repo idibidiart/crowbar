@@ -43,18 +43,18 @@
 
                 function(css){
 
-                    css = css.replace(/url\(\s*['"]((?![ ]*data).*):?['"][ ]*\)/gi, function r(m, p, offset, string){
-
-                        if (p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
-
-                            return "url(http://www.corsproxy.com/" + p.trim().replace(/(http[s]{0,}:\/\/|\/\/)/, "") + ")"
-                        } else {
-
-                            return "url(http://www.corsproxy.com/" +
-                                        toAbsoluteURL(p.trim(), window.location.hostname + "/")
-                                            .replace(/(http[s]{0,}:\/\/|\/\/)/, "") + ")"
-                        }
-                    })
+//                    css = css.replace(/url\(\s*['"]((?![ ]*data).*):?['"][ ]*\)/gi, function r(m, p, offset, string){
+//
+//                        if (p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
+//
+//                            return "url(http://www.corsproxy.com/" + p.trim().replace(/(http[s]{0,}:\/\/|\/\/)/, "") + ")"
+//                        } else {
+//
+//                            return "url(http://www.corsproxy.com/" +
+//                                        toAbsoluteURL(p.trim(), window.location.hostname + "/")
+//                                            .replace(/(http[s]{0,}:\/\/|\/\/)/, "") + ")"
+//                        }
+//                    })
 
                     style.appendChild(document.createTextNode(css))
                 }
@@ -348,10 +348,6 @@
       }
 
        log = log.replace(/(href|src)\s*=\s*['"]((?!data)[^\s]*):?['"]/gi, function r(m, p1, p2, offset, string){
-
-           console.log(m)
-           console.log(p1)
-           console.log(p2)
 
            if (p2.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
