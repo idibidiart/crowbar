@@ -45,6 +45,9 @@
 
                     css = css.replace(/url\(\s*['"]((?![ ]*data).*):?['"][ ]*\)/gi, function r(m, p, offset, string){
 
+                        console.log(m)
+                        console.log(p)
+
                         if (p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
                             return "url('http://www.corsproxy.com/" + p.replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "')"
@@ -378,10 +381,6 @@
               v.style['-webkit-filter'] = "blur(150px) hue-rotate(20deg) saturate(14)"
           }
       })
-
-      console.log(log)
-
-
 
       overlay.innerHTML =  "<pre>" + log + "</pre>"
 
