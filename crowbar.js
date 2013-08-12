@@ -47,11 +47,11 @@
 
                         if (p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
-                            return "url(http://www.corsproxy.com/" + p1.replace(/(http[s]{0,}:\/\/|\/\/)/, "") + ")"
+                            return "url(http://www.corsproxy.com/" + p.replace(/(http[s]{0,}:\/\/|\/\/)/, "") + ")"
                         } else {
 
                             return "url(http://www.corsproxy.com/" +
-                                        toAbsoluteURL(p1, window.location.hostname + "/") + ")"
+                                        toAbsoluteURL(p, window.location.hostname + "/") + ")"
                         }
                     })
 
