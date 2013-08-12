@@ -2,7 +2,7 @@
 
   ____crowbar____ = {};
 
-  var currEl, overlay, on, page;
+  var currEl, overlay, on, page, _base;
 
     (function() {
 
@@ -24,6 +24,8 @@
             XHR.send("");
             return XHR;
         }
+
+        _base = document.querySelector('base')
 
         links.forEach(function(v, i) {
 
@@ -71,9 +73,8 @@
   function toAbsoluteURL(url, base_url) {
 
     var doc = document
-        , old_base = doc.querySelector('base')
         , head = doc.head || doc.querySelector('head')
-        , base = old_base || head.appendChild(doc.createElement('base'))
+        , base = head.appendChild(doc.createElement('base'))
         , resolver = doc.querySelector(".____base_resolver") ||
             (function() {
                 var a = doc.createElement('a')
@@ -83,14 +84,13 @@
             })()
         , absolute_url;
 
-    if (base.href != base_url)   // avoid DOM write if possible
-            base.href = base_url;
+    base.href = base_url;
 
     resolver.href = url;
 
     absolute_url = resolver.href
 
-    base.href = "";
+    head.removeChild('base')
 
     return absolute_url;
   }
