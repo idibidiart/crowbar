@@ -349,6 +349,10 @@
 
        log = log.replace(/(href|src)\s*=\s*['"]+((?!data).*):?['"]/gi, function r(m, p1, p2, offset, string){
 
+           console.log(m)
+           console.log(p1)
+           console.log(p2)
+
            if (p2.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
                return p1 + "='http://www.corsproxy.com/" + p2.replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "'"
