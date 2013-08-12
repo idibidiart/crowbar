@@ -48,8 +48,8 @@
                         if (!p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
                             return  "url(" +
-                                    toAbsoluteURL(p.trim(), window.location.hostname + "/")
-                                        .replace(/(http[s]{0,}:\/\/|\/\/)/, "") + ")"
+                                    toAbsoluteURL(p.trim(), window.location.hostname + "/") + ")"
+
                         }
                     })
 
