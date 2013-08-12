@@ -31,14 +31,14 @@
 
             var url = v.getAttribute("href").resolve;
 
-            if (v.getAttribute("href").match(/(http[s]{0,}:\/\/|\/\/)/)) {
+            if (v.getAttribute("href").match(/(http[s]{0,1}:\/\/|\/\/)/)) {
 
-                url = "http://www.corsproxy.com/" + v.getAttribute("href").replace(/(http[s]{0,}:\/\/|\/\/)/, "")
+                url = "http://www.corsproxy.com/" + v.getAttribute("href").replace(/(http[s]{0,1}:\/\/|\/\/)/, "")
             } else {
 
                 url = "http://www.corsproxy.com/" +
                     toAbsoluteURL(v.getAttribute("href"), window.location.hostname + "/")
-                        .replace(/(http[s]{0,}:\/\/|\/\/)/, "")
+                        .replace(/(http[s]{0,1}:\/\/|\/\/)/, "")
             }
 
             xhr(url,
@@ -49,14 +49,11 @@
 
                         if (p.indexOf('data') != 0) {
 
-                            if (p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
+                            if (!p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
-                                return "url('http://www.corsproxy.com/" + p.replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "')"
-                            } else {
-
-                                return "url('http://www.corsproxy.com/" +
+                                return "url('" +
                                             toAbsoluteURL(p, window.location.hostname + "/")
-                                                .replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "')"
+                                            + "')"
                             }
                         }
                     })
@@ -359,14 +356,11 @@
        log = log.replace(/(href|src)\s*\=\s*['"]([^\s;}]+)['"]/gi, function r(m, p1, p2, offset, string){
 
            if (p2.indexOf("data") != 0) {
-               if (p2.match(/(http[s]{0,}:\/\/|\/\/)/)) {
+               if (!p2.match(/(http[s]{0,1}:\/\/|\/\/)/)) {
 
-                   return p1 + "='http://www.corsproxy.com/" + p2.replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "'"
-               } else {
-
-                   return p1 + "='http://www.corsproxy.com/" +
+                   return p1 + "='" +
                        toAbsoluteURL(p2, window.location.hostname + "/")
-                           .replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "'"
+                       + "'"
                }
            }
        })
