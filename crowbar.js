@@ -82,8 +82,6 @@
           ;
       our_base.href = base_url;
       resolver.href = url;
-      resolved_url  = resolver.href; // browser magic at work here
-      doc.removeChild(resolver)
 
       if (old_base) old_base.href = old_href;
       else doc_head.removeChild(our_base);
