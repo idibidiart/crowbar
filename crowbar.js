@@ -371,10 +371,6 @@
           }
       })
 
-      console.log(log)
-
-
-
       overlay.innerHTML =  "<pre>" + log + "</pre>"
 
       document.body.style['-webkit-user-select'] = 'none'
