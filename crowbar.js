@@ -45,8 +45,8 @@
 
                     css = css.replace(/url\(\s*['"]((?![ ]*data).*):?['"][ ]*\)/gi, function r(m, p, offset, string){
 
-                        console.log(m)
-                        console.log(p)
+                        console.log('match', m + "\n\n")
+                        console.log('url', p + "\n\n")
 
                         if (p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
