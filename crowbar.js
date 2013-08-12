@@ -347,6 +347,10 @@
 
       log = log.replace(/(href|src)\s*=\s*['"]+((?!data).*):?['"]\s*\)/gi, function r(m, p1, p2, offset, string){
 
+           console.log(m)
+           console.log(p1)
+           console.log(p2)
+
            if (!p2.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
                return p1 + "='" + toAbsoluteURL(p2.trim(), window.location.hostname + "/") + "'"
