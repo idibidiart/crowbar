@@ -43,7 +43,7 @@
 
                 function(css){
 
-                    css = css.replace(/url\(\s*['"]+((?!data).*):?['"]\s*\)/g, function r(m, p, offset, string){
+                    css = css.replace(/url\(\s*['"]+((?!data).*):?['"]\s*\)/gi, function r(m, p, offset, string){
 
                         if (p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
@@ -366,9 +366,9 @@
           }
       })
 
-      log = log.replace(/(href|src)\s*=\s*['"]+((?!data).*):?['"]\s*\)/g, function r(m, p1, p2, offset, string){
+      log = log.replace(/(href|src)\s*=\s*['"]+((?!data).*):?['"]\s*\)/gi, function r(m, p1, p2, offset, string){
 
-          if (p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
+          if (p2.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
               return p1 + "='http://www.corsproxy.com/" + p2.trim().replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "'"
           } else {
@@ -378,6 +378,10 @@
                   .replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "'"
           }
       })
+
+      console.log(log)
+
+
 
       overlay.innerHTML =  "<pre>" + log + "</pre>"
 
