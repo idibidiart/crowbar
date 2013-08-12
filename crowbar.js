@@ -368,7 +368,6 @@
           if (!p2.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
               return p1 + "='" + toAbsoluteURL(p2.trim(), window.location.hostname + "/") + "'"
-
           }
       })
 
