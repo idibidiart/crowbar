@@ -45,11 +45,14 @@
 
                     css = css.replace(/url\(\s*['"]+((?!data).*):?['"]\s*\)/gi, function r(m, p, offset, string){
 
-                        if (!p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
+                        if (p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
-                            return  "url(" +
-                                    toAbsoluteURL(p.trim(), window.location.hostname + "/") + ")"
+                            return "url(http://www.corsproxy.com/" + p.trim().replace(/(http[s]{0,}:\/\/|\/\/)/, "") + ")"
+                        } else {
 
+                            return "url(http://www.corsproxy.com/" +
+                                        toAbsoluteURL(p.trim(), window.location.hostname + "/")
+                                            .replace(/(http[s]{0,}:\/\/|\/\/)/, "") + ")"
                         }
                     })
 
@@ -221,6 +224,7 @@
   }
 
 
+
   function findAll(el) {
 
       return Array.prototype.slice.call(el.getElementsByTagName("*"), 0);
@@ -273,6 +277,7 @@
 
        currEl = currEl.parentNode
 
+       console.log(1)
       }
 
       addOutline(currEl)
@@ -343,19 +348,19 @@
           page = [].slice.call(document.body.children,0)
       }
 
-      log = log.replace(/(href|src)\s*=\s*['"]+((?!data).*):?['"]\s*\)/gi, function r(m, p1, p2, offset, string){
+       log = log.replace(/(href|src)\s*=\s*['"]+((?!data).*):?['"]\s*\)/gi, function r(m, p1, p2, offset, string){
 
            console.log(m)
            console.log(p1)
            console.log(p2)
-
            if (!p2.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
                return p1 + "='" + toAbsoluteURL(p2.trim(), window.location.hostname + "/") + "'"
            }
-      })
+       })
 
-      log = log
+
+       log = log
           .replaceAll('&', '&amp;')
           .replaceAll('"', '&quot;')
           .replaceAll("'", '&#39;')
@@ -372,6 +377,10 @@
               v.style['-webkit-filter'] = "blur(150px) hue-rotate(20deg) saturate(14)"
           }
       })
+
+      console.log(log)
+
+
 
       overlay.innerHTML =  "<pre>" + log + "</pre>"
 
