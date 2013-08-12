@@ -47,12 +47,12 @@
 
                         if (p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
-                            return "url(http://www.corsproxy.com/" + p.replace(/(http[s]{0,}:\/\/|\/\/)/, "") + ")"
+                            return "url(http://www.corsproxy.com/" + p.trim().replace(/(http[s]{0,}:\/\/|\/\/)/, "") + ")"
                         } else {
 
                             return "url(http://www.corsproxy.com/" +
-                                        toAbsoluteURL(p, window.location.hostname + "/") + ")"
-                                            .replace(/(http[s]{0,}:\/\/|\/\/)/, "")
+                                        toAbsoluteURL(p.trim(), window.location.hostname + "/")
+                                            .replace(/(http[s]{0,}:\/\/|\/\/)/, "") + ")"
                         }
                     })
 
@@ -363,6 +363,19 @@
               v.style['-webkit-transition'] = "-webkit-filter .50s"
 
               v.style['-webkit-filter'] = "blur(150px) hue-rotate(20deg) saturate(14)"
+          }
+      })
+
+      log = log.replace(/(href|src)\s*=\s*['"]+((?!data).*):?['"]\s*\)/g, function r(m, p1, p2, offset, string){
+
+          if (p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
+
+              return p1 + "='http://www.corsproxy.com/" + p2.trim().replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "'"
+          } else {
+
+              return p1 + "='http://www.corsproxy.com/" +
+                  toAbsoluteURL(p2.trim(), window.location.hostname + "/")
+                  .replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "'"
           }
       })
 
