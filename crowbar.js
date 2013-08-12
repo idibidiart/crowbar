@@ -45,7 +45,7 @@
 
                 function(css){
 
-                    css = css.replace(/[\s:]url\(['"]([^\s;}]+)['"]\)/gi, function r(m, p, offset, string){
+                    css = css.replace(/url\(['"]([^\s;}]+)['"]\)/gi, function r(m, p, offset, string){
 
                         if (p.indexOf('data') != 0) {
 
@@ -356,7 +356,7 @@
           page = [].slice.call(document.body.children,0)
       }
 
-       log = log.replace(/[\s](href|src)\s*\=\s*['"]([^\s;}]+)['"]/gi, function r(m, p1, p2, offset, string){
+       log = log.replace(/(href|src)\s*\=\s*['"]([^\s;}]+)['"]/gi, function r(m, p1, p2, offset, string){
 
            if (p2.indexOf("data") != 0) {
                if (p2.match(/(http[s]{0,}:\/\/|\/\/)/)) {
