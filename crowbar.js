@@ -233,7 +233,8 @@
 
   String.prototype.replaceAll = function(str1, str2, ignore)
   {
-      return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+      return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),
+                                (ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
   }
 
   function getDocHeight() {
@@ -276,8 +277,6 @@
             currEl.parentNode.tagName.toLowerCase() !== "body") {
 
        currEl = currEl.parentNode
-
-       console.log(1)
       }
 
       addOutline(currEl)
@@ -352,11 +351,11 @@
 
            if (p2.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
-               return p1 + "='http://www.corsproxy.com/" + p2.trim().replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "'"
+               return p1 + "='http://www.corsproxy.com/" + p2.replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "'"
            } else {
 
                return p1 + "='http://www.corsproxy.com/" +
-                   toAbsoluteURL(p2.trim(), window.location.hostname + "/")
+                   toAbsoluteURL(p2, window.location.hostname + "/")
                        .replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "'"
            }
        })
