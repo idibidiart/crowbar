@@ -43,18 +43,18 @@
 
                 function(css){
 
-//                    css = css.replace(/url\(\s*['"]((?![ ]*data).*):?['"][ ]*\)/gi, function r(m, p, offset, string){
-//
-//                        if (p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
-//
-//                            return "url(http://www.corsproxy.com/" + p.trim().replace(/(http[s]{0,}:\/\/|\/\/)/, "") + ")"
-//                        } else {
-//
-//                            return "url(http://www.corsproxy.com/" +
-//                                        toAbsoluteURL(p.trim(), window.location.hostname + "/")
-//                                            .replace(/(http[s]{0,}:\/\/|\/\/)/, "") + ")"
-//                        }
-//                    })
+                    css = css.replace(/url\(\s*['"]((?![ ]*data).*):?['"][ ]*\)/gi, function r(m, p, offset, string){
+
+                        if (p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
+
+                            return "url('http://www.corsproxy.com/" + p.replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "')"
+                        } else {
+
+                            return "url('http://www.corsproxy.com/" +
+                                        toAbsoluteURL(p, window.location.hostname + "/")
+                                            .replace(/(http[s]{0,}:\/\/|\/\/)/, "") + "')"
+                        }
+                    })
 
                     style.appendChild(document.createTextNode(css))
                 }
