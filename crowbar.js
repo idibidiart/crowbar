@@ -43,7 +43,7 @@
 
                 function(css){
 
-                    css = css.replace(/url\(([^'"]+)\)/g, function r(m, p, offset, string){
+                    css = css.replace(/url\(\s*['"]+((?!data).*):?['"]\s*\)/g, function r(m, p, offset, string){
 
                         if (p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
@@ -52,6 +52,7 @@
 
                             return "url(http://www.corsproxy.com/" +
                                         toAbsoluteURL(p, window.location.hostname + "/") + ")"
+                                            .replace(/(http[s]{0,}:\/\/|\/\/)/, "")
                         }
                     })
 
@@ -65,6 +66,7 @@
     })()
 
   function toAbsoluteURL(url, base_url) {
+
     var doc = document
         , old_base = doc.querySelector('base')
         , head = doc.head || doc.querySelector('head')
