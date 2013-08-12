@@ -34,7 +34,9 @@
                 url = "http://www.corsproxy.com/" + v.getAttribute("href").replace(/(http[s]{0,}:\/\/|\/\/)/, "")
             } else {
 
-                url = "http://www.corsproxy.com/" + toAbsoluteURL(v.getAttribute("href"), window.location.hostname + "/")
+                url = "http://www.corsproxy.com/" +
+                    toAbsoluteURL(v.getAttribute("href"), window.location.hostname + "/")
+                        .replace(/(http[s]{0,}:\/\/|\/\/)/, "")
             }
 
             xhr(url,
@@ -76,20 +78,13 @@
                     return a;
             })()
         , absolute_url;
-    try {
+
     if (base.href != base_url)   // avoid DOM write if possible
             base.href = base_url;
 
     resolver.href = url;
 
-    absolute_url = resolver.href;
-    } catch (e)
-    {
-        console.log(e)
-    }
-
-
-    console.log(absolute_url)
+    absolute_url = resolver.href
 
     return absolute_url;
   }
