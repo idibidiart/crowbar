@@ -221,7 +221,6 @@
   }
 
 
-
   function findAll(el) {
 
       return Array.prototype.slice.call(el.getElementsByTagName("*"), 0);
@@ -274,7 +273,6 @@
 
        currEl = currEl.parentNode
 
-       console.log(1)
       }
 
       addOutline(currEl)
