@@ -69,8 +69,12 @@
         , head = doc.head || doc.querySelector('head')
         , base = old_base || head.appendChild(doc.createElement('base'))
         , resolver = doc.querySelector(".____base_resolver") ||
-                        doc.createElement('a')
-                            .setAttribute("class", "____base_resolver")
+            (function() {
+                var a = doc.createElement('a')
+                    doc.body.append(a)
+                    a.setAttribute("class", "____base_resolver")
+                    return a;
+            })()
         , absolute_url;
 
     if (base.href != base_url)   // avoid DOM write if possible
@@ -131,7 +135,7 @@
 
     var result = "", computedStyle;
 
-    computedStyle = win.getComputedStyle(el.parentNode, null)
+    computedStyle = win.getComputedStyle(el, null)
 
     enclosingProperties.forEach(function(v, i) {
 
