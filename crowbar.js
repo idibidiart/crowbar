@@ -404,7 +404,7 @@
 
       console.log(log)
 
-      log = log.replace(/[.]([a-zA-Z0-9\-_]+)(\s*[,]*)/g, function(m, p1, p2, offset, string) {
+      log = log.replace(/([\}\s,]|^)[.]([a-zA-Z0-9\-_]+)(\s*[,]*)/g, function(m, p1, p2, offset, string) {
 
           console.log('pre match', m)
 
