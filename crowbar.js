@@ -47,7 +47,7 @@
 
             xhr(url,
 
-                function(css){
+                function(css, local){
 
                     css = css.replace(/url\(['"]([^\s;}]+)['"]\)/gi, function r(m, p, offset, string){
 
