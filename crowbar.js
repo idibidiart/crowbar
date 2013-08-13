@@ -405,9 +405,12 @@
       log = log.replace(/(\s|^)[.]([a-z0-9\-\_\$]+)\s*[,]*/g, function(m, p1, p2, offset, string) {
 
           if (p2 != enclosingClass && !currEl.querySelector(p2)) {
-
+              console.log('match', m)
+              console.log('p2', p2)
+              console.log('enclosingClass', enclosingClass)
               return " "
           } else {
+              console.log('no match', " ." + p2)
               return " ." + p2
           }
       })
