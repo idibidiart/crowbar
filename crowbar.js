@@ -404,7 +404,7 @@
 
       console.log(log)
 
-      log = log.replace(new RegExp("([\\s]|^)([.]{1}[a-zA-Z0-9\\-_]+)", "gm"), function(m, p1, p2, offset, string) {
+      log = log.replace(new RegExp("([\\s]|^)([.]{1}[a-zA-Z0-9\\-_]+)(\s*>)", "gm"), function(m, p1, p2, p3, offset, string) {
 
           console.log('pre match', m)
           console.log('pre p2', p2)
@@ -412,7 +412,10 @@
           if (p2 != "." + enclosingClass && !currEl.querySelector(p2)) {
               console.log('match', m)
               console.log('p2', p2)
-              return " *"
+              if (p3) {
+                  return " *"
+              }
+              return " "
           } else {
               console.log('no match', p2)
               return m
