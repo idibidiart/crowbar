@@ -35,7 +35,10 @@
 
                 cssBase = parseURL(v.getAttribute("href")).host + "/"
 
+                console.log('cssBase', cssBase)
+
                 url = "http://www.corsproxy.com/" + v.getAttribute("href").replace(/(http[s]{0,1}:\/\/|\/\/)/, "")
+
             } else {
 
                 cssBase = window.location.hostname + "/"
