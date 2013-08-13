@@ -407,7 +407,6 @@
           if (p2 != enclosingClass && !currEl.querySelector(p2)) {
               console.log('match', m)
               console.log('p2', p2)
-              console.log('enclosingClass', enclosingClass)
               return " "
           } else {
               console.log('no match', " ." + p2)
