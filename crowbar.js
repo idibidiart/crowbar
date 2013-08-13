@@ -306,6 +306,13 @@
     )
   }
 
+  function scrollTopTween(scrollTop) {
+    return function() {
+        var i = d3.interpolateNumber(this.scrollTop, scrollTop);
+        return function(t) { this.scrollTop = i(t); };
+    };
+  }
+
   window.onmouseover = function(e) {
 
     this.focus();
@@ -446,6 +453,15 @@
       document.body.style['-webkit-user-select'] = 'none'
 
       overlay.style.display = "block"
+
+      overlay.scrollTop = 0;
+
+      d3.select(overlay).transition()
+           .delay(1500)
+           .duration(7500)
+           .tween("scrollTop", scrollTopTween(overlay.scrollHeight - window.innerHeight));
+
+
    }
 
    // esc or x
