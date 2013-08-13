@@ -14,9 +14,11 @@
         function xhr(url, callback, local) {
             var XHR =  new XMLHttpRequest();
 
+            var cssBase = local;
+
             XHR.onreadystatechange = function () {
                 if (XHR.readyState == 4 && XHR.status == 200) {
-                    callback(XHR.responseText, local, XHR);
+                    callback(XHR.responseText, cssBase, XHR);
                 }
             };
 
@@ -34,8 +36,6 @@
             if (v.getAttribute("href").match(/(http[s]{0,1}:\/\/|\/\/)/)) {
 
                 cssBase = parseURL(v.getAttribute("href")).host + "/"
-
-                console.log('cssBase', cssBase)
 
                 url = "http://www.corsproxy.com/" + v.getAttribute("href").replace(/(http[s]{0,1}:\/\/|\/\/)/, "")
 
@@ -58,7 +58,6 @@
 
                             if (!p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
-                                console.log('absolute', toAbsoluteURL(p, local))
                                 return "url('" +
                                             toAbsoluteURL(p, local)
                                             + "')"
@@ -76,11 +75,11 @@
 
   function parseURL(url) {
 
-    var a =  document.querySelector(".____resolver") ||
+    var a =  document.querySelector(".____url_parser") ||
         (function() {
             var a = document.createElement('a')
             document.body.appendChild(a)
-            a.setAttribute("class", "____resolver")
+            a.setAttribute("class", "____url_parser")
             return a;
         })()
 
@@ -121,11 +120,11 @@
 
     var head = document.head || document.querySelector('head'),
         base = head.appendChild(document.createElement('base')),
-        resolver = document.querySelector(".____resolver") ||
+        resolver = document.querySelector(".____base_resolver") ||
             (function() {
                 var a = document.createElement('a')
                     document.body.appendChild(a)
-                    a.setAttribute("class", "____resolver")
+                    a.setAttribute("class", "____base_resolver")
                     return a;
             })(),
     absolute_url;
