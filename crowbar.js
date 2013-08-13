@@ -311,11 +311,14 @@
   }
 
     function selectText(el) {
+
         if (document.selection) {
+            document.focus()
             var range = document.body.createTextRange();
             range.moveToElementText(el);
             range.select();
         } else if (window.getSelection) {
+            window.focus()
             var range = document.createRange();
             range.selectNode(el);
             window.getSelection().addRange(range);
