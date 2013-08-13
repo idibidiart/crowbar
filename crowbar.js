@@ -56,8 +56,6 @@
 
                             if (!p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
-                                console.log(cssBase)
-                                console.log('absolute', toAbsoluteURL(p, local, false))
                                 return "url('" +
                                             toAbsoluteURL(p, local, false)
                                             + "')"
@@ -111,6 +109,8 @@
   }
 
   function toAbsoluteURL(url, host, httpLess) {
+
+    //TODO: use parseURL().segments to support ../../path etc
 
     return httpLess ? host + url : "http://" + host + "/" + url
   }
