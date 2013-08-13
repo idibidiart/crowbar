@@ -151,7 +151,7 @@
 
   function removeOutline(el) {
 
-      el.style.outline = null;
+      el.style.removeProperty('outline')
   }
 
   function addOutline(el) {
@@ -462,10 +462,17 @@
                    v.style['-webkit-transition'] = "-webkit-filter .50s"
 
                    v.style['-webkit-filter'] = "none"
+
+                   setTimeout(function() {
+
+                       v.style.removeProperty('-webkit-transition')
+                       v.style.removeProperty('-webkit-filter')
+
+                   }, 510)
                }
            })
 
-           document.body.style['-webkit-user-select'] = 'text'
+           document.body.style.removeProperty('-webkit-user-select')
 
            overlay.style.display = "none"
        }
