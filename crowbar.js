@@ -59,6 +59,8 @@
                                 return "url('" +
                                             toAbsoluteURL(p, local, false)
                                             + "')"
+                            } else {
+                                return m
                             }
                         } else {
                             return m;
@@ -385,6 +387,8 @@
                    return p1 + "='" +
                        toAbsoluteURL(p2, window.location.hostname, false)
                        + "'"
+               } else {
+                   return m
                }
            } else {
                return m;
