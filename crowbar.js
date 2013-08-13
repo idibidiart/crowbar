@@ -404,16 +404,16 @@
 
       console.log(log)
 
-      log = log.replace(/(([\}\s,]|^)([.]{1}[a-zA-Z0-9\-_]+)(\s*[,]*))+/g, function(m, p1, p2, p3, offset, string) {
+      log = log.replace(new RegExp("([\\}\\s,]|^)([.]{1}[a-zA-Z0-9\\-_]+)", "gm"), function(m, p1, p2, offset, string) {
 
           console.log('pre match', p3)
 
-          if (p3 != "." + enclosingClass && !currEl.querySelector(p3)) {
+          if (p2 != "." + enclosingClass && !currEl.querySelector(p2)) {
               console.log('match', m)
-              console.log('p3', p3)
+              console.log('p2', p2)
               return " "
           } else {
-              console.log('no match', p3)
+              console.log('no match', p2)
               return m
           }
       })
