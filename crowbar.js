@@ -310,11 +310,22 @@
     )
   }
 
-  function scrollTopTween(scrollTop) {
-    return function() {
-        var i = d3.interpolateNumber(this.scrollTop, scrollTop);
-        return function(t) { this.scrollTop = i(t); };
-    };
+  function createSelection(field, start, end) {
+        if( field.createTextRange ) {
+            var selRange = field.createTextRange();
+            selRange.collapse(true);
+            selRange.moveStart('character', start);
+            selRange.moveEnd('character', end);
+            selRange.select();
+            field.focus();
+        } else if( field.setSelectionRange ) {
+            field.focus();
+            field.setSelectionRange(start, end);
+        } else if( typeof field.selectionStart != 'undefined' ) {
+            field.selectionStart = start;
+            field.selectionEnd = end;
+            field.focus();
+        }
   }
 
   window.onmouseover = function(e) {
@@ -462,6 +473,8 @@
 
       overlay.style.display = "block"
 
+      createSelection(overlay, 1, log.length)
+
       document.body.scrollTop = 0;
 
    }
@@ -472,26 +485,18 @@
        on = false;
 
        if (overlay) {
-
            page.forEach(function(v, i) {
-
                if (v.getAttribute("class") != '____overlay') {
-
                    v.style['-webkit-transition'] = "-webkit-filter .50s"
-
                    v.style['-webkit-filter'] = "none"
 
                    setTimeout(function() {
-
                        v.style.removeProperty('-webkit-transition')
                        v.style.removeProperty('-webkit-filter')
-
                    }, 510)
                }
            })
-
            document.body.style.removeProperty('-webkit-user-select')
-
            overlay.style.display = "none"
        }
    }
@@ -506,13 +511,9 @@
             return;
 
         removeOutline(currEl)
-
         currEl = currEl.parentNode;
-
         addOutline(currEl)
-
     }
-
   }
-  
+
 })();
