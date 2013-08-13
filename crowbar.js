@@ -398,7 +398,7 @@
 
           alert(p)
           alert(m)
-          console.log(string)
+          alert(string)
           if (!currEl.querySelector(p)) {
                return ""
           } else {
