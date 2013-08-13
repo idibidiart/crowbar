@@ -2,39 +2,47 @@
 <html>
 <meta charset='UTF-8'/>
 <style>
-    .____enclosing_styles{ width: 600px ;  height: 1544px ; border-collapse: separate ; border-spacing: 0px 0px ; caption-side: top ; color: rgb(34, 34, 34) ; cursor: auto ; direction: ltr ; empty-cells: show ; font-family: adelle, Palatino, serif ; font-size: 16px ; font-style: normal ; font-variant: normal ; font-weight: normal ; letter-spacing: normal ; line-height: 24px ; list-style-image: none ; list-style-position: outside ; list-style-type: disc ; list-style: disc outside none ; text-align: start ; text-indent: 0px ; text-transform: none ; visibility: visible ; white-space: normal ; word-spacing: 0px ; opacity: 1 ; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box ; -webkit-filter: none ; -webkit-transform: none ; -webkit-transform-style: flat ; -webkit-perspective: none ; -webkit-backface-visibility: visible ;  }
 
-    p, h1 { margin: 0.75em 0px; }
-    a { color: rgb(204, 0, 0); text-decoration: none; }
-    img { border: none; } img { box-sizing: border-box; }
-    img, img.mainImage { max-width: 100% !important; height: auto !important; }
-    .alignnone, .aligncenter { max-width: 100% !important; height: auto !important; width: 100% !important; }
-    .alignleft, img[align="left"] { float: left; max-width: 40% !important; margin: 0px 2em 1em 0px !important; }
+    .____enclosing_styles { width: 636px ;  height: 185px ; border-collapse: separate ; border-spacing: 0px 0px ; caption-side: top ; color: rgb(34, 34, 34) ; cursor: auto ; direction: ltr ; empty-cells: show ; font-family: Georgia, serif ; font-size: 16px ; font-style: normal ; font-variant: normal ; font-weight: normal ; letter-spacing: normal ; line-height: 25px ; list-style-image: none ; list-style-position: outside ; list-style-type: disc ; list-style: disc outside none ; text-align: start ; text-indent: 0px ; text-transform: none ; visibility: visible ; white-space: normal ; word-spacing: 0px ; opacity: 1 ; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box ; -webkit-filter: none ; -webkit-transform: none ; -webkit-transform-style: flat ; -webkit-perspective: none ; -webkit-backface-visibility: visible ;  }
 
+    *, ::before, ::after { box-sizing: border-box; }
+    body, div, dl, dt, dd, ul, ol, li, h1, , h2, , h3, , h4, , h5, , h6, , pre, form, p, blockquote, th, td { margin: 0px; padding: 0px; font-size: 16px; direction: ltr; }  { position: relative; }   { border-top-width: 1px; border-top-style: solid; border-top-color: rgb(136, 136, 136); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(136, 136, 136); padding: 18px 0px; }
+    .row { width: 1008px; max-width: 100%; min-width: 768px; margin: 0px auto; }
+    .row .row { width: auto; max-width: none; min-width: 0px; margin: 0px -18px; }
+    .row .row { width: auto; max-width: none; min-width: 0px; margin: 0px -18px; } , .columns { float: left; min-height: 1px; padding: 0px 18px; position: relative; }
+    .six, .row .six { width: 50%; }
+    .six, .row .six { width: 50%; }
+    h1, , h2, , h3, , h4, , h5, , h6,  { font-family: ProximaNovaCond, serif; font-weight: bold; color: rgb(0, 0, 0); text-rendering: optimizelegibility; line-height: 1.1; margin-bottom: 16px; margin-top: 16px; }
+    h6,  { font-size: 16px; }
+    .headline, .headline a { color: rgb(0, 0, 0) !important; }  .headline { margin: 0px 0px 3px; line-height: 1.3; }
+    a { color: rgb(0, 147, 236); text-decoration: none; line-height: inherit; }
+    a,  { text-decoration: none; }
+    a, a:focus, a:hover, , :focus, :hover, , :hover { color: rgb(65, 127, 185); }
+    p { font-family: Georgia, serif; font-weight: normal; font-size: 16px; line-height: 1.6; margin-bottom: 19px; }
+    aside p { font-size: 15px; line-height: 1.35; font-style: italic; }  div, form.custom div.custom.dropdown.text-small ul li, form.custom   div.custom.dropdown.meta ul li,   form.custom div.custom.dropdown.meta ul li, form.custom  div.custom.dropdown.link-follow ul li,  form.custom div.custom.dropdown.link-follow ul li, form.custom  div.custom.dropdown.overlay-item ul li,  form.custom div.custom.dropdown.overlay-item ul li, .text-small,   p,   p,   ,  ,  ,   p { font-size: 14px !important; }  p { word-break: break-word; font-size: 15px; }  p { font-style: normal; line-height: 1.5; margin-bottom: 0px; }
+    p a, p a:visited { line-height: inherit; }
+    p a, p a:visited { line-height: inherit; }
+    [class*="column"] + [class*="column"]:last-child { float: right; }
+    .pln, ,  { padding-left: 0px !important; }
+    .img-border { position: relative; display: block; }
+    img { height: auto; }
+    img, object, embed { max-width: 100%; }
+    a img { border: none; }
+    .marquee { width: 100%; }
+    .img-border img, .img-border a { display: block; }
+
+    @font-face { font-family: ProximaNovaCond; src: url(http://jalopnik.com/assets/fonts/proxima/24FCCC_12_0.eot?#iefix) format(embedded-opentype), url(http://jalopnik.com/assets/fonts/proxima/24FCCC_12_0.woff) format(woff), url(http://jalopnik.com/assets/fonts/proxima/24FCCC_12_0.ttf) format(truetype); font-weight: normal; font-style: normal; }
+    @font-face { font-family: ProximaNovaCond; src: url(http://jalopnik.com/assets/fonts/proxima/26EC8A_5_0.eot?#iefix) format(embedded-opentype), url(http://jalopnik.com/assets/fonts/proxima/26EC8A_5_0.woff) format(woff), url(http://jalopnik.com/assets/fonts/proxima/26EC8A_5_0.ttf) format(truetype); font-weight: normal; font-style: italic; }
+    @font-face { font-family: ProximaNovaCond; src: url(http://jalopnik.com/assets/fonts/proxima/24FCCC_F_0.eot?#iefix) format(embedded-opentype), url(http://jalopnik.com/assets/fonts/proxima/24FCCC_F_0.woff) format(woff), url(http://jalopnik.com/assets/fonts/proxima/24FCCC_F_0.ttf) format(truetype); font-weight: bold; font-style: normal; }
+    @font-face { font-family: ProximaNovaCond; src: url(http://jalopnik.com/assets/fonts/proxima/26EC8A_4_0.eot?#iefix) format(embedded-opentype), url(http://jalopnik.com/assets/fonts/proxima/26EC8A_4_0.woff) format(woff), url(http://jalopnik.com/assets/fonts/proxima/26EC8A_4_0.ttf) format(truetype); font-weight: bold; font-style: italic; }
+    @font-face { font-family: KinjaIcons; src: url(http://jalopnik.com/assets/fonts/kinjafont/kinjaicons-regular-webfont.eot?#iefix) format(embedded-opentype), url(http://jalopnik.com/assets/fonts/kinjafont/kinjaicons-regular-webfont.svg) format(svg), url(http://jalopnik.com/assets/fonts/kinjafont/kinjaicons-regular-webfont.ttf) format(truetype); font-weight: normal; font-style: normal; }
 
 
 </style>
 <body>
 <div class='____enclosing_styles'>
-    <div class="post-content" style="">
-
-
-
-
-
-        <p><a href="http://www.amazon.com/exec/obidos/ASIN/B00B22ASUM/boingboing"><img src="http://media.boingboing.net/wp-content/uploads/2013/08/Bob-cat.jpg" original="http://media.boingboing.net/wp-content/uploads/2013/08/Bob-cat.jpg" mobile="http://media.boingboing.net/wp-content/uploads/2013/08/Bob-cat-300x450.jpg" class="alignnone"></a>
-            I don't usually read books about pets, but something about <a href="http://www.amazon.com/exec/obidos/ASIN/B00B22ASUM/boingboing">A Street Cat Named Bob</a> intrigued me, and once I started reading it I found I couldn't put it down. It's about a heroin-addicted London street busker named James Bowen who finds an injured stray cat and nurses him back to health. This simple act of kindness to an animal had a profound effect on Bowen's life. Enjoy the following excerpt.</p>
-
-
-        <p><strong>Excerpt:</strong></p>
-
-        <p><a href="http://www.amazon.com/exec/obidos/ASIN/B00B22ASUM/boingboing"><img src="http://media.boingboing.net/wp-content/uploads/2013/08/Street-Cat-Named-Bob-A-copy.jpg" class="alignleft"></a>I had to take Bob to a vet. I set my alarm early and got up to give the cat a bowl of mashed biscuits and tuna. It was another grey morning, but I knew I couldn’t use that as an excuse.</p>
-
-        <p>Inside the center, it was like stepping into a scene from hell. It was packed, mostly with dogs and their owners, most of whom seemed to be young teenage blokes with skinhead haircuts and aggressive tattoos. Seventy per cent of the dogs were Staffordshire Bull Terriers that had almost certainly been injured in fights with other dogs, probably for people’s amusement.</p>
-
-        <p style="">People always talk about Britain as a ‘nation of animal lovers’. There wasn’t much love on display here, that was for sure. The way some people treat their pets really disgusts me.</p>
-
-        <a href="http://boingboing.net/2013/08/12/a-street-cat-named-bob-exclu.html#more-249360" class="more-link"><p style=""><strong>Read the rest</strong></p></a>    </div>
+    <div class="container position-relative" style=""><div class="row"><div class="referenced-item six columns" style=""><h6 data-textannotation-id="0aa43beaf85d0bdcabc4f2cd5471a4df" class="headline" style=""><a onclick="window._gaq.push(['_trackEvent', 'Permalink page click', 'Permalink page click - inset headline']);" href="http://jalopnik.com/hyperloop-hyperloop-hyperloop-1109868919" sl-processed="1">Hyperloop, Hyperloop, Hyperloop</a></h6><p data-textannotation-id="bcf4ce95962ada7ad21e4c77620aa011" class="text-small" style="">Pulled all nighter working on Hyperloop (as did others). Hopefully not too many mistakes. Will publish link at 1:30 PDT.
+        — Elon Musk (@elonmusk)… <a onclick="window._gaq.push(['_trackEvent', 'Permalink page click', 'Permalink page click - inset read more link']);" href="http://jalopnik.com/hyperloop-hyperloop-hyperloop-1109868919" sl-processed="1">Read…</a></p></div><div class="referenced-item six columns"><div class="six mobile-two columns pln"><a onclick="window._gaq.push(['_trackEvent', 'Permalink page click', 'Permalink page click - inset photo']);" href="http://jalopnik.com/five-things-to-read-before-the-hyperloop-announcement-1110756174" sl-processed="1"><span class="img-border"><img class="marquee" src="http://img.gawkerassets.com/img/18wszjpx75wbcjpg/k-small.jpg"></span></a></div><h6 data-textannotation-id="0b193dd80c5918fff186ed4333bc66ed" class="headline"><a onclick="window._gaq.push(['_trackEvent', 'Permalink page click', 'Permalink page click - inset headline']);" href="http://jalopnik.com/five-things-to-read-before-the-hyperloop-announcement-1110756174" sl-processed="1">Five Things To Read Before The Hyperloop Announcement</a></h6><p data-textannotation-id="d920b008e94f241c1f78066c6f6a851f" class="text-small">We're all a little hyperloopy right now, with just a few hours to go before Elon Musk finally tells us what the hell he's been going on… <a onclick="window._gaq.push(['_trackEvent', 'Permalink page click', 'Permalink page click - inset read more link']);" href="http://jalopnik.com/five-things-to-read-before-the-hyperloop-announcement-1110756174" sl-processed="1">Read…</a></p></div></div></div>
 </div>
 </body>
 </html>
