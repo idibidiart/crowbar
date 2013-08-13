@@ -404,11 +404,11 @@
 
       console.log(log)
 
-      log = log.replace(/[^\d][.]([a-z0-9\-_]+)(\s*[,]*)/g, function(m, p1, p2, offset, string) {
+      log = log.replace(/[.]([a-zA-Z0-9\-_]+)(\s*[,]*)/g, function(m, p1, p2, offset, string) {
 
           console.log('pre match', m)
 
-          if (p1 != enclosingClass && !currEl.querySelector("." + p1)) {
+          if (isNaN(p1) && p1 != enclosingClass && !currEl.querySelector("." + p1)) {
               console.log('match', m)
               console.log('p1', p1)
               return " "
