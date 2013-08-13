@@ -408,13 +408,13 @@
 
           console.log('pre match', m)
 
-          if (p2 != enclosingClass && !currEl.querySelector("." + p2)) {
+          if (p1 != enclosingClass && !currEl.querySelector("." + p1)) {
               console.log('match', m)
-              console.log('p2', p2)
+              console.log('p1', p1)
               return " "
           } else {
-              console.log('no match', " ." + p2)
-              return " ." + p2
+              console.log('no match', " ." + p1)
+              return " ." + p1
           }
       })
 
