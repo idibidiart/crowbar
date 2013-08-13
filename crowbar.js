@@ -81,8 +81,6 @@
                         }
                     })
 
-                    console.log(css)
-
                     style.appendChild(document.createTextNode(css))
                 },
                 cssBase)
