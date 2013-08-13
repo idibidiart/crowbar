@@ -14,11 +14,11 @@
         function xhr(url, callback, local) {
             var XHR =  new XMLHttpRequest();
 
-            var cssBase = local;
+            var _cssBase = local;
 
             XHR.onreadystatechange = function () {
                 if (XHR.readyState == 4 && XHR.status == 200) {
-                    callback(XHR.responseText, cssBase, XHR);
+                    callback(XHR.responseText, _cssBase, XHR);
                 }
             };
 
@@ -36,6 +36,8 @@
             if (v.getAttribute("href").match(/(http[s]{0,1}:\/\/|\/\/)/)) {
 
                 cssBase = parseURL(v.getAttribute("href")).host + "/"
+
+                console.log('cssBase', cssBase)
 
                 url = "http://www.corsproxy.com/" + v.getAttribute("href").replace(/(http[s]{0,1}:\/\/|\/\/)/, "")
 
@@ -58,6 +60,7 @@
 
                             if (!p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
+                                console.log('absolute', toAbsoluteURL(p, local))
                                 return "url('" +
                                             toAbsoluteURL(p, local)
                                             + "')"
