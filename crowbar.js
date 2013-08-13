@@ -6,7 +6,7 @@
 
     (function() {
 
-        if (!document.querySelector('head').innerHTML.match(/meta charset=["']utf-8["']/i))
+        if (!document.querySelector('head').innerHTML.match(/<meta charset=["']utf-8["']/i))
         {
             var meta = document.querySelector('head').appendChild(document.createElement('META'))
             meta.charset = "utf-8"
@@ -460,11 +460,7 @@
 
       overlay.style.display = "block"
 
-       var element = document.body;
-
-       element.scrollTop = 1;
-       if (!element.scrollTop) element = document.documentElement;
-       else element.scrollTop = 0;
+       document.body.scrollTop = 0;
 
    }
 
