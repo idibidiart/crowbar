@@ -402,7 +402,7 @@
 
       log += "\n\n";
 
-      log = log.replace(/(\s|^)[.]([a-zA-Z0-9\-\_\$]+)/g, function(m, p1, p2, offset, string) {
+      log = log.replace(/(\s|^)[.]([a-z0-9\-\_\$]+\s*[,]*)/g, function(m, p1, p2, offset, string) {
 
           if (p2 != enclosingClass && !currEl.querySelector(p2)) {
 
