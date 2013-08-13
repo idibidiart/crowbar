@@ -407,7 +407,7 @@
           if (p2 != "." + enclosingClass && !currEl.querySelector(p2)) {
                return " "
           } else {
-              return " " + m
+              return " " + p2
           }
       })
 
