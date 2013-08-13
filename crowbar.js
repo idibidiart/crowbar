@@ -60,6 +60,8 @@
                                             toAbsoluteURL(p, local, false)
                                             + "')"
                             }
+                        } else {
+                            return m;
                         }
                     })
                     style.appendChild(document.createTextNode(css))
@@ -381,6 +383,8 @@
                        toAbsoluteURL(p2, window.location.hostname, false)
                        + "'"
                }
+           } else {
+               return m;
            }
        })
 

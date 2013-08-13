@@ -1,51 +1,556 @@
-<!doctype html>
-<html>
-<meta charset='UTF-8'/>
-<style>
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic);
+/* *** GLOBAL STYLES *** */
+body {
+font-family: Helvetica, Arial, sans-serif;
+font-size: 13px;
+}
 
-    .____enclosing_styles { width: 236px ;  height: 314px ; border-collapse: separate ; border-spacing: 0px 0px ; caption-side: top ; color: rgb(33, 25, 34) ; cursor: pointer ; direction: ltr ; empty-cells: show ; font-family: 'Helvetica Neue', arial, sans-serif ; font-size: 11px ; font-style: normal ; font-variant: normal ; font-weight: normal ; letter-spacing: normal ; line-height: normal ; list-style-image: none ; list-style-position: outside ; list-style-type: disc ; list-style: disc outside none ; text-align: start ; text-indent: 0px ; text-transform: none ; visibility: visible ; white-space: normal ; word-spacing: 0px ; opacity: 1 ; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box ; -webkit-filter: none ; -webkit-transform: none ; -webkit-transform-style: flat ; -webkit-perspective: none ; -webkit-backface-visibility: visible ;  }
+* {
+margin: 0;
+padding: 0;
+outline: 0;
+}
 
-    .Pin.summary .pinHolder { position: relative; z-index: 1; }
-    .Pin.summary .pinHolder { cursor: pointer; }
-    a { color: rgb(113, 113, 113); font-weight: bold; text-decoration: none; }
-    a:hover, a:active { outline: 0px; }
-    a:hover { color: rgb(138, 138, 138); }
-    .Pin.summary .pinImageWrapper { border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; background-color: rgb(238, 238, 238); display: block; position: relative; background-position: initial initial; background-repeat: initial initial; }
-    .Pin.summary .pinImageWrapper { cursor: -webkit-zoom-in; }
-    h1, h2, h3, h4, h5, h6 { margin: 0px; }
-    .Pin.summary .pinDomain { -webkit-font-smoothing: antialiased; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; opacity: 0.82; bottom: 0px; color: rgb(247, 247, 247); left: 0px; font-size: 12px; margin-top: -6px; padding: 0px 14px; position: absolute; right: 0px; top: 50%; text-align: center; text-shadow: rgba(0, 0, 0, 0.168627) 0px -1px; z-index: 4; }
-    .Pin.summary .hoverMask { border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; -webkit-box-shadow: none; box-shadow: none; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; z-index: 100; }
-    .Pin.summary .pinHolder:hover .hoverMask { background-color: rgba(255, 255, 255, 0.0980392); background-position: initial initial; background-repeat: initial initial; }
-    img { max-width: 100%; height: auto; vertical-align: middle; border: 0px; }
-    .Pin.summary .pinImg { display: block; margin: 0px auto; position: relative; z-index: 5; opacity: 0; }
-    .Pin.summary .pinImg.loaded { opacity: 1; }
-    .Pin.summary .pinImg.fade { transition: opacity 0.4s; -webkit-transition: opacity 0.4s; }
-    .Pin.summary .pinImg.fullBleed { border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; }
+ul, ol {
+list-style: none;
+}
 
-    @font-face { font-family: Abril-Bold; src: url(http://www.corsproxy.com/pinterest.com/pinterest.com/fonts/abril/bold/abril_bold_tt-webfont.woff) format(woff); font-weight: normal; font-style: normal; }
-    @font-face { font-family: Abril-Italic; src: url(http://www.corsproxy.com/pinterest.com/pinterest.com/fonts/abril/italic/abril_italic_tt-webfont.woff) format(woff); font-weight: normal; font-style: normal; }
-    @font-face { font-family: Abril-Regular; src: url(http://www.corsproxy.com/pinterest.com/pinterest.com/fonts/abril/regular/abril_regular_tt-webfont.woff) format(woff); font-weight: normal; font-style: normal; }
-    @font-face { font-family: Adelle-Bold; src: url(http://www.corsproxy.com/pinterest.com/pinterest.com/fonts/adelle/bold/adelle_bold_tt-webfont.woff) format(woff); font-weight: normal; font-style: normal; }
-    @font-face { font-family: Adelle-Light; src: url(http://www.corsproxy.com/pinterest.com/pinterest.com/fonts/adelle/light/adelle_light_tt-webfont.woff) format(woff); font-weight: normal; font-style: normal; }
-    @font-face { font-family: Adelle-Regular; src: url(http://www.corsproxy.com/pinterest.com/pinterest.com/fonts/adelle/regular/adelle_regular_tt-webfont.woff) format(woff); font-weight: normal; font-style: normal; }
+input, select {
+vertical-align: middle;
+}
 
+.divclear {
+clear: both;
+}
 
-</style>
-<body>
-<div class='____enclosing_styles'>
-    <div class="pinHolder " style="">
+img {
+-ms-interpolation-mode: bicubic;
+}
 
-        <a href='http://www.corsproxy.com/pinterest.com/pin/16818198581713032/' class="pinImageWrapper " style="background: #807865;">
+/* *** GRIDS *** */
+.line:after {
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
+}
 
-            <h4 class="pinDomain">naturesdoorways.tumblr.com</h4>
+.lastUnit:after {
+content: " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
+visibility: hidden;
+clear: both;
+height: 0 !important;
+display: block;
+line-height: 0;
+}
 
-            <div class="fadeContainer">
-                <div class="hoverMask"></div>
+.line {
+*zoom: 1;
+}
 
-                <img src='http://www.corsproxy.com/media-cache-ec0.pinimg.com/236x/78/17/17/7817170f43c2d11e09979d31f59b113f.jpg' class="pinImg fullBleed loaded fade" style="width: 236px;height: 314px;" onload="P.Lazy.imageLoad(this)" alt="Conch's eyes">
-            </div>
-        </a>
-    </div>
-</div>
-</body>
-</html>
+.unit {
+float: left;
+}
+
+.size1of1 {
+float: none;
+}
+
+.size1of2 {
+width: 50%;
+}
+
+.size1of3 {
+width: 33.33333%;
+}
+
+.size2of3 {
+width: 66.66666%;
+}
+
+.size1of4 {
+width: 25%;
+}
+
+.size3of4 {
+width: 75%;
+}
+
+.size1of5 {
+width: 20%;
+}
+
+.size2of5 {
+width: 40%;
+}
+
+.size3of5 {
+width: 60%;
+}
+
+.size4of5 {
+width: 80%;
+}
+
+.lastUnit {
+display: table-cell;
+*display: block;
+*zoom: 1;
+float: none;
+_position: relative;
+_left: -3px;
+_margin-right: -3px;
+width: auto;
+}
+
+.line {
+display: block;
+clear: both;
+overflow: hidden;
+}
+
+.grid_1of2 {
+width: 49%;
+float: left;
+overflow: hidden;
+margin-right: 2% !important;
+}
+
+.grid_1of3 {
+width: 32%;
+float: left;
+overflow: hidden;
+margin-right: 2%;
+}
+
+.button_white {
+border: 1px solid #aaa;
+-webkit-box-shadow: inset 0px 2px 2px -1px rgba(0, 0, 0, 0.5), 0px 1px 1px 0px rgba(255, 255, 255, 0.8);
+padding: 5px 4px 4px;
+display: inline-block;
+background: white -webkit-gradient(linear, left top, left bottom, from(white), to(#ededed));
+border-radius: 4px;
+}
+
+.button_silver_blue {
+border: 2px solid #608cd9;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+background: #f0f0f0;
+background: -webkit-gradient(linear, left top, left bottom, from(white), to(#cccccc));
+background: -moz-linear-gradient(top, white, #cccccc);
+font-weight: bold;
+text-shadow: #fff 0 1px 0;
+font-size: 13px;
+padding: 3px;
+display: block;
+text-align: center;
+}
+
+.button_basic {
+display: block;
+padding: 7px 8px;
+border-radius: 2px;
+border: 1px solid #ccc;
+background: #f2f2f2;
+background: -moz-linear-gradient(top, white, #f2f2f2);
+background: #f2f2f2 -webkit-gradient(linear, left top, left bottom, from(white), to(#f2f2f2));
+color: #333 !important;
+}
+
+.button_basic:hover {
+background: #d9d9d9;
+background: -moz-linear-gradient(top, #f9f9f9, #d9d9d9);
+background: #d9d9d9 -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#d9d9d9));
+}
+
+.button_basic_dark {
+display: block;
+padding: 6px 8px;
+border-radius: 6px;
+background: #999;
+background: -moz-linear-gradient(top, #999999, #555555);
+background: #999999 -webkit-gradient(linear, left top, left bottom, from(#999999), to(#555555));
+color: #fff !important;
+text-shadow: rgba(51, 51, 51, 0.7) 0 -1px 0;
+opacity: .99;
+}
+
+.button_basic_dark:hover {
+background: #00b300;
+background: -moz-linear-gradient(top, #00b300, #175f00);
+background: #00b300 -webkit-gradient(linear, left top, left bottom, from(#00b300), to(#175f00));
+}
+
+.button_green {
+background: #9DDF86;
+background: -moz-linear-gradient(top, #e3f1e6, #9ddf86);
+background: #9ddf86 -webkit-gradient(linear, left top, left bottom, from(#e3f1e6), to(#9ddf86));
+border-color: #00ab00;
+}
+
+.button_green:hover {
+background: #9DDF86;
+background: -moz-linear-gradient(top, #e3f1e6, #9ddf86);
+background: #9ddf86 -webkit-gradient(linear, left top, left bottom, from(#e3f1e6), to(#9ddf86));
+}
+
+.button_red {
+background: #FF9D9D;
+background: -moz-linear-gradient(top, #ffdbe0, #ff9d9d);
+background: #ff9d9d -webkit-gradient(linear, left top, left bottom, from(#ffdbe0), to(#ff9d9d));
+border-color: #B25A01;
+}
+
+.button_red:hover {
+background: #FF9D9D;
+background: -moz-linear-gradient(top, #ffdbe0, #ff9d9d);
+background: #ff9d9d -webkit-gradient(linear, left top, left bottom, from(#ffdbe0), to(#ff9d9d));
+}
+
+.button_list {
+margin: 10px 0 10px;
+}
+
+.button_list li {
+margin: 0 0 6px;
+}
+
+.button_list.li_nomargin li {
+margin: 0;
+}
+
+.button_flat, .button_flat:hover {
+background: #f6f6f6;
+}
+
+.button_flat_dark, .button_flat_dark:hover {
+background: #999;
+background: -moz-linear-gradient(top, #999999, #555555);
+background: #999999 -webkit-gradient(linear, left top, left bottom, from(#999999), to(#555555));
+color: #fff !important;
+text-shadow: rgba(51, 51, 51, 0.7) 0 -1px 0;
+cursor: default;
+}
+
+/* COLOR FOR PERSONALITY QUIZES ONCE AN ANSWER IS SELECTED*/
+.sty-personality-quiz-answer, .sty-personality-quiz-answer:hover {
+background: skyblue;
+background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #def2fa), color-stop(100%, #b3e0f2));
+background-image: -webkit-linear-gradient(#def2fa, #b3e0f2);
+background-image: -moz-linear-gradient(#def2fa, #b3e0f2);
+background-image: -o-linear-gradient(#def2fa, #b3e0f2);
+background-image: linear-gradient(#def2fa, #b3e0f2);
+border-color: skyblue;
+}
+.sty-personality-quiz-answer .x-answer-check, .sty-personality-quiz-answer:hover .x-answer-check {
+color: skyblue !important;
+}
+
+.nohover {
+cursor: default;
+}
+
+.alert_wrap {
+padding: 12px 0;
+}
+
+.alert_round {
+padding: 10px 10px 8px;
+border-radius: 8px;
+}
+
+.alert_blue {
+background: #ececfb;
+background: -moz-linear-gradient(top, white, #ececfb);
+background: #ececfb -webkit-gradient(linear, left top, left bottom, from(white), to(#ececfb));
+border: 1px solid #7396ff;
+}
+
+.speedbump_wrap {
+margin: 0;
+padding: 14px 10px;
+border-top: 1px solid #ccc;
+}
+
+.radio_button.button_basic {
+border-color: #fff;
+box-shadow: none;
+background: transparent;
+}
+
+.radio_button.button_basic:hover {
+background: #d9d9d9;
+background: -moz-linear-gradient(top, #f9f9f9, #d9d9d9);
+background: #d9d9d9 -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#d9d9d9));
+}
+
+.radio_button.button_basic.nohover:hover {
+background: transparent;
+}
+
+.button_basic.big_icon {
+position: relative;
+}
+
+.big_icon .icon {
+position: absolute;
+font-size: 24px;
+top: 0px;
+left: 3px;
+}
+
+.big_icon .button_txt {
+padding-left: 21px;
+}
+
+.button_xl_icon {
+position: relative;
+padding: 8px;
+display: block;
+border-radius: 2px;
+border: 1px solid #ccc;
+background: #f2f2f2;
+background: -moz-linear-gradient(top, white, #f2f2f2);
+background: #f2f2f2 -webkit-gradient(linear, left top, left bottom, from(white), to(#f2f2f2));
+color: #fff !important;
+text-shadow: rgba(51, 51, 51, 0.7) 0 -1px 0;
+}
+
+.button_xl_icon .icon {
+position: absolute;
+font-size: 24px;
+top: 2px;
+left: 5px;
+opacity: .8;
+}
+
+.button_xl_icon .button_txt {
+padding-left: 24px;
+opacity: .8;
+font-size: 14px;
+}
+
+.button_xl_icon:hover .icon, .button_xl_icon:hover .button_txt {
+opacity: .99;
+}
+
+.lw-chrome .button_xl_icon .icon {
+font-size: 28px;
+}
+
+.lw-chrome .button_xl_icon .button_txt {
+padding-left: 28px;
+font-size: 16px;
+}
+
+.pxbutton_grid .pxbutton {
+margin: 5px 0;
+}
+
+.pxbutton_grid div:first-child .pxbutton {
+margin-left: 0;
+margin-right: 9px;
+}
+
+.pxbutton_grid div:last-child .pxbutton {
+margin-left: 9px;
+margin-right: 0;
+}
+
+.pxbutton .ui-btn-inner {
+padding: 5px 6px;
+white-space: normal;
+}
+
+.button_icon_l .ui-btn-inner {
+padding: 4px 8px 4px 4px;
+}
+
+.button_icon_r .ui-btn-inner {
+padding: 4px 4px 4px 8px;
+}
+
+.button_icon_both .ui-btn-inner {
+padding: 4px;
+}
+
+.pxbutton_thin .ui-btn-inner {
+padding-top: 3px;
+padding-bottom: 3px;
+}
+
+.pxbutton_micro {
+box-shadow: none;
+margin: 0 1px 0;
+}
+
+.pxbutton_micro .ui-btn-inner {
+padding: 0 4px;
+}
+
+.pxbutton_micro.ui-btn-corner-all {
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+}
+
+.pxbutton_post .ui-btn-inner {
+padding: 5px;
+}
+
+.media, .bd, .fclear {
+overflow: hidden;
+}
+
+.media .img {
+float: left;
+margin-right: 5px;
+}
+
+.media .img_right {
+float: right;
+margin-left: 8px;
+}
+
+.ptn-media {
+overflow: hidden;
+}
+.ptn-media .ptn-img {
+float: left;
+}
+.ptn-media .ptn-bd {
+overflow: hidden;
+}
+
+.f_right {
+float: right !important;
+}
+
+.f_left {
+float: left;
+}
+
+.f_none {
+float: none !important;
+}
+
+.row_clear {
+width: 100%;
+clear: both;
+}
+
+.pos_rel {
+position: relative;
+}
+
+.pos_abs {
+position: absolute;
+}
+
+.font9 {
+font-size: 9px !important;
+}
+
+.font10 {
+font-size: 10px !important;
+}
+
+.font11 {
+font-size: 11px !important;
+}
+
+.font12 {
+font-size: 12px !important;
+}
+
+.font13 {
+font-size: 13px !important;
+}
+
+.font14 {
+font-size: 14px !important;
+}
+
+.font15 {
+font-size: 15px !important;
+}
+
+.font16 {
+font-size: 16px !important;
+}
+
+.font17 {
+font-size: 17px !important;
+}
+
+.font18 {
+font-size: 18px !important;
+}
+
+.font20 {
+font-size: 20px !important;
+}
+
+.font22 {
+font-size: 22px !important;
+}
+
+.font24 {
+font-size: 24px !important;
+}
+
+.font25 {
+font-size: 25px !important;
+}
+
+.font28 {
+font-size: 28px !important;
+}
+
+.font30 {
+font-size: 30px;
+}
+
+.font32 {
+font-size: 32px;
+}
+
+.font34 {
+font-size: 34px !important;
+}
+
+.bold {
+font-weight: bold;
+}
+
+.italic {
+font-style: italic;
+}
+
+.shadow_top {
+text-shadow: rgba(51, 51, 51, 0.7) 0 -1px 0;
+}
+
+.light_bot {
+text-shadow: rgba(255, 255, 255, 0.9) 0 1px 0;
+}
+
+.helv_light {
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue","Geneva", sans-serif;
+font-weight: 200;
+line-height: 110%;
+}
+
+.h1_title,
+.page_head .h1_title {
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue","Geneva", sans-serif;
+font-weight: 200;
+line-height: 110%;
+font-size: 20px;
+}
+
+.h1_title a {
+font-weight: bold !…
