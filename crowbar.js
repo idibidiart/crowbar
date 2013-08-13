@@ -11,12 +11,14 @@
         var style = document.querySelector('style')
             || document.querySelector('head').appendChild(document.createElement('STYLE'))
 
-        function xhr(url, callback) {
+        function xhr(url, callback, local) {
             var XHR =  new XMLHttpRequest();
+
+            var _cssBase = local;
 
             XHR.onreadystatechange = function () {
                 if (XHR.readyState == 4 && XHR.status == 200) {
-                    callback(XHR.responseText, XHR);
+                    callback(XHR.responseText, local, XHR);
                 }
             };
 
@@ -31,19 +33,17 @@
 
             if (v.getAttribute("href").match(/(http[s]{0,1}:\/\/|\/\/)/)) {
 
-                cssBase = parseURL(v.getAttribute("href")).host + "/"
-
-                console.log('cssBase', cssBase)
+                cssBase = parseURL(v.getAttribute("href")).host
 
                 url = "http://www.corsproxy.com/" + v.getAttribute("href").replace(/(http[s]{0,1}:\/\/|\/\/)/, "")
 
             } else {
 
-                cssBase = window.location.hostname + "/"
+                cssBase = window.location.hostname
 
                 url = "http://www.corsproxy.com/" +
-                    toAbsoluteURL(v.getAttribute("href"), cssBase)
-                        .replace(/(http[s]{0,1}:\/\/|\/\/)/, "")
+                    toAbsoluteURL(v.getAttribute("href"), cssBase, true)
+
             }
 
             xhr(url,
@@ -57,16 +57,16 @@
                             if (!p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
                                 console.log(cssBase)
-                                console.log('absolute', toAbsoluteURL(p, cssBase))
+                                console.log('absolute', toAbsoluteURL(p, local, false))
                                 return "url('" +
-                                            toAbsoluteURL(p, cssBase)
+                                            toAbsoluteURL(p, local, false)
                                             + "')"
                             }
                         }
                     })
                     style.appendChild(document.createTextNode(css))
-                }
-            )
+                },
+                cssBase)
 
             document.querySelector('head').removeChild(v)
         })
@@ -110,33 +110,9 @@
     }
   }
 
-  function toAbsoluteURL(url, base_url) {
+  function toAbsoluteURL(url, host, httpLess) {
 
-    var _base = document.querySelector('base')
-
-    if (_base)
-        document.removeChild(_base)
-
-    var head = document.head || document.querySelector('head'),
-        base = head.appendChild(document.createElement('base')),
-        resolver = document.querySelector(".____base_resolver") ||
-            (function() {
-                var a = document.createElement('a')
-                    document.body.appendChild(a)
-                    a.setAttribute("class", "____base_resolver")
-                    return a;
-            })(),
-    absolute_url;
-
-    base.href = base_url;
-
-    resolver.href = url;
-
-    absolute_url = resolver.href
-
-    head.removeChild(base)
-
-    return absolute_url;
+    return httpLess ? host + url : "http://" + host + "/" + url
   }
 
   function removeOutline(el) {
@@ -396,13 +372,13 @@
           page = [].slice.call(document.body.children,0)
       }
 
-       log = log.replace(/(href|src)\s*\=\s*['"]([^\s;}]+)['"]/gi, function r(m, p1, p2, offset, string){
+       log = log.replace(/(href|src)\s*=\s*['"]([^\s;}]+)['"]/gi, function r(m, p1, p2, offset, string){
 
            if (p2.indexOf("data") != 0) {
                if (!p2.match(/(http[s]{0,1}:\/\/|\/\/)/)) {
 
                    return p1 + "='" +
-                       toAbsoluteURL(p2, window.location.hostname + "/")
+                       toAbsoluteURL(p2, window.location.hostname, false)
                        + "'"
                }
            }
