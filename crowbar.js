@@ -404,7 +404,7 @@
 
       console.log(log)
 
-      log = log.replace(/(\s|^)[.]([a-z0-9\-\_\$]+)\s*[,]*/g, function(m, p1, p2, offset, string) {
+      log = log.replace(/(\s|^)[.]([a-z0-9\-\_\$]+)\s*[,]*/gm, function(m, p1, p2, offset, string) {
 
           if (p2 != enclosingClass && !currEl.querySelector("." + p2)) {
               console.log('match', m)
