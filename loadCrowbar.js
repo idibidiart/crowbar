@@ -2,7 +2,7 @@
   if(typeof d3 == 'undefined'){
     myScript=document.createElement('SCRIPT');
     myScript.type='text/javascript';
-    myScript.src='ttp://d3js.org/d3.v3.min.js ';
+    myScript.src='http://d3js.org/d3.v3.min.js ';
     document.getElementsByTagName('body')[0].appendChild(myScript);
   }
   if(typeof ____crowbar____ == 'undefined'){

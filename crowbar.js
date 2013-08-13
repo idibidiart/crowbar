@@ -6,6 +6,10 @@
 
     (function() {
 
+        var meta = document.querySelector('head').appendChild(document.createElement('META'))
+
+        meta.charset = "utf-8"
+
         var links = Array.prototype.slice.call(document.querySelectorAll('link[rel="stylesheet"]'), 0)
 
         var style = document.querySelector('style')
@@ -89,7 +93,7 @@
 
     var a =  document.querySelector(".____url_parser") ||
         (function() {
-            var a = document.createElement('a')
+            var a = document.createElement('A')
             document.body.appendChild(a)
             a.setAttribute("class", "____url_parser")
             return a;
@@ -129,10 +133,10 @@
               , old_base = doc.getElementsByTagName('base')[0]
               , old_href = old_base && old_base.href
               , doc_head = doc.head || doc.getElementsByTagName('head')[0]
-              , our_base = old_base || doc_head.appendChild(doc.createElement('base'))
+              , our_base = old_base || doc_head.appendChild(doc.createElement('BASE'))
               , resolver = doc.querySelector(".____url_resolver") ||
                   (function() {
-                      var a = document.createElement('a')
+                      var a = document.createElement('A')
                       document.body.appendChild(a)
                       a.setAttribute("class", "____url_resolver")
                       return a;
