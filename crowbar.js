@@ -386,14 +386,22 @@
 
        log += rules.trim() ? rules : "";
 
-       findAll(currEl).forEach(function(v, i){
+      findAll(currEl).forEach(function(v, i){
 
            rules = getMatchedRules(v, log)
-
            log += rules.trim() ? rules : "";
-       });
+      });
 
       log += "\n\n";
+
+      log = log.replace(/([.]\w+)/g, function(m, p, offset, string) {
+
+          if (!currEl.querySelector(p)) {
+               return ""
+          } else {
+              return m
+          }
+      })
 
       getFontFaceRules().forEach(function(v, i) {
           log += v + "\n"
@@ -403,20 +411,6 @@
             + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
 
       var d = document.createElement("DIV")
-
-      if (!overlay) {
-          d.style.cssText = "display: none; position: absolute; z-index: 100000; left: 0px;" +
-                            "padding-left: 10px; top: 0px; width: 100%; height: " + getDocHeight() + "px;" +
-                            "color: black;"
-
-          d.setAttribute("class", "____overlay")
-
-          overlay = document.body.appendChild(d)
-
-          overlay.style['-webkit-user-select'] = 'text'
-
-          page = [].slice.call(document.body.children,0)
-      }
 
        log = log.replace(/(href|src)\s*=\s*['"]([^\s;}]+)['"]/gi, function r(m, p1, p2, offset, string){
 
@@ -441,6 +435,16 @@
           .replaceAll('<', '&lt;')
           .replaceAll('>', '&gt;')
 
+       if (!overlay) {
+           d.style.cssText = "display: none; position: absolute; z-index: 100000; left: 0px;" +
+               "padding-left: 10px; top: 0px; width: 100%; height: " + getDocHeight() + "px;" +
+               "color: black;"
+
+           d.setAttribute("class", "____overlay")
+           overlay = document.body.appendChild(d)
+           overlay.style['-webkit-user-select'] = 'text'
+           page = [].slice.call(document.body.children,0)
+       }
 
       page.forEach(function(v, i) {
 
@@ -458,7 +462,7 @@
 
       overlay.style.display = "block"
 
-       document.body.scrollTop = 0;
+      document.body.scrollTop = 0;
 
    }
 
