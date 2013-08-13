@@ -394,12 +394,9 @@
 
       log += "\n\n";
 
-      log = log.replace(/([.]\w+)/g, function(m, p, offset, string) {
+      log = log.replace(/(^|\s)([.]\w+)/g, function(m, p1, p2, offset, string) {
 
-          alert(p)
-          alert(m)
-          alert(string)
-          if (!currEl.querySelector(p)) {
+          if (!currEl.querySelector(p2)) {
                return ""
           } else {
               return m
