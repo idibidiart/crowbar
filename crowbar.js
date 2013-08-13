@@ -58,6 +58,7 @@
 
                             if (!p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
+                                console.log('absolute', toAbsoluteURL(p, local))
                                 return "url('" +
                                             toAbsoluteURL(p, local)
                                             + "')"
