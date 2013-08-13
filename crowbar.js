@@ -377,13 +377,13 @@
 
       removeOutline(currEl)
 
-      var log, rules, bounds, enclosingSelector = ".____enclosing_styles";
+      var log, rules, bounds, enclosingClass = "____enclosing_styles";
 
       log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
 
       bounds = currEl.getBoundingClientRect()
 
-      log += enclosingSelector
+      log += "." + enclosingClass
                 + " { width: " + bounds.width  + "px ; "
                 + " height: " + bounds.height  + "px ; "
                 +  computeInheritedStyles(currEl)
@@ -402,20 +402,20 @@
 
       log += "\n\n";
 
-//      log = log.replace(/(^|\s)([.]\w+)/g, function(m, p1, p2, offset, string) {
-//
-//          if (p2 != enclosingSelector && !currEl.querySelector(p2)) {
-//               return ""
-//          } else {
-//              return m
-//          }
-//      })
+      log = log.replace(/(\s|^)[.]([a-zA-Z0-9\-\_\$]+)/g, function(m, p1, p2, offset, string) {
+
+          if (p2 != "." + enclosingClass && !currEl.querySelector(p2)) {
+               return " "
+          } else {
+              return " " + m
+          }
+      })
 
       getFontFaceRules().forEach(function(v, i) {
           log += v + "\n"
       })
 
-      log += "\n\n</style>\n<body>\n<div class='" + enclosingSelector + "'>\n"
+      log += "\n\n</style>\n<body>\n<div class='" + enclosingClass + "'>\n"
             + currEl.outerHTML + "\n</div>\n</body>\n</html>\n\n"
 
       var d = document.createElement("DIV")
