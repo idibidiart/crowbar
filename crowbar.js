@@ -6,11 +6,9 @@
 
     (function() {
 
-        if (!document.querySelector('meta')
-            || document.querySelector('meta').charset.toLowerCase() != "utf-8")
+        if (!document.querySelector('head').innerHTML.match(/meta charset=["']utf-8["']/i))
         {
             var meta = document.querySelector('head').appendChild(document.createElement('META'))
-
             meta.charset = "utf-8"
         }
 
