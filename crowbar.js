@@ -515,8 +515,8 @@
         // previous filter (on mouse over) allows only block-level elements to be selected
         // this prevents body element from being selected via "p" key, per our use case
 
-        if (!currEl || currEl.parentNode.tagName.toLowerCase() == "body")
-            return;
+        //if (!currEl || currEl.parentNode.tagName.toLowerCase() == "body")
+        //    return;
 
         removeOutline(currEl)
         currEl = currEl.parentNode;
