@@ -6,12 +6,6 @@
 
     (function() {
 
-        if (!document.querySelector('head').innerHTML.match(/<meta charset=["']utf-8["']/i))
-        {
-            var meta = document.querySelector('head').appendChild(document.createElement('META'))
-            meta.charset = "utf-8"
-        }
-
         var links = Array.prototype.slice.call(document.querySelectorAll('link[rel="stylesheet"]'), 0)
 
         var style = document.querySelector('style')
@@ -50,14 +44,20 @@
 
                 cssBase = URL.protocol + "://" + URL.host + URL.path.replace(URL.segments[URL.segments.length - 1], "")
 
-                url = "http://www.corsproxy.com/" + v.getAttribute("href").replace(/(http[s]{0,1}:\/\/|\/\/)/, "")
+                if (window.location.host == URL.host) {
+
+                    url = v.getAttribute("href")
+
+                } else {
+
+                    url = "http://www.corsproxy.com/" + v.getAttribute("href").replace(/(http[s]{0,1}:\/\/|\/\/)/, "")
+                }
 
             } else {
 
                 cssBase = document.baseURI
 
-                url = "http://www.corsproxy.com/" +
-                    toAbsoluteURL(v.getAttribute("href"), cssBase).replace(/(http[s]{0,1}:\/\/|\/\/)/, "")
+                url = toAbsoluteURL(v.getAttribute("href"), cssBase)
             }
 
             xhr(url,
