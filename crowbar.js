@@ -293,9 +293,9 @@
     var doc = document;
 
     return Math.max(
-        doc.body.scrollHeight, D.documentElement.scrollHeight,
-        doc.body.offsetHeight, D.documentElement.offsetHeight,
-        doc.body.clientHeight, D.documentElement.clientHeight
+        doc.body.scrollHeight, doc.documentElement.scrollHeight,
+        doc.body.offsetHeight, doc.documentElement.offsetHeight,
+        doc.body.clientHeight, doc.documentElement.clientHeight
     )
   }
 
