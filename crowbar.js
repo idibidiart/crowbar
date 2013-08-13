@@ -20,9 +20,16 @@
                 }
             };
 
-            XHR.open("GET", url, true);
-            XHR.send("");
+            try {
+                XHR.open("GET", url, true);
+                XHR.send("");
+            } catch (e) {
+                setTimeout(function() {
+                   xhr(url, callback, path)
+                }, 500)
+            }
             return XHR;
+
         }
 
         var cssBase;
