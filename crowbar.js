@@ -11,12 +11,12 @@
         var style = document.querySelector('style')
             || document.querySelector('head').appendChild(document.createElement('STYLE'))
 
-        function xhr(url, callback) {
+        function xhr(url, callback, local) {
             var XHR =  new XMLHttpRequest();
 
             XHR.onreadystatechange = function () {
                 if (XHR.readyState == 4 && XHR.status == 200) {
-                    callback(XHR.responseText, XHR);
+                    callback(XHR.responseText, local, XHR);
                 }
             };
 
@@ -24,6 +24,8 @@
             XHR.send("");
             return XHR;
         }
+
+
 
         links.forEach(function(v, i) {
 
@@ -54,13 +56,14 @@
                             if (!p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
                                 return "url('" +
-                                            toAbsoluteURL(p, cssBase)
+                                            toAbsoluteURL(p, local)
                                             + "')"
                             }
                         }
                     })
                     style.appendChild(document.createTextNode(css))
-                }
+                },
+                cssBase
             )
 
             document.querySelector('head').removeChild(v)
