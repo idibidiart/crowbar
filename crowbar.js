@@ -466,10 +466,6 @@
        if (!element.scrollTop) element = document.documentElement;
        else element.scrollTop = 0;
 
-       d3.select(element).transition()
-           .delay(1500)
-           .duration(7500)
-           .tween("scrollTop", scrollTopTween(element.scrollHeight - self.innerHeight));
    }
 
    // esc or x
