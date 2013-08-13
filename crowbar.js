@@ -397,6 +397,8 @@
       log = log.replace(/([.]\w+)/g, function(m, p, offset, string) {
 
           alert(p)
+          alert(m)
+          console.log(string)
           if (!currEl.querySelector(p)) {
                return ""
           } else {
