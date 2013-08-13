@@ -11,14 +11,12 @@
         var style = document.querySelector('style')
             || document.querySelector('head').appendChild(document.createElement('STYLE'))
 
-        function xhr(url, callback, local) {
+        function xhr(url, callback) {
             var XHR =  new XMLHttpRequest();
-
-            var _cssBase = local;
 
             XHR.onreadystatechange = function () {
                 if (XHR.readyState == 4 && XHR.status == 200) {
-                    callback(XHR.responseText, _cssBase, XHR);
+                    callback(XHR.responseText, XHR);
                 }
             };
 
@@ -27,11 +25,9 @@
             return XHR;
         }
 
-
+        var cssBase;
 
         links.forEach(function(v, i) {
-
-            var cssBase;
 
             if (v.getAttribute("href").match(/(http[s]{0,1}:\/\/|\/\/)/)) {
 
@@ -60,16 +56,15 @@
 
                             if (!p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
-                                console.log('absolute', toAbsoluteURL(p, local))
+                                console.log('absolute', toAbsoluteURL(p, cssBase))
                                 return "url('" +
-                                            toAbsoluteURL(p, local)
+                                            toAbsoluteURL(p, cssBase)
                                             + "')"
                             }
                         }
                     })
                     style.appendChild(document.createTextNode(css))
-                },
-                cssBase
+                }
             )
 
             document.querySelector('head').removeChild(v)
