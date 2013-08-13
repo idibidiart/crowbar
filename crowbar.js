@@ -413,7 +413,7 @@
               console.log('match', m)
               console.log('p2', p2)
               if (p3) {
-                  return " *"
+                  return " * > "
               }
               return " "
           } else {
