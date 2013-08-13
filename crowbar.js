@@ -11,14 +11,12 @@
         var style = document.querySelector('style')
             || document.querySelector('head').appendChild(document.createElement('STYLE'))
 
-        function xhr(url, callback, local) {
+        function xhr(url, callback, path) {
             var XHR =  new XMLHttpRequest();
-
-            var _cssBase = local;
 
             XHR.onreadystatechange = function () {
                 if (XHR.readyState == 4 && XHR.status == 200) {
-                    callback(XHR.responseText, local, XHR);
+                    callback(XHR.responseText, path, XHR);
                 }
             };
 
@@ -31,24 +29,27 @@
 
         links.forEach(function(v, i) {
 
+            var url;
+
             if (v.getAttribute("href").match(/(http[s]{0,1}:\/\/|\/\/)/)) {
 
-                cssBase = parseURL(v.getAttribute("href")).host
+                var URL = parseURL(v.getAttribute("href"))
+
+                cssBase = URL.protocol + "://" + URL.host + URL.path.replace(URL.segments[URL.segments.length - 1], "")
 
                 url = "http://www.corsproxy.com/" + v.getAttribute("href").replace(/(http[s]{0,1}:\/\/|\/\/)/, "")
 
             } else {
 
-                cssBase = window.location.hostname
+                cssBase = document.baseURI
 
                 url = "http://www.corsproxy.com/" +
-                    toAbsoluteURL(v.getAttribute("href"), cssBase, true)
-
+                    toAbsoluteURL(v.getAttribute("href"), cssBase).replace(/(http[s]{0,1}:\/\/|\/\/)/, "")
             }
 
             xhr(url,
 
-                function(css, local){
+                function(css, _cssBase){
 
                     css = css.replace(/url\(['"]([^\s;}]+)['"]\)/gi, function r(m, p, offset, string){
 
@@ -57,7 +58,7 @@
                             if (!p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
                                 return "url('" +
-                                            toAbsoluteURL(p, local, false)
+                                            toAbsoluteURL(p, _cssBase)
                                             + "')"
                             } else {
                                 return m
@@ -115,18 +116,39 @@
     }
   }
 
-  function toAbsoluteURL(url, host, httpLess) {
+  function toAbsoluteURL(url, base_url) {
 
-    //TODO: use parseURL().segments to support ../../path etc
+          var doc = document
+              , old_base = doc.getElementsByTagName('base')[0]
+              , old_href = old_base && old_base.href
+              , doc_head = doc.head || doc.getElementsByTagName('head')[0]
+              , our_base = old_base || doc_head.appendChild(doc.createElement('base'))
+              , resolver = doc.querySelector(".____url_resolver") ||
+                  (function() {
+                      var a = document.createElement('a')
+                      document.body.appendChild(a)
+                      a.setAttribute("class", "____url_resolver")
+                      return a;
+                  })()
+              , resolved_url
+              ;
+          our_base.href = base_url;
+          resolver.href = url;
+          resolved_url  = resolver.href; // browser magic at work here
 
-    return httpLess ? host + url : "http://" + host + "/" + url
+          if (old_base) old_base.href = old_href;
+          else doc_head.removeChild(our_base);
+          return resolved_url;
+
   }
 
   function removeOutline(el) {
+
       el.style.outline = null;
   }
 
   function addOutline(el) {
+
       el.style.outline  ='red 2px solid'
   }
 
@@ -148,6 +170,7 @@
 
         return rules;
     }
+
     return "";
   }
 
@@ -178,7 +201,6 @@
     })
 
     return result;
-
   }
 
   function computeInheritedStyles(el) {
@@ -255,12 +277,9 @@
     return result;
   }
 
-
-
   function findAll(el) {
 
       return Array.prototype.slice.call(el.getElementsByTagName("*"), 0);
-
   }
 
   String.prototype.replaceAll = function(str1, str2, ignore)
@@ -270,12 +289,14 @@
   }
 
   function getDocHeight() {
-    var D = document;
+
+    var doc = document;
+
     return Math.max(
-        D.body.scrollHeight, D.documentElement.scrollHeight,
-        D.body.offsetHeight, D.documentElement.offsetHeight,
-        D.body.clientHeight, D.documentElement.clientHeight
-    );
+        doc.body.scrollHeight, D.documentElement.scrollHeight,
+        doc.body.offsetHeight, D.documentElement.offsetHeight,
+        doc.body.clientHeight, D.documentElement.clientHeight
+    )
   }
 
   window.onmouseover = function(e) {
@@ -385,7 +406,7 @@
                if (!p2.match(/(http[s]{0,1}:\/\/|\/\/)/)) {
 
                    return p1 + "='" +
-                       toAbsoluteURL(p2, window.location.hostname, false)
+                       toAbsoluteURL(p2, document.baseURI)
                        + "'"
                } else {
                    return m
@@ -394,7 +415,6 @@
                return m;
            }
        })
-
 
        log = log
           .replaceAll('&', '&amp;')
@@ -419,7 +439,6 @@
       document.body.style['-webkit-user-select'] = 'none'
 
       overlay.style.display = "block"
-
    }
 
    // esc or x
@@ -442,7 +461,6 @@
            document.body.style['-webkit-user-select'] = 'text'
 
            overlay.style.display = "none"
-
        }
    }
 
