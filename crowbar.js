@@ -402,14 +402,14 @@
 
       log += "\n\n";
 
-      log = log.replace(/(^|\s)([.]\w+)/g, function(m, p1, p2, offset, string) {
-
-          if (p2 != enclosingSelector && !currEl.querySelector(p2)) {
-               return ""
-          } else {
-              return m
-          }
-      })
+//      log = log.replace(/(^|\s)([.]\w+)/g, function(m, p1, p2, offset, string) {
+//
+//          if (p2 != enclosingSelector && !currEl.querySelector(p2)) {
+//               return ""
+//          } else {
+//              return m
+//          }
+//      })
 
       getFontFaceRules().forEach(function(v, i) {
           log += v + "\n"
