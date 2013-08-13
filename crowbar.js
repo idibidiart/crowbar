@@ -56,6 +56,7 @@
 
                             if (!p.match(/(http[s]{0,}:\/\/|\/\/)/)) {
 
+                                console.log(cssBase)
                                 console.log('absolute', toAbsoluteURL(p, cssBase))
                                 return "url('" +
                                             toAbsoluteURL(p, cssBase)
