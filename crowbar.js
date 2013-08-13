@@ -405,7 +405,8 @@
       log = log.replace(/(\s|^)[.]([a-zA-Z0-9\-\_\$]+)/g, function(m, p1, p2, offset, string) {
 
           if (p2 != "." + enclosingClass && !currEl.querySelector(p2)) {
-               return " "
+              console.log(p2)
+              return " "
           } else {
               return " " + p2
           }
