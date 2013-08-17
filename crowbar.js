@@ -185,7 +185,7 @@
     return "";
   }
 
-  function computeEnclosingStyles(el) {
+  function computeBlendedStyles(el) {
 
     var enclosingProperties = [
         "opacity",
@@ -312,13 +312,20 @@
 
     function selectText(el) {
 
+        // unjam the focus
+        window.focus()
+        window.blur()
+        window.focus()
+        document.focus()
+        document.blur()
+        document.focus()
+        
         if (document.selection) {
-            document.focus()
+           
             var range = document.body.createTextRange();
             range.moveToElementText(el);
             range.select();
         } else if (window.getSelection) {
-            window.focus()
             var range = document.createRange();
             range.selectNode(el);
             window.getSelection().addRange(range);
@@ -387,7 +394,7 @@
                 + " { width: " + bounds.width  + "px ; "
                 + " height: " + bounds.height  + "px ; "
                 +  computeInheritedStyles(currEl)
-                +  computeEnclosingStyles(currEl)
+                +  computeBlendedStyles(currEl)
                 + " }\n"
 
        rules = getMatchedRules(currEl, log)
@@ -410,8 +417,6 @@
           console.log('pre p2', p2)
 
           if (p2 != "." + enclosingClass && !currEl.querySelector(p2)) {
-              console.log('match', m)
-              console.log('p2', p2)
               if (p3) {
                   return " ." + enclosingClass + " > "
               }
@@ -515,8 +520,8 @@
         // previous filter (on mouse over) allows only block-level elements to be selected
         // this prevents body element from being selected via "p" key, per our use case
 
-        //if (!currEl || currEl.parentNode.tagName.toLowerCase() == "body")
-        //    return;
+        if (!currEl || currEl.parentNode.tagName.toLowerCase() == "body")
+            return;
 
         removeOutline(currEl)
         currEl = currEl.parentNode;
