@@ -312,12 +312,7 @@
 
     function selectText(el) {
 
-        // unjam the focus
         window.focus()
-        window.blur()
-        window.focus()
-        document.focus()
-        document.blur()
         document.focus()
         
         if (document.selection) {
@@ -342,7 +337,7 @@
     // it can't be directly appended to the body of a document (our use case)
     if (
         (["p", "h1", "h2", "h3", "h4", "h5", "h6",
-        "ol", "ul", "pre", "address", "blockquote",
+        "ol", "ul", "span", "pre", "address", "blockquote",
         "dl", "div", "fieldset", "form", "output",
         "blockquote", "table", "tfoot",
         "article", "section", "aside", "nav",
@@ -488,7 +483,10 @@
 
       selectText(overlay)
 
-      document.body.scrollTop = 0;
+      setTimeout(function() {
+          document.body.scrollTop = 0;
+      }, 10)
+
 
    }
 
