@@ -379,15 +379,22 @@
 
       removeOutline(currEl)
 
-      var log, rules, bounds, enclosingClass = "____enclosing_styles";
+      var log, rules, bounds, overflow, enclosingClass = "____enclosing_styles";
 
       log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
 
-      bounds = currEl.getBoundingClientRect()
+      bounds = currEl.parentNode.getBoundingClientRect()
+
+      var doc= el.ownerDocument;
+      var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
+
+
+      overflow = win.getComputedStyle(currEl.parentNode).getPropertyValue("overflow")
 
       log += "." + enclosingClass
                 + " { width: " + bounds.width  + "px ; "
-                + " height: " + bounds.height  + "px ; "
+                + "height: " + bounds.height  + "px ; "
+                + "overflow: " + overflow + "; "
                 +  computeInheritedStyles(currEl)
                 +  computeBlendedStyles(currEl)
                 + " }\n"
@@ -478,15 +485,11 @@
       overlay.innerHTML =  "<pre>" + log + "</pre>"
 
       document.body.style['-webkit-user-select'] = 'none'
+      document.body.scrollTop = 0;
 
       overlay.style.display = "block"
 
       selectText(overlay)
-
-      setTimeout(function() {
-          document.body.scrollTop = 0;
-      }, 10)
-
 
    }
 
