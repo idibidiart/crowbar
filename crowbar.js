@@ -312,13 +312,10 @@
 
     function selectText(el) {
 
-        alert(0)
-
         el.focus()
 
         setTimeout(function() {
 
-        alert(1)
         if (document.selection) {
            
             var range = document.body.createTextRange();
