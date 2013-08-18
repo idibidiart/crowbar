@@ -316,6 +316,8 @@
         document.focus()
 
         setTimeout(function() {
+
+        alert(1)
         if (document.selection) {
            
             var range = document.body.createTextRange();
