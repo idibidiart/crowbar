@@ -383,7 +383,7 @@
 
       log = "<!doctype html>\n<html>\n<meta charset='UTF-8'/>\n<style>\n\n"
 
-      bounds = currEl.parentNode.getBoundingClientRect()
+      bounds = currEl.getBoundingClientRect()
 
       var   doc = currEl.ownerDocument
           , win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
