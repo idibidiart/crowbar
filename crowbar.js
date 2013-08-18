@@ -385,9 +385,8 @@
 
       bounds = currEl.parentNode.getBoundingClientRect()
 
-      var doc= el.ownerDocument;
-      var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
-
+      var   doc = currEl.ownerDocument
+          , win= 'defaultView' in doc? doc.defaultView : doc.parentWindow;
 
       overflow = win.getComputedStyle(currEl.parentNode).getPropertyValue("overflow")
 
