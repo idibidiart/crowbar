@@ -312,8 +312,9 @@
 
     function selectText(el) {
 
-        window.focus()
-        document.focus()
+        alert(0)
+
+        el.focus()
 
         setTimeout(function() {
 
