@@ -314,7 +314,8 @@
 
         window.focus()
         document.focus()
-        
+
+        setTimeout(function() {
         if (document.selection) {
            
             var range = document.body.createTextRange();
@@ -325,6 +326,7 @@
             range.selectNode(el);
             window.getSelection().addRange(range);
         }
+        }, 500)
     }
 
   window.onmouseover = function(e) {
