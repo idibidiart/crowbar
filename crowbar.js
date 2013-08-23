@@ -60,7 +60,7 @@
                 url = toAbsoluteURL(v.getAttribute("href"), cssBase)
             }
 
-            var clear = "body {border: 1px solid #000000;overflow: hidden;width: 100%;}"
+            var clear = "div {overflow: hidden;width: 100%;}"
 
             style.appendChild(document.createTextNode(clear))
 
