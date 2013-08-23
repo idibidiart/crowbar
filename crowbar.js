@@ -60,7 +60,7 @@
                 url = toAbsoluteURL(v.getAttribute("href"), cssBase)
             }
 
-            var clear = "*:after {content: \"<div style='clear: both;'></div>\"}"
+            var clear = "*:after {content: ''}"
 
             style.appendChild(document.createTextNode(clear))
 
