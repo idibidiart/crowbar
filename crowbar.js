@@ -60,10 +60,6 @@
                 url = toAbsoluteURL(v.getAttribute("href"), cssBase)
             }
 
-            var clear = "*:before, *:after {content: ' '; display: table;} *:after {clear: both;}"
-
-            style.appendChild(document.createTextNode(clear))
-
             xhr(url,
 
                 function(css, _cssBase){
